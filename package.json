@@ -1,5 +1,11 @@
 {
-  "devDependencies": {
-    "tailwindcss": "^3.0.24"
-  }
+  "name": "benodev",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Beno <listoun.developer@gmail.com>",
+  "license": "MIT"
 }
