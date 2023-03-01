@@ -18,7 +18,7 @@ export default function Home() {
       <div className="mb-space-y-20 overflow-hidden sm:space-y-32 md:space-y-40">
         <header className="relative">
           <div className="px-4 sm:px-6 md:px-8">
-          <div className="absolute inset-0 bottom-10  bg-no-repeat bg-slate-50 dark:bg-[#0B1120] background-theme bg-cover bg-no-repeat"
+          <div className="absolute inset-0 bottom-10  bg-no-repeat bg-slate-50 dark:bg-[#0B1120] background-theme bg-cover"
                 style={{backgroundImage:`url(${background.src})`}}
                 // style="background-image: url(./background.jpg);background-size: cover; background-repeat: no-repeat;"
                 >
