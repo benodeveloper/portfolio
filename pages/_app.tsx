@@ -1,8 +1,8 @@
 import '~/styles/globals.css'
-import type { AppProps } from 'next/app'
-import { BaseAppProps, BasePageLayout } from '~/types'
-import { Layout } from '~/layouts/mainLayout'
+import { MDXProvider } from '@mdx-js/react'
+import Layout from '~/components/layout'
 import { Roboto } from 'next/font/google'
+import { AppProps } from 'next/app'
 
 
 const roboto = Roboto({
@@ -11,10 +11,12 @@ const roboto = Roboto({
   style : 'normal'
 })
 
-const app = ({ Component, pageProps }: BaseAppProps) => {
-  const getLayout = Component.getLayout ?? ((page) => page)
-
-  return <main className={roboto.className}>{getLayout(<Component {...pageProps} />)}</main>
+const app = ({ Component, pageProps }: AppProps) => {
+  return <main className={roboto.className}>
+      <Layout>
+        <Component {...pageProps} />
+      </Layout>
+    </main>
 }
 
 export default app;

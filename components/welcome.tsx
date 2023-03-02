@@ -1,7 +1,7 @@
 import Image from "next/image"
 import me from "~/assets/hassan-benadardor.png"
 
-export const Welcome = () => {
+const Welcome = () => {
     return <>
     <div className="grid grid-cols-8 grid-rows-34x4 mt-11">
         <div  className="row-span-4 col-span-1 md:col-span-2">
@@ -55,3 +55,5 @@ export const Welcome = () => {
 
     </>
 }
+
+export default Welcome;

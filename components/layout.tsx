@@ -3,12 +3,14 @@ import { Footer } from "~/components/footer"
 import { Navbar } from "~/components/navbar"
 
 
-export const Layout = (page: ReactElement): ReactNode => {
+const Layout = ({children}:{children: ReactElement}) => {
     return <div className="text-[#E7E9EA] overlay">
             <div className="max-w-3xl mx-auto min-h-screen px-3">
                 <Navbar />
-                {page}
+                {children}
             </div>
             <Footer />
     </div>
 }
+
+export default Layout;

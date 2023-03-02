@@ -1,15 +1,12 @@
-import { BlogSection } from "~/components/blogSection";
-import { Welcome } from "~/components/welcome";
-import { Layout } from "~/layouts/mainLayout";
-import { BasePageLayout } from "~/types";
+import Posts from "~/components/posts";
+import Welcome from "~/components/welcome";
 
-const app: BasePageLayout = () => {
+// @see https://github.com/ChangoMan/nextjs-typescript-mdx-blog
+const app = () => {
   return <>
     <Welcome/>
-    <BlogSection/>
+    <Posts/>
   </>
 }
-
-app.getLayout = Layout
 
 export default app;
