@@ -6,7 +6,7 @@ type SinglePostProps = {
 }
 
 const SinglePost = ({post}: SinglePostProps) => {
-    return <article className="my-7 p-4 bg-denim/[.9] border-2 border-denim-700 rounded-md">
+    return <article className="my-7 p-4 bg-slate-800 border-2 border-slate-700 rounded-lg">
         <Link href={`/blog/${post.slug}`}>
             <h3 className="text-2xl font-bold">{post.title}</h3>
             <p className="text-gray-400 my-5">{post.description}</p>

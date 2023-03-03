@@ -14,7 +14,7 @@ export const Navbar = () => {
         <nav className="h-20">
             <div className="flex justify-between py-5 relative">
                 <div>
-                <Link href="/"><span className="text-3xl font-bold">Beno.</span></Link>
+                <Link href="/"><span className="text-2xl font-bold">Beno Developer</span></Link>
                     
                 </div>
                 <button 
@@ -27,12 +27,12 @@ export const Navbar = () => {
                     </svg>
                 </button>
                 <ul className={`flex gap-3 md:gap-6 text-base z-10 flex-col font-light absolute md:relative md:translate-x-0 md:border-0 md:flex-row md:translate-y-0 md:bg-transparent md:px-0 md:py-0 md:shadow-none transition-all bg-denim-900 top-0 translate-y-20 w-48 px-6 py-5 shadow-md rounded-md border-2 border-denim-700 right-0 md:opacity-100  ${show ? "-translate-x-2 opacity-100" : " translate-x-3 opacity-0"}`}>
-                    <li  className={`${router.pathname == "/" ? "font-medium" : ""}`}>
+                    <li  className={`${router.pathname == "/" ? "font-bold before:block before:absolute before:-inset-x-0 before:h-0.5 before:-bottom-1 before:bg-white before:rounded relative" : ""}`}>
                         <Link href="/">Home</Link>
                     </li>
-                    <li className={`${router.pathname == "/blog" ? "font-medium" : ""}`}><Link href="/blog">Blog</Link></li>
-                    <li className={`${router.pathname == "/about" ? "font-medium" : ""}`}><Link href="/about">About</Link></li>
-                    <li className={`${router.pathname == "/contact" ? "font-medium" : ""}`}><Link href="/contact">Contact</Link></li>
+                    <li className={`${router.pathname == "/blog" ? "font-bold before:block before:absolute before:-inset-x-0 before:h-0.5 before:-bottom-1 before:bg-white before:rounded relative" : ""}`}><Link href="/blog">Blog</Link></li>
+                    <li className={`${router.pathname == "/about" ? "font-bold before:block before:absolute before:-inset-x-0 before:h-0.5 before:-bottom-1 before:bg-white before:rounded relative" : ""}`}><Link href="/about">About</Link></li>
+                    <li className={`${router.pathname == "/contact" ? "font-bold before:block before:absolute before:-inset-x-0 before:h-0.5 before:-bottom-1 before:bg-white before:rounded relative" : ""}`}><Link href="/contact">Contact</Link></li>
                 </ul>
             </div>
         </nav>
