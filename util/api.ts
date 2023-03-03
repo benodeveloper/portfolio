@@ -2,26 +2,23 @@ import { readFileSync } from "fs";
 import { join } from "path";
 import { getPostPaths, POST_PATH } from "./helper"
 import matter from "gray-matter"
+import { IPost } from "./types";
 
-type PostItems = {
-    [key: string]: string;
-  };
 
-export function getPostBySlug(slug: string): PostItems {
+
+export function getPostBySlug(slug: string): IPost {
     const realSlug = slug.replace(/\.mdx$/, '');
     const fullPath = join(POST_PATH, `${realSlug}.mdx`);
     const fileContents = readFileSync(fullPath, 'utf8');
     const { data, content } = matter(fileContents);
   
-    const items: PostItems = {};
+    const post: IPost = {
+      slug: realSlug,
+      title: realSlug,
+      description: realSlug,
+    };
   
-    // Ensure only the minimal needed data is exposed
-   
-        items["slug"] = realSlug;
-        items["content"] = content;
-        // items["data"] = data;
-  
-    return items;
+    return post;
   }
 
 export const getAllPosts = () => {

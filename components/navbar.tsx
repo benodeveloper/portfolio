@@ -26,7 +26,7 @@ export const Navbar = () => {
                         <path clipRule="evenodd" fillRule="evenodd" d="M2 4.75A.75.75 0 012.75 4h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 4.75zm0 10.5a.75.75 0 01.75-.75h7.5a.75.75 0 010 1.5h-7.5a.75.75 0 01-.75-.75zM2 10a.75.75 0 01.75-.75h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 10z"></path>
                     </svg>
                 </button>
-                <ul className={`flex gap-3 md:gap-6 text-base z-10 flex-col font-light absolute md:relative md:translate-x-0 md:border-0 md:flex-row md:translate-y-0 md:bg-transparent md:px-0 md:py-0 md:shadow-none transition-all bg-[#0F172A] top-0 translate-y-20 w-48 px-6 py-5 shadow-md rounded-md border-2 border-[#20283C] right-0 md:opacity-100  ${show ? "-translate-x-2 opacity-100" : " translate-x-3 opacity-0"}`}>
+                <ul className={`flex gap-3 md:gap-6 text-base z-10 flex-col font-light absolute md:relative md:translate-x-0 md:border-0 md:flex-row md:translate-y-0 md:bg-transparent md:px-0 md:py-0 md:shadow-none transition-all bg-denim-900 top-0 translate-y-20 w-48 px-6 py-5 shadow-md rounded-md border-2 border-denim-700 right-0 md:opacity-100  ${show ? "-translate-x-2 opacity-100" : " translate-x-3 opacity-0"}`}>
                     <li  className={`${router.pathname == "/" ? "font-medium" : ""}`}>
                         <Link href="/">Home</Link>
                     </li>

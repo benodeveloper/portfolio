@@ -1,6 +1,9 @@
 
 export const Footer = () => {
-    return <div className="text-center py-7 text-gray-500 font-light text-sm">
-        Built with <span className="text-gray-400">Nextjs</span>, <span className="text-gray-400">Tailwind</span> and <span className="text-gray-400">Vercel</span>.
+    return <div className="text-center py-7 text-gray-400 font-light text-sm">
+        Built with 
+        <a href="https://nextjs.org/" target="_blank" className="text-gray-300 mx-1">Nextjs</a>, 
+        <a href="https://tailwindcss.com/" target="_blank" className="text-gray-300 mx-1">Tailwind</a> and 
+        <a href="https://vercel.com/" target="_blank" className="text-gray-300 mx-1">Vercel</a>
     </div>
 }
