@@ -4,7 +4,7 @@ export default function Document(): JSX.Element {
   return (
     <Html lang="en">
       <Head />
-      <body className='bg-gradient-to-r dark:to-slate-900 dark:from-gray-900'>
+      <body className='bg-gradient-to-tr dark:from-slate-900/95 dark:to-slate-900 bg-white text-gray-900 dark:text-gray-200'>
         <Main />
         <NextScript />
       </body>

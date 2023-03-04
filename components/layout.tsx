@@ -4,7 +4,7 @@ import { Navbar } from "@/components/navbar"
 
 
 const Layout = ({children}:{children: ReactElement}) => {
-    return <div className="text-gray-100 overlay after:content-[''] after:-z-10 after:absolute after:inset-0 after:bg">
+    return <div className="text-gray-200">
             <div className="max-w-3xl mx-auto min-h-screen px-7">
                 <Navbar />
                 {children}
