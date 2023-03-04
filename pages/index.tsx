@@ -1,14 +1,15 @@
 import Image from "next/image";
 import { GetStaticProps } from "next/types";
-import me from "~/assets/hassan-benadardor.png"
-import SinglePost from "~/components/post";
-import { getAllPosts } from "~/util/api";
-import { IPost } from "~/util/types";
+import me from "@/assets/hassan-benadardor.png"
+import {allPosts} from 'contentlayer/generated'
+import { IPost } from "@/util/types";
+import { compareDesc, format, parseISO } from "date-fns";
+import Link from "next/link";
 
-// @see https://github.com/ChangoMan/nextjs-typescript-mdx-blog
 type HomeProps = {
   posts: IPost[]
 }
+
 const Home = ({posts}: HomeProps):JSX.Element => {
   return <> 
     <div className="grid grid-cols-8 grid-rows-34x4 mt-11">
@@ -45,8 +46,18 @@ const Home = ({posts}: HomeProps):JSX.Element => {
     
     <div className="my-20">
         <h2 className="text-center text-4xl font-bold mb-14">Blog</h2>
-        {posts.map((post, key) => <SinglePost key={key} post={post}/>)}
-        
+        {posts.map((post, key) => {
+          return <div key={key} className="mb-6">
+          <time dateTime={post.date} className="block text-sm text-slate-600">
+            {format(parseISO(post.date), 'LLLL d, yyyy')}
+          </time>
+          <h2 className="text-lg">
+            <Link href={post.url} className="text-blue-700 hover:text-blue-900">
+              {post.title}
+            </Link>
+          </h2>
+        </div>
+        })}
     </div>
   </>
 }
@@ -56,7 +67,7 @@ export const getStaticProps: GetStaticProps = async () => {
   //   description: "description",
   //   slug: "slug"
   // }];
-  const posts:IPost[] = getAllPosts();
+  const posts: IPost[] = allPosts.sort((a: IPost, b:IPost) => compareDesc(new Date(a.date), new Date(b.date)))
 
   return {
     props: { posts },

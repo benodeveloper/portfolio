@@ -1,5 +1,5 @@
 import Link from "next/link"
-import { IPost } from "~/util/types"
+import { IPost } from "@/util/types"
 
 type SinglePostProps = {
     post:IPost
