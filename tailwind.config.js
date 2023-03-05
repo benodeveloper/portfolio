@@ -14,6 +14,10 @@ module.exports = {
       gridTemplateRows: {
         '5/40px': 'repeat(7, minmax(0, 34px))',
       },
+      transitionProperty: {
+        'width': 'width',
+        'bg': 'background'
+      },
       fontSize: {
         base: ['15px', '24px'],
       },
@@ -33,6 +37,22 @@ module.exports = {
         }
       }
     },
+    keyframes: ({ theme }) => ({
+      switch: {
+        "0%": {
+          transform: "scale(1)",
+        },
+        "50%": {
+          transform: "scale(24)"
+        },
+        "0%": {
+          transform: "scale(1)",
+        }
+      }
+    }),
+    animation: {
+      'switch-wave': 'switch 10s linear',
+    }
   },
   plugins: [
     require('@tailwindcss/typography'),
