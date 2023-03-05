@@ -1,10 +1,11 @@
-import {defineDocumentType, makeSource} from 'contentlayer/source-files';
+import { defineDocumentType, makeSource } from 'contentlayer/source-files';
 import rehypePrettyCode from 'rehype-pretty-code'
-import { prettyCodeOptions } from './util/rehypePrettyCode';
+import { prettyCodeCustomClasses, prettyCodeOptions } from './util/rehypePrettyCode';
+import remakeGfm from "remark-gfm"
 
 export const Post = defineDocumentType(() => ({
     name: "Post",
-    filePathPattern:`**/*.mdx`,
+    filePathPattern: `**/*.mdx`,
     contentType: "mdx",
     fields: {
         title: {
@@ -12,16 +13,22 @@ export const Post = defineDocumentType(() => ({
             description: 'The title of the post',
             required: true
         },
-        date: {
+        description: {
+            type: 'string',
+            description: "the description of the post",
+            required: true
+        },
+        publishedAt: {
             type: 'date',
             description: 'The date of the post',
-            required:true
-        }
+            required: true
+        },
+        status: { type: "string" }
     },
     computedFields: {
-        url:{
+        url: {
             type: 'string',
-            resolve: (post)=> `/posts/${post._raw.flattenedPath}`,
+            resolve: (post) => `/posts/${post._raw.flattenedPath}`,
         }
     }
 }))
@@ -29,11 +36,12 @@ export const Post = defineDocumentType(() => ({
 export default makeSource({
     contentDirPath: 'posts',
     documentTypes: [Post],
-    mdx: {  
-    //     esbuildOptions(options) {
-    //     options.target = "esnext"
-    //     return options
-    //   }, 
-      rehypePlugins: [[rehypePrettyCode, prettyCodeOptions]]
+    mdx: {
+        //     esbuildOptions(options) {
+        //     options.target = "esnext"
+        //     return options
+        //   }, 
+        remarkPlugins: [[remakeGfm]],
+        rehypePlugins: [[rehypePrettyCode, prettyCodeOptions], [prettyCodeCustomClasses]]
     },
 })

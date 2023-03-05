@@ -1,6 +1,8 @@
 export interface IPost {
     title: string;
-    date: string;
+    publishedAt: string;
+    description: string;
+    status: string;
     url: string;
     body?: any
 }

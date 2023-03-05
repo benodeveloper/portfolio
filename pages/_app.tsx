@@ -8,17 +8,17 @@ import { ThemeProvider } from 'next-themes'
 const quicksand = Quicksand({
   weight: ['400', '300', '500', '700'],
   subsets: ['latin'],
-  style : 'normal'
+  style: ['normal']
 })
 
 const app = ({ Component, pageProps }: AppProps) => {
-  return  <ThemeProvider attribute="data-mode">
-        <main className={quicksand.className}>
-          <Layout>
-            <Component {...pageProps} />
-          </Layout>
-        </main>
-    </ThemeProvider>
+  return <ThemeProvider attribute="data-mode">
+    <main className={quicksand.className}>
+      <Layout>
+        <Component {...pageProps} />
+      </Layout>
+    </main>
+  </ThemeProvider>
 }
 
 export default app;
