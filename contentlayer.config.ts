@@ -1,5 +1,6 @@
 import { defineDocumentType, makeSource } from 'contentlayer/source-files';
-import rehypePrettyCode from 'rehype-pretty-code'
+import rehypePrettyCode from 'rehype-pretty-code';
+import readingTime from "reading-time";
 import { prettyCodeCustomClasses, prettyCodeOptions } from './util/rehypePrettyCode';
 import remakeGfm from "remark-gfm"
 
@@ -29,6 +30,10 @@ export const Post = defineDocumentType(() => ({
         url: {
             type: 'string',
             resolve: (post) => `/posts/${post._raw.flattenedPath}`,
+        },
+        readingTime: {
+            type: "string",
+            resolve: (post) => readingTime(post.body.raw).text
         }
     }
 }))

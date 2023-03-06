@@ -4,5 +4,6 @@ export interface IPost {
     description: string;
     status: string;
     url: string;
+    readingTime: string;
     body?: any
 }
