@@ -31,7 +31,7 @@ export const Navbar = () => {
                     <li className={`before:block before:absolute before:left-0 before:h-0.5 before:-bottom-1 dark:before:bg-white before:bg-slate-900 before:rounded relative before:transition-width ${router.pathname == "/" ? "font-bold before:w-full" : " font-medium  before:w-0"}`}>
                         <Link href="/">Home</Link>
                     </li>
-                    <li className={`before:block before:absolute before:left-0 before:h-0.5 before:-bottom-1 dark:before:bg-white before:bg-slate-900 before:rounded relative before:transition-width ${router.pathname == "/blog" ? "font-bold before:w-full" : " font-medium  before:w-0"}`}><Link href="/blog">Blog</Link></li>
+                    <li className={`before:block before:absolute before:left-0 before:h-0.5 before:-bottom-1 dark:before:bg-white before:bg-slate-900 before:rounded relative before:transition-width ${router.pathname == "/posts" ? "font-bold before:w-full" : " font-medium  before:w-0"}`}><Link href="/posts">Posts</Link></li>
                     <li className={`before:block before:absolute before:left-0 before:h-0.5 before:-bottom-1 dark:before:bg-white before:bg-slate-900 before:rounded relative before:transition-width ${router.pathname == "/about" ? "font-bold before:w-full" : " font-medium  before:w-0"}`}><Link href="/about">About</Link></li>
                     <li className={`before:block before:absolute before:left-0 before:h-0.5 before:-bottom-1 dark:before:bg-white before:bg-slate-900 before:rounded relative before:transition-width ${router.pathname == "/contact" ? "font-bold before:w-full" : " font-medium  before:w-0"}`}><Link href="/contact">Contact</Link></li>
                     <li>

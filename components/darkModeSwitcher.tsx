@@ -1,26 +1,36 @@
 import { useTheme } from 'next-themes'
 import { motion } from 'framer-motion'
-import { RiMoonClearFill, RiSunFill } from 'react-icons/ri'
+import { useState, useEffect } from "react";
 
 
 export const DarkModeSwitcher = () => {
+    const [mounted, setMounted] = useState(false);
+    const { systemTheme, theme, setTheme } = useTheme();
 
-    const spring = {
-        type: 'spring',
-        stiffness: 700,
-        damping: 30,
-    }
+    useEffect(() => {
+        setMounted(true);
+    }, [])
 
-    const { theme, setTheme } = useTheme();
-    console.log(theme);
-    return <button onClick={() => { theme == "light" ? setTheme('dark') : setTheme('light') }} >
+    const renderIcon = () => {
+        if (!mounted) return null;
+        const currentTheme = theme === "system" ? systemTheme : theme;
 
-        <motion.div whileTap={{ rotate: 90 }} className="fill-slate-900">
-            {
-                theme == "dark" ?
-                    <svg stroke="currentColor" fill="#f8fafc" strokeWidth="0" viewBox="0 0 24 24" className="h-5 w-5 fill-slate-50" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><g><path fill="none" d="M0 0h24v24H0z"></path><path d="M12 18a6 6 0 1 1 0-12 6 6 0 0 1 0 12zM11 1h2v3h-2V1zm0 19h2v3h-2v-3zM3.515 4.929l1.414-1.414L7.05 5.636 5.636 7.05 3.515 4.93zM16.95 18.364l1.414-1.414 2.121 2.121-1.414 1.414-2.121-2.121zm2.121-14.85l1.414 1.415-2.121 2.121-1.414-1.414 2.121-2.121zM5.636 16.95l1.414 1.414-2.121 2.121-1.414-1.414 2.121-2.121zM23 11v2h-3v-2h3zM4 11v2H1v-2h3z"></path></g></svg> :
-                    <svg stroke="currentColor" fill="#0f172a" strokeWidth="0" viewBox="0 0 24 24" className="h-5 w-5 fill-slate-900" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><g><path fill="none" d="M0 0h24v24H0z"></path><path d="M9.822 2.238a9 9 0 0 0 11.94 11.94C20.768 18.654 16.775 22 12 22 6.477 22 2 17.523 2 12c0-4.775 3.346-8.768 7.822-9.762zm8.342.053L19 2.5v1l-.836.209a2 2 0 0 0-1.455 1.455L16.5 6h-1l-.209-.836a2 2 0 0 0-1.455-1.455L13 3.5v-1l.836-.209A2 2 0 0 0 15.29.836L15.5 0h1l.209.836a2 2 0 0 0 1.455 1.455zm5 5L24 7.5v1l-.836.209a2 2 0 0 0-1.455 1.455L21.5 11h-1l-.209-.836a2 2 0 0 0-1.455-1.455L18 8.5v-1l.836-.209a2 2 0 0 0 1.455-1.455L20.5 5h1l.209.836a2 2 0 0 0 1.455 1.455z"></path></g></svg>
-            }
+        if (currentTheme === "dark") {
+            return <svg xmlns="http://www.w3.org/2000/svg" className="fill-slate-50 h-5 w-5" viewBox="0 0 512 512">
+                <path d="M361.5 1.2c5 2.1 8.6 6.6 9.6 11.9L391 121l107.9 19.8c5.3 1 9.8 4.6 11.9 9.6s1.5 10.7-1.6 15.2L446.9 256l62.3 90.3c3.1 4.5 3.7 10.2 1.6 15.2s-6.6 8.6-11.9 9.6L391 391l-19.9 107.9c-1 5.3-4.6 9.8-9.6 11.9s-10.7 1.5-15.2-1.6L256 446.9l-90.3 62.3c-4.5 3.1-10.2 3.7-15.2 1.6s-8.6-6.6-9.6-11.9L121 391 13.1 371.1c-5.3-1-9.8-4.6-11.9-9.6s-1.5-10.7 1.6-15.2L65.1 256 2.8 165.7c-3.1-4.5-3.7-10.2-1.6-15.2s6.6-8.6 11.9-9.6L121 121l19.9-107.9c1-5.3 4.6-9.8 9.6-11.9s10.7-1.5 15.2 1.6L256 65.1l90.3-62.3c4.5-3.1 10.2-3.7 15.2-1.6zM160 256a96 96 0 1 1 192 0 96 96 0 1 1-192 0zm224 0a128 128 0 1 0-256 0 128 128 0 1 0 256 0z" />
+            </svg>
+        }
+
+        else {
+            return <svg xmlns="http://www.w3.org/2000/svg" className="fill-slate-900 h-5 w-5" viewBox="0 0 384 512">
+                <path d="M223.5 32C100 32 0 132.3 0 256s100 224 223.5 224c60.6 0 115.5-24.2 155.8-63.4 5-4.9 6.3-12.5 3.1-18.7s-10.1-9.7-17-8.5c-9.8 1.7-19.8 2.6-30.1 2.6-96.9 0-175.5-78.8-175.5-176 0-65.8 36-123.1 89.3-153.3 6.1-3.5 9.2-10.5 7.7-17.3s-7.3-11.9-14.3-12.5c-6.3-.5-12.6-.8-19-.8z" />
+            </svg>
+        }
+    };
+    return <button type='button' title='dark light switcher h-5 w-5' onClick={() => { theme == "light" ? setTheme('dark') : setTheme('light') }}>
+
+        <motion.div whileTap={{ rotate: 90 }} className='fill-slate-900'>
+            {renderIcon()}
         </motion.div>
     </button>
 }
