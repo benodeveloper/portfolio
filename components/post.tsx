@@ -1,8 +1,10 @@
 import { IPost } from "@/util/types"
+import { usePostLikes } from "@/util/usePostLikes"
 import { format, parseISO } from "date-fns"
 import Link from "next/link"
 
 export const Post = ({ post }: { post: IPost }) => {
+    const { likes, isLoading, isError } = usePostLikes(post.slug);
     return <article className="mb-12">
         <Link href={post.url}>
             <h2 className="text-2xl font-bold text-gray-800 dark:text-white">{post.title}</h2>
@@ -19,7 +21,9 @@ export const Post = ({ post }: { post: IPost }) => {
                 1,799 views
             </span>
             <span className="mx-2 font-bold">.</span>
-            <span> 100 likes</span>
+            <span>
+                {isError || isLoading ? "..." : likes} likes
+            </span>
             <span className="mx-2 font-bold">.</span>
             <span>1 shares</span>
         </div>

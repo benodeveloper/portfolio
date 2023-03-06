@@ -1,6 +1,7 @@
 import { allPosts } from "@/.contentlayer/generated";
 import { MDXComponents } from "@/util/MDXCustomComponents";
 import { IPost } from "@/util/types";
+import { usePostLikes } from "@/util/usePostLikes";
 import { format, parseISO } from "date-fns";
 import { useMDXComponent } from "next-contentlayer/hooks"
 import Head from "next/head";
@@ -25,6 +26,9 @@ export const getStaticProps = async ({ params }: any) => {
 }
 
 const SinglePostPage = ({ post }: { post: IPost }): JSX.Element => {
+
+  const { likes, isLoading, isError, likePost } = usePostLikes(post.slug);
+
   const MDXContent = useMDXComponent(post.body.code);
   return <>
     {/* <Head>
@@ -44,10 +48,16 @@ const SinglePostPage = ({ post }: { post: IPost }): JSX.Element => {
             1,799 views
           </span>
           <span className="mx-2 font-bold">.</span>
-          <span> 100 likes</span>
+          <span> {isError || isLoading ? "..." : likes} likes</span>
           <span className="mx-2 font-bold">.</span>
           <span>1 shares</span>
         </div>
+      </div>
+      <div>
+        <button onClick={() => {
+          if (isLoading) return
+          likePost()
+        }} className="border-slate-900 border text-slate-900 px-4 py-2 rounded-full">Like it</button>
       </div>
       <MDXContent components={{ ...MDXComponents }} />
     </div>

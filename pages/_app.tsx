@@ -12,7 +12,7 @@ const quicksand = Quicksand({
 })
 
 const app = ({ Component, pageProps }: AppProps) => {
-  return <ThemeProvider attribute="data-mode">
+  return <ThemeProvider enableSystem={true} attribute="data-mode">
     <main className={quicksand.className}>
       <Layout>
         <Component {...pageProps} />

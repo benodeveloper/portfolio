@@ -1,6 +1,7 @@
 import { defineDocumentType, makeSource } from 'contentlayer/source-files';
 import rehypePrettyCode from 'rehype-pretty-code';
 import readingTime from "reading-time";
+import slugify from "slugify"
 import { prettyCodeCustomClasses, prettyCodeOptions } from './util/rehypePrettyCode';
 import remakeGfm from "remark-gfm"
 
@@ -27,6 +28,10 @@ export const Post = defineDocumentType(() => ({
         status: { type: "string" }
     },
     computedFields: {
+        slug: {
+            type: 'string',
+            resolve: (post) => slugify(post.title),
+        },
         url: {
             type: 'string',
             resolve: (post) => `/posts/${post._raw.flattenedPath}`,

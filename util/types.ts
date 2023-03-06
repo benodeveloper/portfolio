@@ -3,6 +3,7 @@ export interface IPost {
     publishedAt: string;
     description: string;
     status: string;
+    slug: string;
     url: string;
     readingTime: string;
     body?: any
