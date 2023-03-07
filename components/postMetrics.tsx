@@ -3,8 +3,10 @@ import { format, parseISO } from "date-fns";
 import { IPost } from "@/util/types";
 import { usePostViews } from "@/util/usePostViews";
 import { usePostLikes } from "@/util/usePostLikes";
+import { usePollIfInView } from "@/util/usePollIfInView";
 
 export const PostMetrics = ({ post }: { post: IPost }) => {
+
     const { likes, isLoading: likesisLoading, isError: likesOnError } = usePostLikes(post.slug);
     const { views, isLoading: viewsIsLoading, isError: viewsOnError } = usePostViews(post.slug);
 

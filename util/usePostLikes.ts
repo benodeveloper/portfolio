@@ -1,25 +1,33 @@
 import { useState } from 'react';
 import { useDebounce } from 'react-use';
 import useSWR from 'swr';
-const fetcher = async (slug: string) => {
-    const res = await fetch(`/api/likes/${slug}`)
+const getPostLikes = async (url: string) => {
+    const res = await fetch(url)
     if (!res.ok) throw new Error("Something went wrong");
     return res.json();
 }
 
-const likePostFetcher = async (slug: string, likes: number) => {
+const incrementPostLikes = async (slug: string) => {
     const res = await fetch(`/api/likes/${slug}`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ likes })
+        body: JSON.stringify({ likes: 1 })
     })
 
     if (!res.ok) throw new Error("Something went wrong");
     return res.json();
 }
 
-export const usePostLikes = (slug: string) => {
-    const { data, error, mutate } = useSWR(`/api/likes/${slug}`, () => fetcher(slug));
+type UsePostLikesProps = {
+    likes: number;
+    currentUserLikes: number;
+    isLoading: boolean,
+    isError: boolean,
+    likePost: () => void
+}
+
+export const usePostLikes = (slug: string): UsePostLikesProps => {
+    const { data, error, isLoading, mutate } = useSWR(`/api/likes/${slug}`, getPostLikes);
     const [likesCounter, setLikes] = useState(0);
     const likePost = () => {
 
@@ -33,14 +41,14 @@ export const usePostLikes = (slug: string) => {
     useDebounce(() => {
         if (likesCounter == 0) return
 
-        mutate(likePostFetcher(slug, likesCounter))
+        mutate(incrementPostLikes(slug))
         setLikes(0);
     }, 1000, [likesCounter])
 
     return {
         likes: data?.likes,
         currentUserLikes: data?.currentUserLikes,
-        isLoading: !error && !data,
+        isLoading,
         isError: !!error,
         likePost
     }
