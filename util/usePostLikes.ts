@@ -22,11 +22,12 @@ export const usePostLikes = (slug: string) => {
     const { data, error, mutate } = useSWR(`/api/likes/${slug}`, () => fetcher(slug));
     const [likesCounter, setLikes] = useState(0);
     const likePost = () => {
-        if (!data || data.currentUserLikes > 0) return
 
-        mutate({ likes: data.likes + 1 }, false)
+        if (!data || data.currentUserLikes >= 1) return
 
-        setLikes(likesCounter + 1);
+        mutate({ likes: data.likes + 1, currentUserLikes: 1, }, false)
+
+        setLikes(1);
     }
 
     useDebounce(() => {
