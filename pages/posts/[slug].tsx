@@ -4,32 +4,21 @@ import { IPost } from "@/util/types";
 import { usePostLikes } from "@/util/usePostLikes";
 import { format, parseISO } from "date-fns";
 import { useMDXComponent } from "next-contentlayer/hooks"
-import Head from "next/head";
-import Link from "next/link";
-
 
 export const getStaticPaths = async () => {
   const paths = allPosts.map(post => post.url)
-  return {
-    paths,
-    fallback: false,
-  }
+  return { paths, fallback: false, }
 }
 
 export const getStaticProps = async ({ params }: any) => {
   const post = allPosts.find(post => post._raw.flattenedPath == params.slug);
-  return {
-    props: {
-      post
-    }
-  }
+  return { props: { post } }
 }
 
 const SinglePostPage = ({ post }: { post: IPost }): JSX.Element => {
-
-  const { likes, isLoading, isError, likePost } = usePostLikes(post.slug);
-
+  const { likes, isLoading, isError, likePost, currentUserLikes } = usePostLikes(post.slug);
   const MDXContent = useMDXComponent(post.body.code);
+
   return <>
     {/* <Head>
       <title>{post.title}</title>
@@ -42,7 +31,7 @@ const SinglePostPage = ({ post }: { post: IPost }): JSX.Element => {
             {format(parseISO(post.publishedAt), 'LLLL d, yyyy')}
           </time>
           <span className="mx-2 font-bold">.</span>
-          <span>4 min read</span>
+          <span>{post.readingTime}</span>
           <span className="mx-2 font-bold">.</span>
           <span>
             1,799 views
@@ -57,7 +46,7 @@ const SinglePostPage = ({ post }: { post: IPost }): JSX.Element => {
         <button onClick={() => {
           if (isLoading) return
           likePost()
-        }} className="border-slate-900 border text-slate-900 px-4 py-2 rounded-full">Like it</button>
+        }} className={` border  px-4 py-2 rounded-full ${currentUserLikes ? "text-slate-200 border-slate-200 bg-slate-900 " : "text-slate-900 border-slate-900"}`}>Like it</button>
       </div>
       <MDXContent components={{ ...MDXComponents }} />
     </div>
