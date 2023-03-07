@@ -30,7 +30,7 @@ export const Post = defineDocumentType(() => ({
     computedFields: {
         slug: {
             type: 'string',
-            resolve: (post) => slugify(post.title),
+            resolve: (post) => slugify(post.title.toLowerCase()),
         },
         url: {
             type: 'string',

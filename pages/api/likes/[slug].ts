@@ -1,13 +1,15 @@
 import prisma from "@/util/prisma";
+import zod from "zod"
+import hmacSHA512 from 'crypto-js/hmac-sha512';
+import Base64 from 'crypto-js/enc-base64';
 import { NextApiRequest, NextApiResponse } from "next";
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
-    const slug = req.query.slug?.toString();
-
-    if (slug == undefined) return res.status(404);
+    const slug = zod.string().parse(req.query.slug);
 
     const clientIPAddress = req.headers["x-forwarded-for"] || "0.0.0.0";
-    const sessionId = clientIPAddress + slug;
+    const sessionId = await Base64.stringify(hmacSHA512(clientIPAddress + slug, process.env.APP_KEY || "zp1YUWcX"));
+    console.log(sessionId)
 
     switch (req.method) {
         case "GET": {

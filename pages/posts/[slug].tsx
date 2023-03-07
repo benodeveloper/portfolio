@@ -5,6 +5,7 @@ import { MDXComponents } from "@/util/MDXCustomComponents";
 import { IPost } from "@/util/types";
 import { usePostViews } from "@/util/usePostViews";
 import { useEffect } from "react";
+import { LikePostButton } from "@/components/likePostButton";
 
 export const getStaticPaths = async () => {
   const paths = allPosts.map(post => post.url)
@@ -30,7 +31,7 @@ const SinglePostPage = ({ post }: { post: IPost }): JSX.Element => {
       <div className="mb-6">
         <h1 className="mb-1 sm:text-4xl text-3xl font-bold">{post.title}</h1>
         <div className="text-gray-500 text-sm"><PostMetrics post={post} /></div>
-
+        <LikePostButton slug={post.slug} />
       </div>
       <MDXContent components={{ ...MDXComponents }} />
     </div>
