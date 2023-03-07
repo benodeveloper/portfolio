@@ -12,6 +12,7 @@ model Post {
   createdAt DateTime @default(now())
   slug      String   @unique
   likes     Int      @default(0)
+  views     Int      @default(0)
 }
 
 model Session {
