@@ -1,13 +1,20 @@
 import { IPost } from "./types";
 
-const BASE_URL = "/api/og";
+const BASE_URL = `${process.env.NEXT_PUBLIC_APP_URL}/api/images`;
 
 export const generateOGImage = (post: IPost) => {
     const details = {
-        title: post.title,
-        description: post.description,
-        tags: post.tags,
-        publiched_at: post.publishedDate,
+        title: post.title.replaceAll(" ", "_"),
+        description: post.description.replaceAll(" ", "_"),
+        tags: post.tags?.replaceAll(" ", "_"),
+        publiched_at: post.publishedDate.replaceAll(" ", "_"),
     }
-    return `${BASE_URL}?post=${JSON.stringify(details)}`;
+    return [
+        `${BASE_URL}`,
+        `/title:${details.title}`,
+        `_&_description:${details.description}`,
+        `_&_tags:${details.tags}`,
+        `_&_publiched_at:${details.publiched_at}`,
+        '_&_bg:og_image'
+    ].join("");
 }
