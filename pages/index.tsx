@@ -19,13 +19,13 @@ const Home = ({ posts }: HomeProps): JSX.Element => {
       <div className="ml-4 col-span-7 md:col-span-6 md:row-span-1 md:flex">
         <h1 className="text-2xl font-bold">Hassan BENADARDOR</h1>
         <span className="text-ms md:ml-3 text-indigo-500 dark:text-blue-400/80">
-          <a href="https://twitter.com/beno_developer" target="_blank">@beno_developer</a>
+          <a href="https://twitter.com/beno_developer" rel="noreferrer" target="_blank">@beno_developer</a>
         </span>
       </div>
       <h3 className="md:ml-4 mt-3 md:mt-0 text-lg md:col-span-6 col-span-8 md:row-span-1">Full stack web developer</h3>
 
       <div className="md:ml-4 md:mt-7 my-2 col-span-8 md:col-start-3 md:col-span-6 md:row-span-2">
-        <p className="text-lg ">Welcome to my digital garden where I share what I'm learning about shipping great products, becoming a better developer and growing a career in tech.</p>
+        <p className="text-lg ">Welcome to my digital garden where I share what I&apos;m learning about shipping great products, becoming a better developer and growing a career in tech.</p>
         <ul className="mt-7 flex gap-7">
           <li>
             <a href="" className="flex text-gray-500 dark:text-gray-400 hover:text-indigo-500 dark:hover:text-blue-400/80 fill-gray-500 dark:fill-gray-400 hover:fill-indigo-500 dark:hover:fill-blue-400/80">

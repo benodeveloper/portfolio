@@ -30,8 +30,8 @@ export const MDXComponents = {
         return <a
             className="underline underline-offset-2 transition-all text-indigo-500 dark:text-blue-400/80"
             href={href}
+            rel="noreferrer"
             target="_blank"
-            rel="noopener"
             {...props
             }
         />
