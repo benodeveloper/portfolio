@@ -11,8 +11,8 @@ export const PostMetrics = ({ post }: { post: IPost }) => {
     const { views, isLoading: viewsIsLoading, isError: viewsOnError } = usePostViews(post.slug);
 
     return <>
-        <time dateTime={post.publishedAt} className="text-sm">
-            {format(parseISO(post.publishedAt), 'LLLL d, yyyy')}
+        <time dateTime={post.publishedDate} className="text-sm">
+            {post.publishedDate}
         </time>
         <span className="mx-2 font-bold">.</span>
         <span>{post.readingTime}</span>

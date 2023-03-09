@@ -4,6 +4,7 @@ import readingTime from "reading-time";
 import slugify from "slugify"
 import { prettyCodeCustomClasses, prettyCodeOptions } from './util/rehypePrettyCode';
 import remakeGfm from "remark-gfm"
+import { format, parseISO } from 'date-fns';
 
 export const Post = defineDocumentType(() => ({
     name: "Post",
@@ -39,6 +40,10 @@ export const Post = defineDocumentType(() => ({
         readingTime: {
             type: "string",
             resolve: (post) => readingTime(post.body.raw).text
+        },
+        publishedDate: {
+            type: "string",
+            resolve: (post) => format(parseISO(post.publishedAt), 'LLLL d, yyyy')
         }
     }
 }))
