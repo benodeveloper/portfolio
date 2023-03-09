@@ -5,6 +5,7 @@ import { allPosts } from 'contentlayer/generated'
 import { IPost } from "@/util/types";
 import { compareDesc } from "date-fns";
 import { Post } from "@/components/post";
+import Head from "next/head";
 
 type HomeProps = {
   posts: IPost[]
@@ -12,6 +13,9 @@ type HomeProps = {
 
 const Home = ({ posts }: HomeProps): JSX.Element => {
   return <>
+    <Head>
+      <title>Beno developer | Full stack developer</title>
+    </Head>
     <div className="grid grid-cols-8 grid-rows-34x4 mt-11 dark:text-gray-200 text-gray-900">
       <div className="row-span-4 col-span-1 md:col-span-2">
         <Image className="md:translate-y-3 md:max-w-[150px] max-w-[50px] translate-y-2" src={me} alt="hassan BENADARODOR" />
