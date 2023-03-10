@@ -1,11 +1,11 @@
 import '@/styles/globals.css'
-import Layout from '@/components/layout'
-import { Quicksand } from '@next/font/google'
 import { AppProps } from 'next/app'
+import Layout from '@/components/layout'
+import { Inter } from '@next/font/google'
 import { ThemeProvider } from 'next-themes'
 
 
-const quicksand = Quicksand({
+const inter = Inter({
   weight: ['400', '300', '500', '700'],
   subsets: ['latin'],
   style: ['normal']
@@ -13,7 +13,7 @@ const quicksand = Quicksand({
 
 const app = ({ Component, pageProps }: AppProps) => {
   return <ThemeProvider enableSystem={true} attribute="data-mode">
-    <main className={quicksand.className}>
+    <main className={inter.className}>
       <Layout>
         <Component {...pageProps} />
       </Layout>

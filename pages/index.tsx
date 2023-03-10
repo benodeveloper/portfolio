@@ -16,7 +16,10 @@ const Home = ({ posts }: HomeProps): JSX.Element => {
     </Head>
 
     <div className="my-20">
-      <h2 className="text-center text-4xl font-bold mb-14 dark:text-white text-gray-800">Blog</h2>
+      <div className="mb-14">
+        <h2 className="text-5xl mb-7 font-bold dark:text-gray-100 text-gray-900">Blog</h2>
+        <h4 className="dark:text-gray-400 text-lg text-gray-600">Java, Spring Boot, coding, technology and beyond.</h4>
+      </div>
       {posts.map((post, key) => <Post post={post} key={key} />)}
     </div>
   </>
