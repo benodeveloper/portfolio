@@ -10,7 +10,7 @@ type PostsProps = {
 
 const Posts = ({ posts }: PostsProps) => {
     return <div className="my-20">
-        <h2 className="text-center text-4xl font-bold mb-14 dark:text-white text-gray-800">Blog</h2>
+        <h2 className="text-center text-4xl font-bold mb-14 dark:text-white text-neutral-800">Blog</h2>
         {posts.map((post, key) => <Post post={post} key={key} />)}
     </div>
 }

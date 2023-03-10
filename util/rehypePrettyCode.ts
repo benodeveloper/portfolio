@@ -2,10 +2,10 @@ import { Options } from "rehype-pretty-code";
 import { visit } from "unist-util-visit"
 // div.BLOCK > pre.PRE > code.CODE
 const BLOCK =
-   "overflow-hidden rounded-lg dark:bg-blue-100/5 dark:bg-gray-800 bg-slate-900 shadow-surface-elevation-low ring-1 ring-blue-100/[3%] ring-inset"
+   "overflow-hidden rounded-lg dark:bg-blue-100/5 dark:bg-neutral-800 bg-slate-900 shadow-surface-elevation-low ring-1 ring-blue-100/[3%] ring-inset"
 const TITLE =
    "mb-0.5 rounded-md bg-blue-100/10 px-3 py-1 font-mono text-xs text-blue-100/70 shadow-sm"
-const PRE = "overflow-x-auto py-2 text-[13px] leading-6 dark:bg-gray-800/90 bg-slate-900/90"
+const PRE = "overflow-x-auto py-2 text-[13px] leading-6 dark:bg-neutral-800/90 bg-slate-900/90"
 const CODE =
    "grid [&>span]:border-l-4 [&>span]:border-l-transparent [&>span]:pl-2 [&>span]:pr-3"
 const INLINE_BLOCK =

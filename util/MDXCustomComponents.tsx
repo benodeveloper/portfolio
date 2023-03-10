@@ -4,13 +4,13 @@ export const MDXComponents = {
     Notice,
     h1: (props: any) => (
         <h2
-            className="relative mt-2 border-t-2 dark:border-gray-800 pt-9 text-xl font-medium sm:text-3xl"
+            className="relative mt-2 border-t-2 dark:border-neutral-800 pt-9 text-xl font-medium sm:text-3xl"
             {...props}
         />
     ),
     h2: (props: any) => (
         <h3
-            className="relative mt-2 pt-9 border-t-2 dark:border-gray-800 text-xl font-medium sm:text-2xl"
+            className="relative mt-2 pt-9 border-t-2 dark:border-neutral-800 text-xl font-medium sm:text-2xl"
             {...props}
         />
     ),
@@ -22,7 +22,7 @@ export const MDXComponents = {
     ),
     hr: (props: any) => (
         <hr
-            className="relative border-t-2 dark:border-gray-800 pt-9 sm:pt-10"
+            className="relative border-t-2 dark:border-neutral-800 pt-9 sm:pt-10"
             {...props}
         />
     ),
@@ -57,6 +57,6 @@ export const MDXComponents = {
         />
     ),
     del: (props: any) => (
-        <del className="dark:text-blue-100/70 text-gray-500 line-through" {...props} />
+        <del className="dark:text-blue-100/70 text-neutral-500 line-through" {...props} />
     ),
 }

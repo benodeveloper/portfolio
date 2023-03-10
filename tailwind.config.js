@@ -14,10 +14,6 @@ module.exports = {
   ],
   theme: {
     extend: {
-      colors: {
-        primary: colors.blue,
-        gray: colors.trueGray,
-      },
       gridTemplateRows: {
         '5/40px': 'repeat(7, minmax(0, 34px))',
       },
