@@ -45,7 +45,7 @@ const SinglePostPage = ({ post }: { post: IPost }): JSX.Element => {
       <div className="mb-6 relative">
         <h1 className="mb-1 sm:text-4xl text-3xl font-bold">{post.title}</h1>
         <div ref={intersectionRef} className="text-gray-500 text-sm"><PostMetrics post={post} /></div>
-        <div className="fixed right-4 bottom-10 shadow-sm px-4 py-2 rounded-full border dark:border-gray-700 border-gray-200 bg-slate-50 dark:bg-slate-900 flex flex-col">
+        <div className="fixed right-4 bottom-10 shadow-sm px-4 py-2 rounded-full border dark:border-gray-700 border-gray-200 bg-slate-50 dark:bg-gray-900 flex flex-col">
           <LikePostButton slug={post.slug} />
         </div>
       </div>

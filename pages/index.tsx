@@ -11,10 +11,6 @@ type HomeProps = {
 
 const Home = ({ posts }: HomeProps): JSX.Element => {
   return <>
-    <Head>
-      <title>Beno developer | Full stack developer</title>
-    </Head>
-
     <div className="my-20">
       <div className="mb-14">
         <h2 className="text-5xl mb-7 font-bold dark:text-gray-100 text-gray-900">Blog</h2>

@@ -1,12 +1,12 @@
 import { IPost } from "@/util/types"
 import { NextSeo } from "next-seo"
-import { generateOGImage } from "@/util/ogImageGenerator";
+import { generatePostOGImage } from "@/util/ogImageGenerator";
 
 type PostHeadProps = {
     post: IPost
 }
 export const PostHead = ({ post }: PostHeadProps) => {
-    const ogImage = generateOGImage(post);
+    const ogImage = generatePostOGImage(post);
     return <>
         <NextSeo
             title={post.title}
