@@ -28,9 +28,6 @@ export const Navbar = () => {
                     </svg>
                 </button>
                 <ul className={`flex gap-3 md:gap-6 text-base z-10 bg-slate-50 dark:bg-slate-900 transition-bg flex-col font-light absolute md:relative md:translate-x-0 md:border-0 md:flex-row md:translate-y-0 md:px-0 md:py-0 md:shadow-none top-0 translate-y-20 w-48 md:w-auto px-6 py-5 shadow-md rounded-md border-2 dark:border-slate-900 right-0 md:opacity-100 ${show ? "-translate-x-2 md:translate-x-0 opacity-100" : " translate-x-3 opacity-0 md:translate-x-0"}`}>
-                    <li className={`before:block before:absolute before:left-0 before:h-0.5 before:-bottom-1 dark:before:bg-white before:bg-slate-900 before:rounded relative before:transition-width ${router.pathname == "/" ? "font-bold before:w-full" : " font-medium  before:w-0"}`}>
-                        <Link href="/">Home</Link>
-                    </li>
                     <li className={`before:block before:absolute before:left-0 before:h-0.5 before:-bottom-1 dark:before:bg-white before:bg-slate-900 before:rounded relative before:transition-width ${router.pathname == "/posts" ? "font-bold before:w-full" : " font-medium  before:w-0"}`}><Link href="/posts">Posts</Link></li>
                     <li className={`before:block before:absolute before:left-0 before:h-0.5 before:-bottom-1 dark:before:bg-white before:bg-slate-900 before:rounded relative before:transition-width ${router.pathname == "/about" ? "font-bold before:w-full" : " font-medium  before:w-0"}`}><Link href="/about">About</Link></li>
                     <li className={`before:block before:absolute before:left-0 before:h-0.5 before:-bottom-1 dark:before:bg-white before:bg-slate-900 before:rounded relative before:transition-width ${router.pathname == "/contact" ? "font-bold before:w-full" : " font-medium  before:w-0"}`}><Link href="/contact">Contact</Link></li>
