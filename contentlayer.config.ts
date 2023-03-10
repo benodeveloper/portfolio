@@ -35,7 +35,7 @@ export const Post = defineDocumentType(() => ({
         },
         url: {
             type: 'string',
-            resolve: (post) => `/posts/${post._raw.flattenedPath}`,
+            resolve: (post) => `/blog/${post._raw.flattenedPath}`,
         },
         readingTime: {
             type: "string",

@@ -13,7 +13,9 @@ export default async function GET(req: NextRequest) {
     try {
         const slug = searchParams.get("slug");
         if (!slug) return
-
+        if (slug == "og_image.png") {
+            return defaultOGImage();
+        }
 
         const post = JSON.parse(`{${slug.split("_&_").map(el => {
             const keyValue = el.split(":");
@@ -77,7 +79,7 @@ export default async function GET(req: NextRequest) {
                     }}>
                         <div>{post.publiched_at ?? ""}</div>
                         <div style={{ display: 'flex', flexDirection: 'column' }}>
-                            <div style={{ fontSize: 80, fontWeight: 700, textTransform: 'uppercase' }}>{post.title ?? ""}</div>
+                            <div style={{ fontSize: 80, fontWeight: 900, textTransform: 'uppercase' }}>{post.title ?? ""}</div>
                             <div>{post.tags ?? ""}</div>
                         </div>
                         <p style={{ fontSize: 25, marginBottom: 25 }}>{post.description ?? ""}</p>
@@ -106,3 +108,75 @@ export default async function GET(req: NextRequest) {
     }
 
 }
+
+
+const defaultOGImage = () => new ImageResponse(
+    (
+        <div
+            style={{
+                display: 'flex',
+                height: '100%',
+                width: '100%',
+                backgroundColor: '#F5F9FF',
+                color: "#0F172A",
+                padding: 60,
+                fontWeight: 500
+            }}
+        >
+            <div style={{
+                position: 'absolute',
+                backgroundColor: "#DCEAFF",
+                top: 0,
+                right: 0,
+                width: 700,
+                height: 350,
+                zIndex: 1,
+                borderBottomLeftRadius: 350,
+            }} />
+            <div style={{
+                position: 'absolute',
+                backgroundColor: "#DEDBFC",
+                bottom: 0,
+                left: 0,
+                width: 500,
+                height: 50,
+                zIndex: 1,
+                borderTopRightRadius: 150,
+            }} />
+
+            <div style={{
+                position: 'absolute',
+                backgroundColor: "#F2D7F9",
+                top: 350,
+                right: 550,
+                width: 150,
+                height: 150,
+                zIndex: 1,
+                borderRadius: 75,
+            }} />
+            <div style={{
+                position: 'relative',
+                display: 'flex',
+                alignItems: 'flex-start',
+                justifyContent: 'space-between',
+                flexDirection: 'column',
+                zIndex: 99,
+                height: '100%',
+                width: '100%',
+                fontSize: 17,
+            }}>
+                <div style={{ display: 'flex', flexDirection: 'column' }}>
+                    <div style={{ fontSize: 80, fontWeight: 900, textTransform: 'uppercase' }}>Beno developer</div>
+                    <div style={{ fontSize: 18 }}>Full stack developer</div>
+                </div>
+                <p style={{ fontSize: 20, marginBottom: 25 }}>Tep into my digital oasis, where I share my experiences in shipping great products, honing my developer skills, and growing my career in the tech industry. Join me on a journey of continuous learning and discovery, as I share my insights and strategies for achieving success in this ever-evolving field.</p>
+
+            </div>
+        </div>
+
+    ),
+    {
+        width: 1200,
+        height: 600,
+    },
+);
