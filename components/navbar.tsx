@@ -15,7 +15,7 @@ export const Navbar = () => {
         <nav className="h-20 text-neutral-900 dark:text-white ">
             <div className="flex justify-between py-5 relative">
                 <div>
-                    <Link className="text-2xl font-bold" href="/">Beno Developer</Link>
+                    <Link className="text-2xl font-bold" title="Beno developer home" href="/">Beno Developer</Link>
 
                 </div>
                 <button
@@ -28,9 +28,9 @@ export const Navbar = () => {
                     </svg>
                 </button>
                 <ul className={`flex gap-3 md:gap-6 text-base z-10 bg-neutral-50 dark:bg-neutral-900 transition-bg flex-col font-light absolute md:relative md:translate-x-0 md:border-0 md:flex-row md:translate-y-0 md:px-0 md:py-0 md:shadow-none top-0 translate-y-20 w-48 md:w-auto px-6 py-5 shadow-md rounded-md border-2 dark:border-neutral-900 right-0 md:opacity-100 ${show ? "-translate-x-2 md:translate-x-0 opacity-100" : " translate-x-3 opacity-0 md:translate-x-0"}`}>
-                    <li className={`before:block before:absolute before:left-0 before:h-0.5 before:-bottom-1 dark:before:bg-white before:bg-neutral-900 before:rounded relative before:transition-width ${router.pathname == "/posts" ? "font-bold before:w-full" : " font-medium  before:w-0"}`}><Link href="/posts">Posts</Link></li>
-                    <li className={`before:block before:absolute before:left-0 before:h-0.5 before:-bottom-1 dark:before:bg-white before:bg-neutral-900 before:rounded relative before:transition-width ${router.pathname == "/about" ? "font-bold before:w-full" : " font-medium  before:w-0"}`}><Link href="/about">About</Link></li>
-                    <li className={`before:block before:absolute before:left-0 before:h-0.5 before:-bottom-1 dark:before:bg-white before:bg-neutral-900 before:rounded relative before:transition-width ${router.pathname == "/contact" ? "font-bold before:w-full" : " font-medium  before:w-0"}`}><Link href="/contact">Contact</Link></li>
+                    <li className={`before:block before:absolute before:left-0 before:h-0.5 before:-bottom-1 dark:before:bg-white before:bg-neutral-900 before:rounded relative before:transition-width ${router.pathname == "/blog" ? "font-bold before:w-full" : " font-medium  before:w-0"}`}><Link title="Blog" href="/blog">Blog</Link></li>
+                    <li className={`before:block before:absolute before:left-0 before:h-0.5 before:-bottom-1 dark:before:bg-white before:bg-neutral-900 before:rounded relative before:transition-width ${router.pathname == "/about" ? "font-bold before:w-full" : " font-medium  before:w-0"}`}><Link title="About" href="/about">About</Link></li>
+                    <li className={`before:block before:absolute before:left-0 before:h-0.5 before:-bottom-1 dark:before:bg-white before:bg-neutral-900 before:rounded relative before:transition-width ${router.pathname == "/contact" ? "font-bold before:w-full" : " font-medium  before:w-0"}`}><Link title="Contact" href="/contact">Contact</Link></li>
                     <li>
                         <DarkModeSwitcher />
                     </li>

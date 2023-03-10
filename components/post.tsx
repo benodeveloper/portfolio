@@ -4,7 +4,7 @@ import { PostMetrics } from "./postMetrics"
 
 export const Post = ({ post }: { post: IPost }) => {
     return <article className="mb-12">
-        <Link href={post.url}>
+        <Link title={post.title} href={post.url}>
             <h2 className="text-2xl font-bold hover:text-indigo-500 dark:hover:text-blue-400/80 transition-colors text-neutral-800 dark:text-white">{post.title}</h2>
         </Link>
         <div className="my-3 text-sm font-bold">
