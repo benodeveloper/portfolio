@@ -9,8 +9,8 @@ export const Post = ({ post }: { post: IPost }) => {
             <h2 className="text-2xl font-bold hover:text-indigo-500 dark:hover:text-blue-400/80 transition-colors text-neutral-800 dark:text-white">{post.title}</h2>
         </Link>
         <div className="my-3 text-sm font-bold text-neutral-700/90 ">
-            {post.tagsAsArray?.map(tag =>
-                <Link href={`/blog?tag=${slugify(tag)}`} className="px-3 py-1 text-center bg-neutral-200/60 text-neutral-500 dark:bg-neutral-800/60 dark:text-neutral-500 hover:text-indigo-500 dark:hover:text-blue-400/80 rounded-full mx-2 first:ml-0"> {tag} </Link>
+            {post.tagsAsArray?.map((tag, idx) =>
+                <Link href={`/blog?tag=${slugify(tag)}`} key={idx} className="px-3 py-1 text-center bg-neutral-200/60 text-neutral-500 dark:bg-neutral-800/60 dark:text-neutral-500 hover:text-indigo-500 dark:hover:text-blue-400/80 rounded-full mx-2 first:ml-0"> {tag} </Link>
             )}
         </div>
         <Link title={post.title} href={post.url}>
