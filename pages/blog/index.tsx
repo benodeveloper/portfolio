@@ -27,7 +27,7 @@ const Posts = ({ posts }: PostsProps) => {
             setPosts(posts);
         }
 
-    }, [router.isReady, router.query]);
+    }, [router.isReady, posts, router.query]);
 
 
     const searchHandler = (e: ChangeEvent<HTMLInputElement>) => {
@@ -56,7 +56,7 @@ const Posts = ({ posts }: PostsProps) => {
                 <div className="relative">
                     <input className="block w-full appearance-none bg-transparent py-4 pl-4 pr-12 placeholder:text-neutral-500 focus:outline-none"
                         onChange={e => searchHandler(e)}
-                        placeholder="Find anything..." role="combobox" type="text" aria-expanded="false"
+                        placeholder="Find anything..." type="text" aria-expanded="false"
                         aria-autocomplete="list" />
                     <svg className="pointer-events-none absolute top-4 right-4 h-6 w-6 fill-neutral-500"
                         xmlns="http://www.w3.org/2000/svg">
