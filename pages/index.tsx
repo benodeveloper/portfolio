@@ -3,7 +3,6 @@ import { allPosts } from 'contentlayer/generated'
 import { IPost } from "@/util/types";
 import { compareDesc } from "date-fns";
 import { Post } from "@/components/post";
-import Head from "next/head";
 
 type HomeProps = {
   posts: IPost[]
@@ -21,13 +20,9 @@ const Home = ({ posts }: HomeProps): JSX.Element => {
   </>
 }
 export const getStaticProps: GetStaticProps = async () => {
-  // const posts:IPost[] = [{
-  //   title: "title",
-  //   description: "description",
-  //   slug: "slug"
-  // }];
-  const posts: IPost[] | any = allPosts.sort((a: IPost | any, b: IPost | any) => compareDesc(new Date(a.date), new Date(b.date)))
-
+  const posts: IPost[] | any = allPosts
+    .filter(post => post.status == "published")
+    .sort((a: IPost | any, b: IPost | any) => compareDesc(new Date(a.date), new Date(b.date)))
   return {
     props: { posts },
   };

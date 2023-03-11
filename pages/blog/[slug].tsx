@@ -7,7 +7,6 @@ import { usePostViews } from "@/util/usePostViews";
 import { useEffect } from "react";
 import { LikePostButton } from "@/components/likePostButton";
 import { usePollIfInView } from "@/util/usePollIfInView";
-import Head from "next/head";
 import { PostHead } from "@/components/postHead";
 
 export const getStaticPaths = async () => {
