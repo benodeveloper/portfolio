@@ -30,13 +30,15 @@ const About = (): JSX.Element => {
                 call me <strong>Ben</strong> for short 🤗.
             </p>
             <p className="text-base mb-3">
-                I am a self-taught developer who loves technology and learning new things.
-                I started coding in 2017 with PHP and Laravel, and since then I have expanded
+                I am a self-taught developer who loves learning new things.
+                I started coding in 2017 with PHP and <a className="text-red-500 dark:text-red-400/80" href="https://laravel.com" title="Laravel" rel="noreferrer noopener nofollow" target="_blank">Laravel</a>, and since then I have expanded
                 my knowledge and experience to other tools and technologies.
             </p>
             <p className="text-base mb-3">
-                However, since 2019, I have shifted my focus to Java Spring Boot and ReactJS/nextjs.
+                However, since 2019, I have shifted my focus to Java <a className="text-green-500/80 dark:text-green-300" href="https://spring.io" title="Spring, Spring boot" rel="noreferrer noopener nofollow" target="_blank"> Spring, String Boot</a> and <a className="text-blue-500/80 dark:text-blue-300" href="https://reactjs.org" title="ReactJS" rel="noreferrer noopener nofollow" target="_blank"> ReactJS </a>/<a className="text-blue-500/80 dark:text-blue-300" href="https://nextjs.org" title="nextJS" rel="noreferrer noopener nofollow" target="_blank"> nextJS</a>.
                 I enjoy creating intuitive web applications that solve real-world problems and provide value to users.
+            </p>
+            <p className="text-base mb-3">
                 While I&lsquo;m not coding, I enjoy cooking and am a cat lover 🐱; I have a cat named Sakura 🐈.
                 She is very cute 😍 and playful 😻.
             </p>
