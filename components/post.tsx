@@ -10,7 +10,9 @@ export const Post = ({ post }: { post: IPost }) => {
         <div className="my-3 text-sm font-bold">
             <span className="mr-2">tag</span> - <span className="mx-2">tag</span>
         </div>
-        <h3 className="text-neutral-700 dark:text-neutral-300/90 pt-2">{post.description}</h3>
+        <Link title={post.title} href={post.url}>
+            <h3 className="text-neutral-700 dark:text-neutral-300/90 pt-2">{post.description}</h3>
+        </Link>
         <div className="text-neutral-600 text-sm mt-2 dark:text-neutral-400/90">
             <PostMetrics post={post} />
         </div>
