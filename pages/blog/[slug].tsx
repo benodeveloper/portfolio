@@ -41,11 +41,11 @@ const SinglePostPage = ({ post }: { post: IPost }): JSX.Element => {
 
   return <>
     <PostHead post={post} />
-    <div className="relative z-10 grid grid-cols-[1fr,min(640px,100%),1fr] gap-y-8 px-4 pt-48 font-sans text-base xl:grid-cols-[1fr,minmax(auto,240px),min(640px,100%),minmax(auto,240px),1fr] xl:gap-x-9 xl:px-0 [&>*]:col-start-2 xl:[&>*]:col-start-3 text-slate-900 dark:text-neutral-200">
+    <div className="relative z-10 grid grid-cols-[1fr,min(640px,100%),1fr] gap-y-8 px-4 pt-48 font-sans text-base xl:grid-cols-[1fr,minmax(auto,240px),min(640px,100%),minmax(auto,240px),1fr] xl:gap-x-9 xl:px-0 [&>*]:col-start-2 xl:[&>*]:col-start-3 text-neutral-900 dark:text-neutral-200">
       <div className="mb-6 relative">
         <h1 className="mb-1 sm:text-4xl text-3xl font-bold">{post.title}</h1>
         <div ref={intersectionRef} className="text-neutral-500 text-sm"><PostMetrics post={post} /></div>
-        <div className="fixed right-4 bottom-10 shadow-sm px-4 py-2 rounded-full border dark:border-neutral-700 border-neutral-200 bg-slate-50 dark:bg-slate-900 flex flex-col">
+        <div className="fixed right-4 bottom-10 shadow-sm px-4 py-2 rounded-full border dark:border-neutral-700 border-neutral-200 bg-neutral-50 dark:bg-neutral-900 flex flex-col">
           <LikePostButton slug={post.slug} />
         </div>
       </div>
