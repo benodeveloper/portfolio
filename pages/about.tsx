@@ -21,12 +21,12 @@ const About = (): JSX.Element => {
 
         <div className="md:ml-4 md:mt-7 my-2 col-span-8 md:col-start-3 md:col-span-6 md:row-span-2">
             <p className="text-base mb-3">
-                Hello there! I'm glad you found your way to my digital oasis, a place where I share my personal
+                Hello there! I&lsquo;m glad you found your way to my digital oasis, a place where I share my personal
                 journey of building amazing products, improving my coding skills and staying abreast of
                 the ever-evolving tech industry.
             </p>
             <p className="text-base mb-3">
-                My name is <strong>BenAdardor Hassan</strong>, which is "difficult to pronounce 😅," but you can
+                My name is <strong>BenAdardor Hassan</strong>, which is <i>&ldquo;difficult to pronounce 😅,&ldquo;</i> but you can
                 call me <strong>Ben</strong> for short 🤗.
             </p>
             <p className="text-base mb-3">
@@ -37,7 +37,7 @@ const About = (): JSX.Element => {
             <p className="text-base mb-3">
                 However, since 2019, I have shifted my focus to Java Spring Boot and ReactJS/nextjs.
                 I enjoy creating intuitive web applications that solve real-world problems and provide value to users.
-                While I'm not coding, I enjoy cooking and am a cat lover 🐱; I have a cat named Sakura 🐈.
+                While I&lsquo;m not coding, I enjoy cooking and am a cat lover 🐱; I have a cat named Sakura 🐈.
                 She is very cute 😍 and playful 😻.
             </p>
             <p className="text-base mb-3">

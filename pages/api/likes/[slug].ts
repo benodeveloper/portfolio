@@ -9,7 +9,6 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
     const clientIPAddress = req.headers["x-forwarded-for"] || "0.0.0.0";
     const sessionId = await Base64.stringify(hmacSHA512(clientIPAddress + slug, process.env.APP_KEY || "zp1YUWcX"));
-    console.log(sessionId)
 
     switch (req.method) {
         case "GET": {
