@@ -26,12 +26,19 @@ export const Post = defineDocumentType(() => ({
             description: 'The date of the post',
             required: true
         },
-        status: { type: "string" }
+        status: { type: "string" },
+        tags: {
+            type: "string"
+        }
     },
     computedFields: {
         slug: {
             type: 'string',
             resolve: (post) => slugify(post.title.toLowerCase()),
+        },
+        tagsAsArray: {
+            type: 'list',
+            resolve: (post) => post.tags?.toString().split(" | "),
         },
         url: {
             type: 'string',

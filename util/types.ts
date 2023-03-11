@@ -6,6 +6,7 @@ export interface IPost {
     status: string;
     slug: string;
     tags?: string;
+    tagsAsArray?: string[];
     url: string;
     readingTime: string;
     body?: any
