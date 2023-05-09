@@ -1,63 +1,158 @@
 ---
 title: "OAuth 2.0 vs OpenID Connect: Understanding the Differences and Use Cases"
-description: "Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit..."
+description: "Many developers get confused about OAuth 2.0 and its purpose in web application security. Is it for authentication or authorization? The confusion is compounded when OpenID Connect is introduced, which builds on top of OAuth 2.0 and adds an identity layer."
 publishedAt: '2023-06-06'
 status: "published"
 tags: spring boot | Security
 ---
 
-# Intrucation
+When it comes to web application security, developers often get confused about the roles 
+and purposes of OAuth 2.0 and OpenID Connect. Are they for authentication or authorization? 
+This confusion is compounded when OpenID Connect is introduced, which builds on top of OAuth 2.0 
+and adds an identity layer.
 
-Many developers get confused about **OAuth 2.0** and its purpose in web application security. Is it for authentication or authorization? The confusion is compounded when **OpenID Connect** is introduced, which builds on top of **OAuth 2.0** and adds an identity layer.
-In this blog post, we will explore the differences between **OAuth 2.0** and **OpenID Connect** and explain what each protocol is used for, so you can understand how to use each protocol correctly for your application's needs.
+<Img src={`/image.jpg`} bleed={false} width={1200} height={900}>
+  OAuth 2.0 vs OpenID connect
+</Img>
 
-Certainly! As an end user of an application, you may have come across a login page that offers a button with a label such as "Connect with Google" or "Sign in with Facebook." Clicking on this button initiates an authentication flow that allows the application to request access to your Google or Facebook account. If you choose to grant the application access, it will receive an access token that allows it to access your account resources without compromising your sensitive information, such as your username and password.
+In this post, we'll explore the differences between OAuth 2.0 and 
+OpenID Connect and explain what each protocol is used for, so you can understand how to use each 
+protocol correctly for your application's needs.
 
-However, this can be confusing for developers who are uncertain whether the process is an authentication process, where the user is identified, or an authorization process, where the third-party service is authorized to access the user's resources. They are trying to determine whether to use OAuth 2.0 or OpenID Connect for their application's authentication and authorization needs.
+## OAuth 2.0 and OpenID Connect
 
-**But first, "What in the world are OAuth 2.0 and OpenID Connect, you may ask?"**
+OAuth 2.0 and OpenID Connect are both protocols used in web application security. 
+They are complementary but serve different purposes. OAuth 2.0 is an authorization 
+protocol that allows applications to access resources on behalf of users without 
+having to share their credentials. OpenID Connect, on the other hand, is an identity 
+layer built on top of OAuth 2.0 that provides authentication for web applications.
 
-# OAuth 2.0 vs. OpenID Connect: What Are They?
+Before we dive into the differences between OAuth 2.0 and OpenID Connect, let's first define some of the 
+terminologies and jargon used in these protocols. Understanding these concepts is crucial to grasp the 
+authentication and authorization flow that takes place between the various parties involved. In the following 
+section, we will define terms such as Client, Resource server, Authorization server, Access token, ID token, 
+Authorization code, Client ID, client Secret, Claims, OpenID, Scopes, and more.
+
+## Terminology & Jargon
+
+Certainly! As an end user of an application, you may have come across a login page that offers a 
+button with a label such as ***"Connect with Google"*** or ***"Sign in with Facebook"***. 
+Clicking on this button initiates an authentication flow that allows the application to 
+request access to your Google or Facebook account. If you choose to grant the application access, 
+it will receive an access token that allows it to access your account resources without 
+compromising your sensitive information, such as your username and password.
+
+
+<Img src={`/oauth2-authorization-code-flow-diagram.jpg`} bleed={false} width={1200} height={900}>
+   OAuth 2.0 Authorization Code Flow Diagram
+</Img>
+
+<Notice> 
+1. User clicks on the "Login with OAuth provider" button on the app.
+2. The app redirects the user's browser to the authorization server's authorization endpoint, passing along its client ID and a redirect URI.
+3. The authorization server prompts the user to authenticate and authorize the app by asking for their consent to grant the app access to their data. This step may involve displaying a login screen or a consent screen, depending on the user's previous interactions with the authorization server.
+4. The user authenticates and consents to the requested access.
+5. The authorization server responds to the app's redirect URI with an authorization code.
+6. The app sends a POST request to the authorization server's token endpoint, including the authorization code, client ID, and client secret in the request body.
+7. The authorization server validates the authorization code, client ID, and client secret, and responds with an ID token and an access token.
+8. The app uses the access token to make API requests to the resource server on behalf of the user.
+9. The resource server validates the access token and returns the requested data to the app.
+10. The app displays the user's data to the user.
+</Notice>
+
+Let's break it down into individual components to understand how it works, here are some 
+definitions to keep in mind:
+
+- **Client**: An application that needs to access a user's data or resources on a resource server.
+- **Resource server**: A server that hosts a user's protected data or resources and responds to authorized requests made by a client.
+- **Authorization server**: A server that issues access tokens to clients after successfully authenticating and authorizing a user.
+- **Access token**: A string that represents the authorization granted to a client by a user to access a specific set of resources on a resource server.
+- **ID token**: A JSON Web Token (JWT) that contains identity information about the authenticated user.
+- **Authorization code**: A short-lived token that is exchanged for an access token after the user has granted authorization to the client.
+- **Client ID**: A public identifier assigned by the authorization server to identify the client application.
+- **Client secret**: A secret key known only to the client and the authorization server that is used to authenticate the client when requesting access tokens.
+- **Claims**: Pieces of information asserted about a user, contained in either an ID token or an access token.
+- **OpenID**: A set of authentication and authorization specifications that build on top of OAuth 2.0 to enable the exchange of identity information.
+- **Scopes**: Strings that define the permissions granted by a user to a client to access specific resources or user information.
+
+Now that we have a better understanding of these terms, we can delve into the differences between 
+OAuth 2.0 and OpenID Connect.
+
 ## OAuth 2.0: An Authorization Protocol for Web Applications
 
-OAuth 2.0 is an authorization protocol that allows applications to access resources on behalf of users without having to share their credentials. Instead, the user is redirected to a third-party authorization server, such as Google or Facebook, where they can grant the application permission to access their profile information.
-
-In this scenario, the application acts as an OAuth 2.0 client, while the third-party authorization server acts as an OAuth 2.0 provider. After the user grants permission, the authorization server issues an access token to the application without having to know the user's credentials. The application can then use that access token to access the user's profile information.
-
-Throughout the process, the user still has control of their data and can revoke an application's access to their resources at any time. This means that if the user changes their mind about granting access to their data, they can simply revoke the application's access token, and the application will no longer be able to access their data.
+OAuth 2.0 is a protocol that enables applications to access user resources 
+without sharing their credentials. Instead, users are redirected to a third-party authorization 
+server where they can grant the application permission to access their profile information. 
+The application acts as an OAuth 2.0 client, and after the user grants permission, 
+the authorization server issues an access token. This token allows the application to access 
+the user's profile information while the user maintains control of their data and can revoke 
+the application's access at any time.
 
 ## OpenID Connect: An Authentication Protocol Built on OAuth 2.0
 
-OpenID Connect is an authentication protocol built on top of OAuth 2.0. It enables users to authenticate themselves and share their identity information with applications and services in a standardized way.
+OpenID Connect is an authentication protocol built on top of OAuth 2.0. It enables users 
+to authenticate themselves and share their identity information with applications and 
+services in a standardized way.
 
-# Access Tokens vs. ID Tokens: The Main Difference Between OAuth 2.0 and OpenID Connect
+However, the main difference between OAuth 2.0 and OpenID Connect is the type of token that is issued. 
 
-However, the main difference between OAuth 2.0 and OpenID Connect is the type of token that is issued. OAuth 2.0 issues access tokens, which are used to access protected resources on behalf of the user. These tokens typically have a limited lifespan and are issued for a specific set of permissions.
+## Access Tokens vs. ID Tokens: The Main Difference Between OAuth 2.0 and OpenID Connect
 
-On the other hand, OpenID Connect issues ID tokens, which are used to authenticate the user and provide identity information to the application. These tokens contain claims about the user's identity, such as their name and email address, and are used to verify the authenticity of the user.
+OAuth 2.0 issues access tokens, these tokens typically have a limited lifespan and are issued 
+for a specific set of permissions.
 
-While both OAuth 2.0 and OpenID Connect use similar flows and mechanisms, the distinction between access tokens and ID tokens is an important one. Access tokens are used for authorization purposes, allowing the application to access protected resources, while ID tokens are used for authentication purposes, verifying the identity of the user.
+On the other hand, OpenID Connect issues ID tokens, which are used to authenticate the user and 
+provide identity information to the application. These tokens contain claims about the user's identity, 
+such as their name and email address, and are used to verify the authenticity of the user.
 
-# Scopes in OAuth 2.0 and OIDC
+While both OAuth 2.0 and OpenID Connect use similar flows and mechanisms, the distinction between 
+access tokens and ID tokens is an important one. Access tokens are used for authorization purposes, 
+allowing the application to access protected resources, while ID tokens are used for authentication purposes, 
+verifying the identity of the user.
 
-In addition to the type of token issued, there are other differences between OAuth 2.0 and OpenID Connect. One of the main differences is the way scopes are handled.
+## Scopes in OAuth 2.0 and OIDC
 
-In OAuth 2.0, scopes are used to define the level of access granted to the application. Scopes can be defined by the application owner and can be specific to individual APIs. For example, an application may have read-only access to a user's email address but not their contacts or calendar.
+In OAuth 2.0, scopes are used to define the level of access granted to the application. 
+Scopes can be defined by the application owner and can be specific to individual APIs. For example, 
+an application may have read-only access to a user's email address but not their contacts or calendar.
 
 The OpenID Connect (OIDC) specification defines common scopes like "profile" and "openid."
 
-Another key feature of OIDC is the ability to support multiple authentication factors, such as username and password, biometric authentication, and one-time passcodes. This makes OIDC suitable for applications that require stronger authentication mechanisms beyond the traditional username and password approach.
+## Multiple Authentication Factors
 
-Token Type: OAuth 2.0 issues access tokens for authorization purposes, while OpenID Connect issues ID tokens for authentication and identity management purposes.
+Another key feature of OIDC is the ability to support multiple authentication factors, 
+such as username and password, biometric authentication, and one-time passcodes. 
+This makes OIDC suitable for applications that require stronger authentication mechanisms beyond 
+the traditional username and password approach.
 
-Authorization vs. Authentication: OAuth 2.0 is primarily used for authorization, while OpenID Connect is used for authentication and identity management.
+Token Type: OAuth 2.0 issues access tokens for authorization purposes, while OpenID Connect 
+issues ID tokens for authentication and identity management purposes.
 
-Scopes: In OAuth 2.0, scopes are used to define the level of access granted to the application, while OIDC defines common scopes like "profile" and "openid".
+Authorization vs. Authentication: OAuth 2.0 is primarily used for authorization, while OpenID Connect 
+is used for authentication and identity management.
 
-Multiple Authentication Factors: OIDC supports multiple authentication factors, such as username/password, biometric authentication, and one-time passcodes, making it suitable for applications that require stronger authentication mechanisms.
+Scopes: In OAuth 2.0, scopes are used to define the level of access granted to the application, while OIDC 
+defines common scopes like "profile" and "openid".
 
-User Control: In both OAuth 2.0 and OIDC, the user retains control of their data and can revoke an application's access to their resources at any time.
+Multiple Authentication Factors: OIDC supports multiple authentication factors, such as username/password, 
+biometric authentication, and one-time passcodes, making it suitable for applications that require stronger 
+authentication mechanisms.
 
-# Conclusion: Combining OAuth 2.0 and OpenID Connect for Enhanced Security
+User Control: In both OAuth 2.0 and OIDC, the user retains control of their data and can revoke 
+an application's access to their resources at any time.
 
-Overall, OAuth 2.0 is primarily used for authorization purposes, while OpenID Connect is used for authentication and identity management. However, both protocols can be used together to provide a more comprehensive security solution for modern applications.
+## Comparison Between OAuth 2.0 and OpenID Connect
+
+| Token Type | OAuth 2.0 | OpenID Connect |
+|------------|-----------|----------------|
+| Purpose    | Authorization | Authentication and Identity Management |
+| Token Issued | Access Token | ID Token |
+| Scopes | Used to define access levels | Defines common scopes like "profile" and "openid" |
+| Multiple Authentication Factors | Not supported | Supports multiple authentication factors |
+| User Control | User retains control and can revoke access | User retains control and can revoke access |
+
+## Conclusion
+
+Overall, OAuth 2.0 is primarily used for authorization purposes, while OpenID Connect is 
+used for authentication and identity management. However, both protocols can be used together 
+to provide a more comprehensive security solution for modern applications.
