@@ -4,13 +4,13 @@ import { Navbar } from "@/components/navbar"
 
 
 const Layout = ({ children }: { children: ReactElement }) => {
-    return <div className="text-neutral-200">
-        <div className="max-w-6xl mx-auto min-h-screen px-7">
+    return <>
+        <div className="container mx-auto px-4">
             <Navbar />
             {children}
         </div>
         <Footer />
-    </div>
+    </>
 }
 
 export default Layout;

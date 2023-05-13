@@ -5,7 +5,7 @@ export default function Document(): JSX.Element {
     <Html lang="en" >
       <Head />
       <body 
-      className='dark:bg-jet-black bg-white text-neutral-900 dark:text-white transition-bg'>
+      className='text-jet-black'>
         <Main />
         <NextScript />
       </body>

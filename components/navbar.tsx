@@ -3,40 +3,43 @@ import { useState } from "react";
 import { DarkModeSwitcher } from "./darkModeSwitcher";
 import { Logo } from "./logo";
 import { MobileMenu } from "./mobileMenu";
+import { useRouter } from 'next/router';
+
+const menuItems = ["home", "blog", "about", "contact"];
 
 
 export const Navbar = () => {
     const [show, setShow] = useState<boolean>(false);
+    const router = useRouter();
 
     const showMenu = () => {
         setShow(!show);
     }
     return <>
-        <nav className="relative bg-white px-4 py-7 flex justify-between items-center dark:text-white">
-            <Link className="h-10" title="Beno developer home" href="/">
-                <Logo/>
-            </Link>
-            <div className="lg:hidden">
-                <button onClick={showMenu} className="navbar-burger flex items-center text-white  p-3">
-                    <svg className="block h-4 w-4" fill="#ffffff" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                        <title>Mobile menu</title>
-                        <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"></path>
-                    </svg>
-                </button>
-            </div>
-
-            <ul className="hidden absolute top-1/2 left-1/2 transform -translate-y-1/2 -translate-x-1/2 lg:mx-auto lg:flex lg:items-center lg:w-auto lg:space-x-6">
-                <li>
-                    <Link href={"/"} className="text-sm text-gray-400 hover:text-gray-500">Home</Link>
-                </li>
-                <li><Link className="text-sm text-blue-600 font-bold" href={"/blog"}>Blog</Link></li>
-                <li><Link className="text-sm text-gray-400 hover:text-gray-500" href={"/about"}>About</Link></li>
-                <li><Link className="text-sm text-gray-400 hover:text-gray-500" href={"/contact"}>Contact</Link></li>
+    <nav className="flex justify-between items-center py-7">
+        <Link href={"/"}>
+            <Logo />
+        </Link>
+        <ul className="hidden md:flex text-lg font-medium text-jet-gray">
+            {menuItems.map(item => (<li key={item}>
+                <Link className={`mx-6 capitalize ${router.pathname.includes(item) || (router.pathname == "/" && item == "home") ? "text-jet-black font-semibold" : ""} hover:text-jet-black`}  href={`/${item == "home"? "" : item }`}>{item}</Link>
+            </li>) )}
+        </ul>
+        <div className={`${show ? 'menu-show' : ''} menu bg-white py-8 fixed w-full z-40 left-0 right-0 top-0 h-screen md:hidden block`}>
+            <ul className="text-lg font-medium text-jet-gray pt-20">
+                {menuItems.map(item => (<li key={item} className="my-5 text-4xl">
+                    <Link className={`mx-6 capitalize ${router.pathname.includes(item) || (router.pathname == "/" && item == "home") ? "text-jet-black font-semibold" : ""} hover:text-jet-black`}  href={`/${item == "home"? "" : item }`}>{item}</Link>
+                </li>) )}
             </ul>
-            <div className="hidden lg:inline-block">
-                <DarkModeSwitcher />
-            </div>
-        </nav>
-        <MobileMenu show={show} showMenu={showMenu} />
+        </div>
+        <div className={`menu-button md:hidden z-50 ${show ? 'menu-show' : ''}`}>
+            <button onClick={showMenu}>
+                <div className="menu_part"></div>
+                <div className="menu_part"></div>
+                <div className="menu_part"></div>
+            </button>
+        </div>
+        
+    </nav>
     </>
 }
