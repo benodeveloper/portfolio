@@ -44,7 +44,7 @@ const Home = (): JSX.Element => {
         <h3 className="font-semibold lg:text-2xl text-xl  md:mt-0 mt-3">Software developer at Doctori</h3>
       </div>
       <div className="xl:w-1/2 relative mt-10">
-          <Image className="z-50 mx-auto rounded-lg" title="Beno developer image" alt="hassan BENADARODOR"  src={me} />
+          <Image priority={true} className="z-50 mx-auto rounded-lg max-w-md" title="Beno developer image" alt="hassan BENADARODOR"  src={me} />
           <div className="absolute top-10 md:block -right-24 hidden -z-10">
             <svg xmlns="http://www.w3.org/2000/svg" width="402" height="439" fill="none">
                 <path fill="#1F1F1F" d="M200.319 219.5H110.38C49.058 219.5 0 170.419 0 110.432 0 49.081 49.058 0 110.38 0h89.939v219.5h91.301c59.96 0 109.017 49.081 110.38 109.068C402 389.919 351.58 439 291.62 439h-91.301V219.5Z"/>
