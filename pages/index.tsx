@@ -6,12 +6,12 @@ import { Post } from "@/components/post";
 import Image from "next/image";
 import me from "@/assets/hassan-benadardor-img.jpg"
 
-// type HomeProps = {
-//   posts: IPost[]
-// }
+type HomeProps = {
+  posts: IPost[]
+}
 
-// { posts }: HomeProps
-const Home = (): JSX.Element => {
+const Home = ({ posts }: HomeProps): JSX.Element => {
+
   return <>
     <div className="lg:flex relative lg:pt-24 pt-16 lg:pb-40 pb-16 border-b border-b-[#14141423]">
       <div className="md:absolute -left-14 top-1/3">
@@ -44,14 +44,13 @@ const Home = (): JSX.Element => {
         <h3 className="font-semibold lg:text-2xl text-xl  md:mt-0 mt-3">Software developer at Doctori</h3>
       </div>
       <div className="xl:w-1/2 relative mt-10">
-          <Image priority={true} className="z-50 mx-auto rounded-lg max-w-md" title="Beno developer image" alt="hassan BENADARODOR"  src={me} />
+          <Image priority={true} className="z-50 mx-auto rounded-lg md:max-w-md" title="Beno developer image" alt="hassan BENADARODOR"  src={me} />
           <div className="absolute top-10 md:block -right-24 hidden -z-10">
             <svg xmlns="http://www.w3.org/2000/svg" width="402" height="439" fill="none">
                 <path fill="#1F1F1F" d="M200.319 219.5H110.38C49.058 219.5 0 170.419 0 110.432 0 49.081 49.058 0 110.38 0h89.939v219.5h91.301c59.96 0 109.017 49.081 110.38 109.068C402 389.919 351.58 439 291.62 439h-91.301V219.5Z"/>
                 <path fill="#1F1F1F" d="M241.2 42.264h54.508c36.794 0 66.773 29.994 66.773 68.168 0 36.81-29.979 66.804-66.773 66.804H241.2V42.264Z"/>
             </svg>
           </div>
-          {/* <div className="backdrop-blur-sm bg-jet-gray/10 h-32 w-32 absolute -bottom-10 -left-5 rounded"/> */}
       </div>
     </div>
 
@@ -60,80 +59,20 @@ const Home = (): JSX.Element => {
         <h3 className="text-4xl font-semibold">Recent Posts</h3>
       </div>
       <div className="lg:w-3/5 lg:pt-10">
-        <div className="lg:py-16 py-10 border-b">
-          <div className="relative text-sm text-[#666666] font-light">
-            <div className="lg:block hidden absolute -left-40">
-              Avril 19, 2022
-            </div>
-            <div className="mb-3">
-              <span className="tag">Spring boot</span>
-              <span className="tag">Spring boot</span>
-              <span className="tag">Spring boot</span>
-            </div>
-            <h2 className="lg:text-4xl text-3xl font-semibold mt-3 mb-5 text-jet-black">Don’t be a Junior Software Developer!</h2>
-            <div className="mb-4">
-              <p>Many developers get confused about OAuth 2.0 and its purpose in web application security. Is it for authentication or authorization? The confusion is compounded when OpenID Connect is introduced, which builds on top of OAuth 2.0 and adds an identity layer.</p>
-            </div>
-            <div className="flex justify-between">
-              <div className="flex">
-                <span className="lg:hidden inline-block mr-2">
-                Avril 19, 2022
-              </span>
-                <span className="mr-2 mt-0.5">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="14px" height="14px" fill="none">
-                    <path fill="#A8A8A8" fillRule="evenodd" d="M7 14A7 7 0 1 0 7 0a7 7 0 0 0 0 14Zm.656-10.5a.656.656 0 0 0-1.312 0v4.375c0 .362.294.656.656.656h3.5a.656.656 0 0 0 0-1.312H7.656V3.5Z" clipRule="evenodd"/>
-                  </svg>
-                </span>
-                14 min read
-              </div>
-
-              <div className="lg:ml-7 text-end lg:mt-0 text-jet-black font-medium">Continue reading</div>
-            </div>
-          </div>
-        </div>
-
-        <div className="lg:py-16 py-10 border-b">
-          <div className="relative text-sm text-[#666666] font-light">
-            <div className="lg:block hidden absolute -left-40">
-              Avril 19, 2022
-            </div>
-            <div className="mb-3">
-              <span className="tag">Spring boot</span>
-              <span className="tag">Spring boot</span>
-              <span className="tag">Spring boot</span>
-            </div>
-            <h2 className="lg:text-4xl text-3xl font-semibold mt-3 mb-5 text-jet-black">Don’t be a Junior Software Developer!</h2>
-            <div className="mb-4">
-              <p>Many developers get confused about OAuth 2.0 and its purpose in web application security. Is it for authentication or authorization? The confusion is compounded when OpenID Connect is introduced, which builds on top of OAuth 2.0 and adds an identity layer.</p>
-            </div>
-            <div className="flex justify-between">
-              <div className="flex">
-                <span className="lg:hidden inline-block mr-2">
-                Avril 19, 2022
-              </span>
-                <span className="mr-2 mt-0.5">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="14px" height="14px" fill="none">
-                    <path fill="#A8A8A8" fillRule="evenodd" d="M7 14A7 7 0 1 0 7 0a7 7 0 0 0 0 14Zm.656-10.5a.656.656 0 0 0-1.312 0v4.375c0 .362.294.656.656.656h3.5a.656.656 0 0 0 0-1.312H7.656V3.5Z" clipRule="evenodd"/>
-                  </svg>
-                </span>
-                14 min read
-              </div>
-
-              <div className="lg:ml-7 text-end lg:mt-0 text-jet-black font-medium">Continue reading</div>
-            </div>
-          </div>
-        </div>
+        {posts.length && posts.map((post, idx) => {
+        return <Post key={idx} post={post}/>
+        })}
       </div>
     </div>
   </>
 }
-// export const getStaticProps: GetStaticProps = async () => {
-//   const posts: IPost[] | any = allPosts
-//     .filter(post => post.status == "published")
-//     .sort((a: IPost | any, b: IPost | any) => compareDesc(new Date(a.date), new Date(b.date)))
-//   return {
-//     props: { posts },
-//   };
-// };
+export const getStaticProps: GetStaticProps = async () => {
+  const posts: IPost[] | any = allPosts
+    .filter(post => post.status == "published")
+    .sort((a: IPost | any, b: IPost | any) => compareDesc(new Date(a.date), new Date(b.date)))
+  return {
+    props: { posts },
+  };
+};
 
 export default Home;

@@ -39,7 +39,7 @@ export const MDXComponents = {
         />
     },
     p: (props: any) => {
-        return <p className="text-lg" {...props} />
+        return <p className="text-lg my-4" {...props} />
     }
     ,
     ul: (props: any) => (
@@ -74,7 +74,7 @@ export const MDXComponents = {
         return (
             <>
                 <div
-                    className="xl:!col-start-2 xl:!col-end-4"
+                    className="my-16"
                 >
                     <BlurImage {...props} />
                 </div>
