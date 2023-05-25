@@ -1,6 +1,6 @@
 import { IPost } from "./types";
 
-const BASE_URL = `${process.env.NEXT_PUBLIC_APP_URL}/api/images`;
+const BASE_URL = `https://benodeveloper.com/api/images`;
 
 export const generatePostOGImage = (post: IPost) => {
     const details = {
