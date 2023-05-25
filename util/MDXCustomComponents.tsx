@@ -1,4 +1,6 @@
+import { BlurImage } from "@/components/BlurImage"
 import { Notice } from "@/components/notice"
+import { ImageProps } from "next/image"
 
 export const MDXComponents = {
     Notice,
@@ -37,7 +39,7 @@ export const MDXComponents = {
         />
     },
     p: (props: any) => {
-        return <p className="text-lg" {...props} />
+        return <p className="text-lg my-4" {...props} />
     }
     ,
     ul: (props: any) => (
@@ -59,4 +61,28 @@ export const MDXComponents = {
     del: (props: any) => (
         <del className="dark:text-blue-100/70 text-neutral-500 line-through" {...props} />
     ),
+    Img: ({
+        children,
+        bleed,
+        caption,
+        ...props
+    }: {
+        children: React.ReactNode
+        bleed?: boolean
+        caption?: string
+    } & ImageProps) => {
+        return (
+            <>
+                <div
+                    className="my-16"
+                >
+                    <BlurImage {...props} />
+                </div>
+                {caption ? (
+                    <div className="mt-2 text-sm italic text-rose-100/60">{caption}</div>
+                ) : null}
+            </>
+        )
+    },
+
 }

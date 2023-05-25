@@ -13,17 +13,25 @@ module.exports = {
     "./components/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
+    
     extend: {
-      gridTemplateRows: {
-        '5/40px': 'repeat(7, minmax(0, 34px))',
+      colors: {
+        jet: {
+          black: '#1E1E1E',
+          gray: "#A8A8A8",
+        },
       },
-      transitionProperty: {
-        'width': 'width',
-        'bg': 'background'
-      },
-      fontSize: {
-        base: ['15px', '24px'],
-      },
+      // gridTemplateRows: {
+      //   '5/40px': 'repeat(7, minmax(0, 34px))',
+      // },
+      // transitionProperty: {
+      //   'width': 'width',
+      //   'bg': 'background'
+      // },
+      // fontSize: {
+      //   base: ['15px', '24px'],
+      // },
+
     },
   },
   plugins: [

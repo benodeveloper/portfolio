@@ -1,7 +1,9 @@
 import Link from "next/link";
 import { useState } from "react";
-import { useRouter } from "next/router";
-import { DarkModeSwitcher } from "./darkModeSwitcher";
+import { Logo } from "./logo";
+import { useRouter } from 'next/router';
+
+const menuItems = ["home", "blog", "about", "contact"];
 
 
 export const Navbar = () => {
@@ -12,30 +14,30 @@ export const Navbar = () => {
         setShow(!show);
     }
     return <>
-        <nav className="h-20 text-neutral-900 dark:text-white ">
-            <div className="flex justify-between py-5 relative">
-                <div>
-                    <Link className="text-2xl font-bold" title="Beno developer home" href="/">Beno Developer</Link>
-
-                </div>
-                <button
-                    onClick={showMenu}
-                    type="button"
-                    className="inline-flex items-center p-2 mt-2 ml-3 text-sm rounded-lg md:hidden focus:outline-none">
-                    <span className="sr-only">Open Menu</span>
-                    <svg className="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                        <path clipRule="evenodd" fillRule="evenodd" d="M2 4.75A.75.75 0 012.75 4h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 4.75zm0 10.5a.75.75 0 01.75-.75h7.5a.75.75 0 010 1.5h-7.5a.75.75 0 01-.75-.75zM2 10a.75.75 0 01.75-.75h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 10z"></path>
-                    </svg>
-                </button>
-                <ul className={`flex gap-3 md:gap-6 text-base z-10 bg-neutral-50 dark:bg-neutral-900 transition-bg flex-col font-light absolute md:relative md:translate-x-0 md:border-0 md:flex-row md:translate-y-0 md:px-0 md:py-0 md:shadow-none top-0 translate-y-20 w-48 md:w-auto px-6 py-5 shadow-md rounded-md border-2 dark:border-neutral-900 right-0 md:opacity-100 ${show ? "-translate-x-2 md:translate-x-0 opacity-100" : " translate-x-3 opacity-0 md:translate-x-0"}`}>
-                    <li className={`before:block before:absolute before:left-0 before:h-0.5 before:-bottom-1 dark:before:bg-white before:bg-neutral-900 before:rounded relative before:transition-width ${router.pathname == "/blog" ? "font-bold before:w-full" : " font-medium  before:w-0"}`}><Link title="Blog" href="/blog">Blog</Link></li>
-                    <li className={`before:block before:absolute before:left-0 before:h-0.5 before:-bottom-1 dark:before:bg-white before:bg-neutral-900 before:rounded relative before:transition-width ${router.pathname == "/about" ? "font-bold before:w-full" : " font-medium  before:w-0"}`}><Link title="About" href="/about">About</Link></li>
-                    <li className={`before:block before:absolute before:left-0 before:h-0.5 before:-bottom-1 dark:before:bg-white before:bg-neutral-900 before:rounded relative before:transition-width ${router.pathname == "/contact" ? "font-bold before:w-full" : " font-medium  before:w-0"}`}><Link title="Contact" href="/contact">Contact</Link></li>
-                    <li>
-                        <DarkModeSwitcher />
-                    </li>
-                </ul>
-            </div>
-        </nav>
+    <nav className="flex justify-between items-center py-7">
+        <Link href={"/"}>
+            <Logo />
+        </Link>
+        <ul className="hidden md:flex text-lg font-medium text-jet-gray">
+            {menuItems.map(item => (<li key={item}>
+                <Link className={`mx-6 capitalize ${router.pathname.includes(item) || (router.pathname == "/" && item == "home") ? "text-jet-black font-semibold" : ""} hover:text-jet-black`}  href={`/${item == "home"? "" : item }`}>{item}</Link>
+            </li>) )}
+        </ul>
+        <div className={`${show ? 'menu-show' : ''} menu bg-white py-8 fixed w-full z-40 left-0 right-0 top-0 h-screen md:hidden block`}>
+            <ul className="text-lg font-medium text-jet-gray pt-20">
+                {menuItems.map(item => (<li key={item} className="my-5 text-4xl">
+                    <Link onClick={() => setShow(false)} className={`mx-6 capitalize ${router.pathname.includes(item) || (router.pathname == "/" && item == "home") ? "text-jet-black font-semibold" : ""} hover:text-jet-black`}  href={`/${item == "home"? "" : item }`}>{item}</Link>
+                </li>) )}
+            </ul>
+        </div>
+        <div className={`menu-button md:hidden z-50 ${show ? 'menu-show' : ''}`}>
+            <button onClick={showMenu}>
+                <div className="menu_part"></div>
+                <div className="menu_part"></div>
+                <div className="menu_part"></div>
+            </button>
+        </div>
+        
+    </nav>
     </>
 }
