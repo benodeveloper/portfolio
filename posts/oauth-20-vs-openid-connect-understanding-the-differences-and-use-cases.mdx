@@ -47,7 +47,6 @@ compromising your sensitive information, such as your username and password.
    OAuth 2.0 Authorization Code Flow Diagram
 </Img>
 
-<Notice> 
 1. User clicks on the "Login with OAuth provider" button on the app.
 2. The app redirects the user's browser to the authorization server's authorization endpoint, passing along its client ID and a redirect URI.
 3. The authorization server prompts the user to authenticate and authorize the app by asking for their consent to grant the app access to their data. This step may involve displaying a login screen or a consent screen, depending on the user's previous interactions with the authorization server.
@@ -58,7 +57,6 @@ compromising your sensitive information, such as your username and password.
 8. The app uses the access token to make API requests to the resource server on behalf of the user.
 9. The resource server validates the access token and returns the requested data to the app.
 10. The app displays the user's data to the user.
-</Notice>
 
 Let's break it down into individual components to understand how it works, here are some 
 definitions to keep in mind:

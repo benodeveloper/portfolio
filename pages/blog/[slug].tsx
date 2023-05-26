@@ -43,7 +43,7 @@ const SinglePostPage = ({ post }: { post: IPost }): JSX.Element => {
 
   return <>
     <PostHead post={post} />
-    <header className="h-96 w-full bg-fixed bg-cover bg-no-repeat mt-7 mb-16 relative py-16 flex items-end" style={{backgroundImage:`url(${image.src})`}}>
+    <header className="h-96 w-full bg-fixed bg-cover bg-no-repeat lg:mb-16 mb-5 relative py-16 flex items-end" style={{backgroundImage:`url(${image.src})`}}>
       <div className="absolute inset-0 bg-black/75 w-full h-full"/>
       <div className="relative container mx-auto px-4 text-white">
       <div className="mb-3 text-sm font-light ">
@@ -57,16 +57,18 @@ const SinglePostPage = ({ post }: { post: IPost }): JSX.Element => {
     </header>
 
     <div className="container mx-auto px-4">
-      <div className="flex">
+      <div className="flex flex-col-reverse lg:flex-row">
         <div className="relative max-w-3xl">
           <MDXContent components={{ ...MDXComponents }} />
         </div>
-        <div className="mx-16">
+        <div className="lg:mx-16 mx-4">
           <div className="sticky top-3">
-            <LikePostButton slug={post.slug}/>
-            <PostViews slug={post.slug} />
-            <SharePostButton />
-            <div className="mt-16 bg-blue-50 px-10 xl:w-64 py-12 rounded-md">
+            <div className="flex flex-row lg:flex-col w-full justify-between">
+              <LikePostButton slug={post.slug}/>
+              <PostViews slug={post.slug} />
+              <SharePostButton />
+            </div>
+            <div className="lg:mt-16 mt-5 bg-blue-50 px-10 xl:w-64  py-12 rounded-md">
               <h3 className="mb-4 font-bold">Related Post</h3>
               <ul>
                 <li className="text-[#2165f4] mb-1">Post</li>
