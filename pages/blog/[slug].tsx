@@ -8,6 +8,9 @@ import { useEffect } from "react";
 import { LikePostButton } from "@/components/likePostButton";
 import { usePollIfInView } from "@/util/usePollIfInView";
 import { PostHead } from "@/components/postHead";
+import image from "@/assets/maximalfocus-HakTxidk36I-unsplash.jpg"
+import PostViews from "@/components/PostViews";
+import SharePostButton from "@/components/SharePostButton";
 
 export const getStaticPaths = async () => {
   const paths = allPosts.map(post => post.url)
@@ -40,17 +43,41 @@ const SinglePostPage = ({ post }: { post: IPost }): JSX.Element => {
 
   return <>
     <PostHead post={post} />
-    <div 
-    className="relative  pt-48 max-w-5xl mx-auto text-sm"
-    >
-      <div className="mb-20 relative">
-        <h1 className="mb-7 sm:text-5xl text-3xl font-bold">{post.title}</h1>
-        <div ref={intersectionRef} className=""><PostMetrics post={post} /></div>
-        {/* <div className="fixed right-4 bottom-10 shadow-sm px-4 py-2 rounded-full border dark:border-neutral-700 border-neutral-200 bg-neutral-50 dark:bg-neutral-900 flex flex-col">
-          <LikePostButton slug={post.slug} />
-        </div> */}
+    <header className="h-96 w-full bg-fixed bg-cover bg-no-repeat mt-7 mb-16 relative py-16 flex items-end" style={{backgroundImage:`url(${image.src})`}}>
+      <div className="absolute inset-0 bg-black/75 w-full h-full"/>
+      <div className="relative container mx-auto px-4 text-white">
+      <div className="mb-3 text-sm font-light ">
+        {post.tagsAsArray?.map((tag, idx) => <span key={idx} className="tag after:bg-white">{tag}</span>)}
       </div>
-      <MDXContent components={{ ...MDXComponents }} />
+        <h1 className="mb-7 sm:text-5xl text-3xl font-bold ">{post.title}</h1>
+        <div ref={intersectionRef} className="flex justify-between text-sm font-light">
+          <PostMetrics post={post} />
+        </div>
+      </div>
+    </header>
+
+    <div className="container mx-auto px-4">
+      <div className="flex">
+        <div className="relative max-w-3xl">
+          <MDXContent components={{ ...MDXComponents }} />
+        </div>
+        <div className="mx-16">
+          <div className="sticky top-3">
+            <LikePostButton slug={post.slug}/>
+            <PostViews slug={post.slug} />
+            <SharePostButton />
+            <div className="mt-16 bg-blue-50 px-10 xl:w-64 py-12 rounded-md">
+              <h3 className="mb-4 font-bold">Related Post</h3>
+              <ul>
+                <li className="text-[#2165f4] mb-1">Post</li>
+                <li className="text-[#2165f4] mb-1">Post</li>
+                <li className="text-[#2165f4] mb-1">Post</li>
+                <li className="text-[#2165f4] mb-1">Post</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </>
 }

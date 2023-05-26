@@ -10,7 +10,7 @@ export const PostMetrics = ({ post }: { post: IPost }) => {
     const { likes, isLoading: likesisLoading, isError: likesOnError } = usePostLikes(post.slug);
     const { views, isLoading: viewsIsLoading, isError: viewsOnError } = usePostViews(post.slug);
 
-    return <>
+    return <div>
         <time dateTime={post.publishedDate} className="text-sm">
             {post.publishedDate}
         </time>
@@ -20,5 +20,5 @@ export const PostMetrics = ({ post }: { post: IPost }) => {
         <span> {viewsOnError || viewsIsLoading ? "..." : views} views</span>
         <span className="mx-2 font-bold">.</span>
         <span> {likesOnError || likesisLoading ? "..." : likes} likes</span>
-    </>
+    </div>
 }

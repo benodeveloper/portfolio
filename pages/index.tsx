@@ -12,7 +12,7 @@ type HomeProps = {
 
 const Home = ({ posts }: HomeProps): JSX.Element => {
 
-  return <>
+  return <div className="container mx-auto px-4">
     <div className="lg:flex relative lg:pt-24 pt-16 lg:pb-40 pb-16 border-b border-b-[#14141423]">
       <div className="md:absolute -left-14 top-1/3">
         <ul className="flex md:flex-col">
@@ -64,7 +64,7 @@ const Home = ({ posts }: HomeProps): JSX.Element => {
         })}
       </div>
     </div>
-  </>
+  </div>
 }
 export const getStaticProps: GetStaticProps = async () => {
   const posts: IPost[] | any = allPosts

@@ -1,7 +1,7 @@
 import { SocialFollow } from "@/components/socialFollow";
 
 export default function Contact() {
-    return <>
+    return <div className="container mx-auto px-4">
     <div className="xl:flex relative lg:pt-14 pt-16 lg:pb-16 pb-16">
             <div className="xl:w-1/3 relative">
                 <h1 className="lg:text-[82px] md:text-6xl text-5xl lg:leading-[84px] font-bold xl:mb-0 mb-16">Contact</h1>
@@ -23,5 +23,5 @@ export default function Contact() {
                 </article>
             </div>
         </div>
-    </>
+    </div>
 }

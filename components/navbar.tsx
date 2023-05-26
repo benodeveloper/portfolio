@@ -13,7 +13,7 @@ export const Navbar = () => {
     const showMenu = () => {
         setShow(!show);
     }
-    return <>
+    return <div className="container mx-auto px-4">
     <nav className="flex justify-between items-center py-7">
         <Link title="home" href={"/"}>
             <Logo />
@@ -39,5 +39,5 @@ export const Navbar = () => {
         </div>
         
     </nav>
-    </>
+    </div>
 }

@@ -1,7 +1,7 @@
 import { SocialFollow } from "@/components/socialFollow";
 
 export default function About() {
-    return <>
+    return <div className="container mx-auto px-4">
         <div className="xl:flex relative lg:pt-14 pt-16 lg:pb-16 pb-16 border-b border-b-[#14141423]">
             <div className="xl:w-1/3 relative">
                 <h1 className="lg:text-[82px] md:text-6xl text-5xl lg:leading-[84px] font-bold xl:mb-0 mb-16">About</h1>
@@ -14,7 +14,7 @@ export default function About() {
             </div>
             <div className="xl:w-2/3 relative">
                 <article className="lg:py-14 py-10">
-                    <div className="relative font-light xl:max-w-2xl">
+                    <div className="relative font-light xl:max-w-4xl">
                         {/* <Image priority={true} className="z-50 w-full rounded-lg" title="Beno developer image" alt="hassan BENADARODOR"  src={image} /> */}
                         {/* <Link title="title" href="#"> */}
                         <h2 className="lg:text-5xl text-3xl font-bold mt-10 mb-3 text-jet-black">Hassan BENADARODOR</h2>
@@ -50,5 +50,5 @@ export default function About() {
                 </article>
             </div>
         </div>
-    </>
+    </div>
 }
