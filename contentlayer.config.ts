@@ -29,6 +29,9 @@ export const Post = defineDocumentType(() => ({
         status: { type: "string" },
         tags: {
             type: "string"
+        },
+        headlines: {
+            type: "string",
         }
     },
     computedFields: {
@@ -51,6 +54,10 @@ export const Post = defineDocumentType(() => ({
         publishedDate: {
             type: "string",
             resolve: (post) => format(parseISO(post.publishedAt), 'LLLL d, yyyy')
+        },
+        headlinesAsArray: {
+            type: "list",
+            resolve: (post) => post.headlines?.toString().split(" | "),
         }
     }
 }))

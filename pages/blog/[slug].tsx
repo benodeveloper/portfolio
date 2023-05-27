@@ -1,16 +1,17 @@
-import { useMDXComponent } from "next-contentlayer/hooks"
+import { useEffect } from "react";
+import { IPost } from "@/util/types";
+import PostViews from "@/components/PostViews";
+import { PostHead } from "@/components/postHead";
+import { usePostViews } from "@/util/usePostViews";
 import { allPosts } from "@/.contentlayer/generated";
 import { PostMetrics } from "@/components/postMetrics";
-import { MDXComponents } from "@/util/MDXCustomComponents";
-import { IPost } from "@/util/types";
-import { usePostViews } from "@/util/usePostViews";
-import { useEffect } from "react";
-import { LikePostButton } from "@/components/likePostButton";
 import { usePollIfInView } from "@/util/usePollIfInView";
-import { PostHead } from "@/components/postHead";
-import image from "@/assets/maximalfocus-HakTxidk36I-unsplash.jpg"
-import PostViews from "@/components/PostViews";
+import { useMDXComponent } from "next-contentlayer/hooks"
 import SharePostButton from "@/components/SharePostButton";
+import { MDXComponents } from "@/util/MDXCustomComponents";
+import { LikePostButton } from "@/components/likePostButton";
+import image from "@/assets/maximalfocus-HakTxidk36I-unsplash.jpg"
+import Link from "next/link";
 
 export const getStaticPaths = async () => {
   const paths = allPosts.map(post => post.url)
@@ -63,18 +64,17 @@ const SinglePostPage = ({ post }: { post: IPost }): JSX.Element => {
         </div>
         <div className="lg:mx-16 mx-4">
           <div className="sticky top-3">
-            <div className="flex flex-row lg:flex-col w-full justify-between">
+            <div className="flex flex-row lg:flex-col w-fit justify-between">
               <LikePostButton slug={post.slug}/>
               <PostViews slug={post.slug} />
               <SharePostButton />
             </div>
-            <div className="lg:mt-16 mt-5 bg-blue-50 px-10 xl:w-64  py-12 rounded-md">
+            <div className="lg:mt-16 mt-5 bg-blue-50 px-10 xl:h-full  py-12 rounded-md">
               <h3 className="mb-4 font-bold">Related Post</h3>
-              <ul>
-                <li className="text-[#2165f4] mb-1">Post</li>
-                <li className="text-[#2165f4] mb-1">Post</li>
-                <li className="text-[#2165f4] mb-1">Post</li>
-                <li className="text-[#2165f4] mb-1">Post</li>
+              <ul className="list-disc">
+              {post.headlinesAsArray?.map((headline, idx) => <li key={idx} className="text-[#2165f4] mb-3 text-xs">
+                <Link href={`#${headline}`} >{headline}</Link>
+                </li>)}
               </ul>
             </div>
           </div>

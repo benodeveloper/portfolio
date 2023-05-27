@@ -12,7 +12,6 @@ export const MDXComponents = {
     ),
     h2: (props: any) => (
         <h3
-            // className="relative mt-2 pt-9 border-t-2 text-xl font-medium sm:text-2xl"
             className="mt-5 mb-4 text-[#111111] font-bold text-xl sm:text-2xl"
             {...props}
         />
