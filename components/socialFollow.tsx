@@ -2,7 +2,7 @@
 export const SocialFollow = () => {
     return <ul className="mt-16 flex gap-7">
         <li>
-            <a href="https://twitter.com/beno_developer" title="twitter" rel="noreferrer noopener nofollow" target="_blank" className="flex text-neutral-500 dark:text-neutral-400 hover:text-[#2165f4] fill-neutral-500 hover:fill-[#2165f4]">
+            <a href="https://twitter.com/benodeveloper" title="twitter" rel="noreferrer noopener nofollow" target="_blank" className="flex text-neutral-500 dark:text-neutral-400 hover:text-[#2165f4] fill-neutral-500 hover:fill-[#2165f4]">
                 <svg width={18} height={19} className="mr-2" xmlns="http://www.w3.org/2000/svg" >
                     <path d="M16.15 3.738c.011.164.011.328.011.492C16.161 9.234 12.45 15 5.665 15c-2.09 0-4.032-.621-5.665-1.7.297.036.582.048.89.048a7.27 7.27 0 0 0 4.58-1.618c-1.621-.035-2.98-1.125-3.448-2.625.228.036.456.059.696.059.332 0 .663-.047.971-.129C2 8.684.731 7.16.731 5.32v-.047a3.644 3.644 0 0 0 1.667.48A3.81 3.81 0 0 1 .754 2.603c0-.704.182-1.348.502-1.91 1.816 2.296 4.546 3.796 7.607 3.96a4.38 4.38 0 0 1-.091-.867C8.772 1.7 10.416 0 12.46 0c1.062 0 2.021.457 2.695 1.195a7.153 7.153 0 0 0 2.341-.914 3.759 3.759 0 0 1-1.621 2.086A7.248 7.248 0 0 0 18 1.781a8.048 8.048 0 0 1-1.85 1.957Z" />
                 </svg> Twitter
