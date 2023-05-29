@@ -11,5 +11,7 @@ export interface IPost {
     headlinesAsArray?: string[];
     url: string;
     readingTime: string;
-    body?: any
+    body?: any;
+    featured: boolean;
+    thumbnail: string;
 }

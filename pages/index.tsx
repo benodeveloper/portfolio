@@ -68,8 +68,8 @@ const Home = ({ posts }: HomeProps): JSX.Element => {
 }
 export const getStaticProps: GetStaticProps = async () => {
   const posts: IPost[] | any = allPosts
-    .filter(post => post.status == "published")
-    .sort((a: IPost | any, b: IPost | any) => compareDesc(new Date(a.date), new Date(b.date)))
+  .filter(post => post.status == "published")
+  .sort((a: IPost | any, b: IPost | any) => compareDesc(new Date(a.publishedAt), new Date(b.publishedAt)))
   return {
     props: { posts },
   };

@@ -1,6 +1,7 @@
 import { BlurImage } from "@/components/BlurImage"
 import { Notice } from "@/components/notice"
 import { ImageProps } from "next/image"
+import slugify from "slugify"
 
 export const MDXComponents = {
     Notice,
@@ -10,12 +11,13 @@ export const MDXComponents = {
             {...props}
         />
     ),
-    h2: (props: any) => (
-        <h3
+    h2: (props: any) => {
+        return <h3 id={slugify(props.children)}
             className="mt-5 mb-4 text-[#111111] font-bold text-xl sm:text-2xl"
             {...props}
         />
-    ),
+    }
+    ,
     // h3: (props: any) => (
     //     <h4 className="text-xl font-medium" {...props} />
     // ),

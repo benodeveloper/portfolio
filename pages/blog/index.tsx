@@ -90,14 +90,16 @@ type PostsProps = {
 export const getStaticProps: GetStaticProps = async () => {
     const posts: IPost[] | any = allPosts
         .filter(post => post.status == "published")
-        .sort((a: IPost | any, b: IPost | any) => compareDesc(new Date(a.date), new Date(b.date)))
-
+        .sort((a: IPost | any, b: IPost | any) => compareDesc(new Date(b.publishedAt), new Date(a.publishedAt)))
     return {
         props: { posts },
     };
 };
 
 export default function Blog({ posts }: PostsProps) {
+    const featuredPost = posts.filter(post => post.featured).pop();
+    const otherPosts = posts.filter(post => post.slug != featuredPost?.slug);
+    
     return <div className="container mx-auto px-4">
         <div className="xl:flex relative lg:pt-14 pt-16 lg:pb-16 pb-16 border-b border-b-[#14141423]">
             <div className="xl:w-1/2 relative">
@@ -110,11 +112,11 @@ export default function Blog({ posts }: PostsProps) {
                 </div>
             </div>
             <div className="xl:w-1/2 relative">
-                <article className="lg:py-14 py-10">
+                {featuredPost && <article className="lg:py-14 py-10">
                     <div className="relative text-sm text-[#666666] font-light xl:max-w-2xl">
-                        <Image priority={true} className="z-50 w-full rounded-lg" title="Beno developer image" alt="hassan BENADARODOR" src={image} />
-                        <Link title="title" href="#">
-                            <h2 className="lg:text-5xl text-3xl font-bold mt-10 mb-5 text-jet-black hover:text-[#2165f4]">Don’t be a Junior Software Developer!</h2>
+                        <Image priority={true} className="z-50 w-full rounded-lg" title={featuredPost?.title} width={612} height={344.7} alt={featuredPost?.title} src={featuredPost.thumbnail} />
+                        <Link title={featuredPost?.title} href={featuredPost?.url}>
+                            <h2 className="lg:text-5xl text-3xl font-bold mt-10 mb-5 text-jet-black hover:text-[#2165f4]">{featuredPost?.title}</h2>
                         </Link>
                         <div className="flex justify-between">
                             <div className="flex">
@@ -123,11 +125,12 @@ export default function Blog({ posts }: PostsProps) {
                                         <path fill="#A8A8A8" fillRule="evenodd" d="M7 14A7 7 0 1 0 7 0a7 7 0 0 0 0 14Zm.656-10.5a.656.656 0 0 0-1.312 0v4.375c0 .362.294.656.656.656h3.5a.656.656 0 0 0 0-1.312H7.656V3.5Z" clipRule="evenodd" />
                                     </svg>
                                 </span>
-                                14 min read
+                                {featuredPost.readingTime}
                             </div>
                         </div>
                     </div>
-                </article>
+                </article>}
+                
             </div>
         </div>
 
@@ -136,7 +139,7 @@ export default function Blog({ posts }: PostsProps) {
                 <h3 className="text-4xl font-semibold">Recent Posts</h3>
             </div>
             <div className="lg:w-3/5 lg:pt-10">
-                {posts.length && posts.map((post, idx) => {
+                {otherPosts.length && otherPosts.map((post, idx) => {
                     return <Post key={idx} post={post} />
                 })}
             </div>

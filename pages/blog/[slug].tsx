@@ -12,6 +12,7 @@ import { MDXComponents } from "@/util/MDXCustomComponents";
 import { LikePostButton } from "@/components/likePostButton";
 import image from "@/assets/maximalfocus-HakTxidk36I-unsplash.jpg"
 import Link from "next/link";
+import slugify from "slugify";
 
 export const getStaticPaths = async () => {
   const paths = allPosts.map(post => post.url)
@@ -42,6 +43,14 @@ const SinglePostPage = ({ post }: { post: IPost }): JSX.Element => {
     viewPost()
   }, [])
 
+  const handleClickScroll = (slug: string) => {
+    const element = document.getElementById(slug);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth',block: "start"});
+    }
+  };
+
+
   return <>
     <PostHead post={post} />
     <header className="h-96 w-full bg-fixed bg-cover bg-no-repeat lg:mb-16 mb-5 relative py-16 flex items-end" style={{backgroundImage:`url(${image.src})`}}>
@@ -64,17 +73,20 @@ const SinglePostPage = ({ post }: { post: IPost }): JSX.Element => {
         </div>
         <div className="lg:mx-16 mx-4">
           <div className="sticky top-3">
-            <div className="flex flex-row lg:flex-col w-fit justify-between">
+            <div className="flex flex-row lg:flex-col lg:w-fit w-full justify-between">
               <LikePostButton slug={post.slug}/>
               <PostViews slug={post.slug} />
-              <SharePostButton />
+              {/* <SharePostButton  post={post}  /> */}
             </div>
             <div className="lg:mt-16 mt-5 bg-blue-50 px-10 xl:h-full  py-12 rounded-md">
               <h3 className="mb-4 font-bold">Related Post</h3>
               <ul className="list-disc">
-              {post.headlinesAsArray?.map((headline, idx) => <li key={idx} className="text-[#2165f4] mb-3 text-xs">
-                <Link href={`#${headline}`} >{headline}</Link>
-                </li>)}
+              {post.headlinesAsArray?.map((headline, idx) => {
+                const slug = slugify(headline)
+                return <li key={idx} className="text-[#2165f4] mb-3 text-xs">
+                <span className="cursor-pointer" onClick={() => handleClickScroll(slug)}>{headline}</span>
+                </li>
+              })}
               </ul>
             </div>
           </div>
