@@ -76,7 +76,7 @@ const SinglePostPage = ({ post }: { post: IPost }): JSX.Element => {
             <div className="flex flex-row lg:flex-col lg:w-fit w-full justify-between">
               <LikePostButton slug={post.slug}/>
               <PostViews slug={post.slug} />
-              {/* <SharePostButton  post={post}  /> */}
+              <SharePostButton  post={post}  />
             </div>
             <div className="lg:mt-16 mt-5 bg-blue-50 px-10 xl:h-full  py-12 rounded-md">
               <h3 className="mb-4 font-bold">Related Post</h3>
