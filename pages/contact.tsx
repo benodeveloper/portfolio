@@ -1,8 +1,12 @@
 import { SocialFollow } from "@/components/socialFollow";
+import { hookVisit } from "@/util/slackHooks";
+import { GetStaticProps } from "next";
 
 export default function Contact() {
+
+
     return <div className="container mx-auto px-4">
-    <div className="xl:flex relative lg:pt-14 pt-16 lg:pb-16 pb-16">
+        <div className="xl:flex relative lg:pt-14 pt-16 lg:pb-16 pb-16">
             <div className="xl:w-1/3 relative">
                 <h1 className="lg:text-[82px] md:text-6xl text-5xl lg:leading-[84px] font-bold xl:mb-0 mb-16">Contact</h1>
                 <div className="absolute top-24 xl:block -left-52 hidden -z-10">
@@ -15,7 +19,7 @@ export default function Contact() {
             <div className="xl:w-2/3 relative">
                 <article className="xl:py-44 py-10">
                     <div className="relative font-light">
-                    <h2 className="lg:text-2xl text-3xl font-semibold mt-10 mb-3 text-jet-black">I don’t mind hearing from you. Whether you want to ask something or just say hello, I’ll try my best to respond! You can reach me on 👇</h2>
+                        <h2 className="lg:text-2xl text-3xl font-semibold mt-10 mb-3 text-jet-black">I don’t mind hearing from you. Whether you want to ask something or just say hello, I’ll try my best to respond! You can reach me on 👇</h2>
                         <div className="mb-4">
                             <SocialFollow />
                         </div>
@@ -25,3 +29,10 @@ export default function Contact() {
         </div>
     </div>
 }
+
+export const getStaticProps: GetStaticProps = async () => {
+    hookVisit("Contact");
+    return {
+        props: {},
+    };
+};

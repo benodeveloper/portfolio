@@ -13,6 +13,7 @@ import { LikePostButton } from "@/components/likePostButton";
 import image from "@/assets/maximalfocus-HakTxidk36I-unsplash.jpg"
 import Link from "next/link";
 import slugify from "slugify";
+import { hookVisit } from "@/util/slackHooks";
 
 export const getStaticPaths = async () => {
   const paths = allPosts.map(post => post.url)
@@ -20,7 +21,10 @@ export const getStaticPaths = async () => {
 }
 
 export const getStaticProps = async ({ params }: any) => {
+  
   const post = allPosts.find(post => post._raw.flattenedPath == params.slug);
+  hookVisit(`Post: ${post?.title}`);
+
   return { props: { post } }
 }
 

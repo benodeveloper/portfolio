@@ -1,4 +1,6 @@
 import { SocialFollow } from "@/components/socialFollow";
+import { hookVisit } from "@/util/slackHooks";
+import { GetStaticProps } from "next";
 
 export default function About() {
     return <div className="container mx-auto px-4">
@@ -32,11 +34,11 @@ export default function About() {
                             </p>
                             <p className="text-base mb-3">
                                 I am a self-taught developer who loves technology and learning new things.
-                                I started coding in 2017 with PHP and Laravel, and since then I have expanded
+                                I started coding in 2015 with PHP and Laravel, and since then I have expanded
                                 my knowledge and experience to other tools and technologies.
                             </p>
                             <p className="text-base mb-3">
-                                However, since 2019, I have shifted my focus to Java Spring Boot and ReactJS/nextjs.
+                                However, since 2018, I have shifted my focus to Java Spring Boot and ReactJS/nextjs.
                                 I enjoy creating intuitive web applications that solve real-world problems and provide value to users.
                                 While I&lsquo;m not coding, I enjoy cooking and am a cat lover 🐱; I have a cat named Sakura 🐈.
                                 She is very cute 😍 and playful 😻.
@@ -52,3 +54,11 @@ export default function About() {
         </div>
     </div>
 }
+
+
+export const getStaticProps: GetStaticProps = async () => {
+    hookVisit("About");
+    return {
+        props: {},
+    };
+};
