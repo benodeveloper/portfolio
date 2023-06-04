@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset
+      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+
+
+<url>
+  <loc>https://benodeveloper.com/</loc>
+  <lastmod>2023-06-04T00:28:27+00:00</lastmod>
+  <priority>1.00</priority>
+</url>
+<url>
+  <loc>https://benodeveloper.com/blog</loc>
+  <lastmod>2023-06-04T00:28:27+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://benodeveloper.com/about</loc>
+  <lastmod>2023-06-04T00:28:27+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://benodeveloper.com/contact</loc>
+  <lastmod>2023-06-04T00:28:27+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://benodeveloper.com/blog/oauth-20-vs-openid-connect-understanding-the-differences-and-use-cases</loc>
+  <lastmod>2023-06-04T00:28:27+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://benodeveloper.com/blog/optimizing-databases-in-spring-boot</loc>
+  <lastmod>2023-06-04T00:28:27+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://benodeveloper.com/blog/foo-bar</loc>
+  <lastmod>2023-06-04T00:28:27+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+
+
+</urlset>
