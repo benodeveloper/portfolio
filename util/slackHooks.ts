@@ -1,6 +1,20 @@
 
-export function hookVisit(page: string) {
-    const now = new Date().toISOString();
-    const message = `Someone visited the ${page} page of your website on ${now.split("T")[0]} at ${now.split("T").pop()?.split(".")[0]}`;
-    fetch(`https://hooks.slack.com/services/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`, {method: "POST", body: JSON.stringify({"text": message})})
+export async function hookVisit(page: string) {
+    const now        = new Date().toISOString();
+    const enabled    = process.env.NEXT_PUBLIC_SLACK_WEBHOOK_ENABLE == "true" || false;
+    const webhookUrl = process.env.NEXT_PUBLIC_SLACK_WEBHOOK_URL || null;
+    
+    const clientIP = await fetch('https://api.ipify.org?format=json')
+    .then(response => response.json())
+    .then(data => data.ip);
+    const message    = `IP_ADD: ${clientIP} visited the ${page} page of your website on ${now.split("T")[0]} at ${now.split("T").pop()?.split(".")[0]}`;    
+ 
+    if(enabled && webhookUrl) {
+        fetch(webhookUrl, {method: "POST", body: JSON.stringify({"text": message})})
+    } else {
+        console.log(message);
+        
+    }
+
+    
 }
