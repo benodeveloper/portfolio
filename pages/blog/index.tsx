@@ -6,6 +6,7 @@ import { GetStaticProps } from "next"
 import Link from "next/link"
 import Image from "next/image"
 import { hookVisit } from "@/util/slackHooks"
+import { useEffect } from "react"
 
 type PostsProps = {
     posts: IPost[]
@@ -13,7 +14,6 @@ type PostsProps = {
 
 
 export const getStaticProps: GetStaticProps = async () => {
-    hookVisit("Blog");
     const posts: IPost[] | any = allPosts
         .filter(post => post.status == "published")
         .sort((a: IPost | any, b: IPost | any) => compareDesc(new Date(b.publishedAt), new Date(a.publishedAt)))
@@ -25,7 +25,11 @@ export const getStaticProps: GetStaticProps = async () => {
 export default function Blog({ posts }: PostsProps) {
     const featuredPost = posts.filter(post => post.featured).pop();
     const otherPosts = posts.filter(post => post.slug != featuredPost?.slug);
-    
+
+    useEffect(() => {
+        hookVisit("Blog");
+    }, [])
+
     return <div className="container mx-auto px-4">
         <div className="xl:flex relative lg:pt-14 pt-16 lg:pb-16 pb-16 border-b border-b-[#14141423]">
             <div className="xl:w-1/2 relative">
@@ -56,7 +60,7 @@ export default function Blog({ posts }: PostsProps) {
                         </div>
                     </div>
                 </article>}
-                
+
             </div>
         </div>
 

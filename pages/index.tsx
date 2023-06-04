@@ -6,12 +6,17 @@ import { Post } from "@/components/post";
 import Image from "next/image";
 import me from "@/assets/hassan-benadardor-img.jpg"
 import { hookVisit } from "@/util/slackHooks";
+import { useEffect } from "react";
 
 type HomeProps = {
   posts: IPost[]
 }
 
 const Home = ({ posts }: HomeProps): JSX.Element => {
+
+  useEffect(() => {
+    hookVisit("Home");
+  }, [])
 
   return <div className="container mx-auto px-4">
     <div className="lg:flex relative lg:pt-24 pt-16 lg:pb-40 pb-16 border-b border-b-[#14141423]">
@@ -68,7 +73,7 @@ const Home = ({ posts }: HomeProps): JSX.Element => {
   </div>
 }
 export const getStaticProps: GetStaticProps = async () => {
-  hookVisit("Home");
+
   const posts: IPost[] | any = allPosts
     .filter(post => post.status == "published")
     .sort((a: IPost | any, b: IPost | any) => compareDesc(new Date(a.publishedAt), new Date(b.publishedAt)))

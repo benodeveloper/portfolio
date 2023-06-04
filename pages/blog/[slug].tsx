@@ -23,8 +23,7 @@ export const getStaticPaths = async () => {
 export const getStaticProps = async ({ params }: any) => {
   
   const post = allPosts.find(post => post._raw.flattenedPath == params.slug);
-  hookVisit(`Post: ${post?.title}`);
-
+  
   return { props: { post } }
 }
 
@@ -45,6 +44,7 @@ const SinglePostPage = ({ post }: { post: IPost }): JSX.Element => {
 
   useEffect(() => {
     viewPost()
+    hookVisit(`Post: ${post?.title}`);
   }, [])
 
   const handleClickScroll = (slug: string) => {

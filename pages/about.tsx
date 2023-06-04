@@ -1,8 +1,13 @@
 import { SocialFollow } from "@/components/socialFollow";
 import { hookVisit } from "@/util/slackHooks";
-import { GetStaticProps } from "next";
+import { useEffect } from "react";
 
 export default function About() {
+
+    useEffect(() => {
+        hookVisit("About");
+    }, [])
+
     return <div className="container mx-auto px-4">
         <div className="xl:flex relative lg:pt-14 pt-16 lg:pb-16 pb-16 border-b border-b-[#14141423]">
             <div className="xl:w-1/3 relative">
@@ -54,11 +59,3 @@ export default function About() {
         </div>
     </div>
 }
-
-
-export const getStaticProps: GetStaticProps = async () => {
-    hookVisit("About");
-    return {
-        props: {},
-    };
-};

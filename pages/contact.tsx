@@ -1,8 +1,12 @@
 import { SocialFollow } from "@/components/socialFollow";
 import { hookVisit } from "@/util/slackHooks";
-import { GetStaticProps } from "next";
+import { useEffect } from "react";
 
 export default function Contact() {
+
+    useEffect(() => {
+        hookVisit("Contact");
+    }, [])
 
 
     return <div className="container mx-auto px-4">
@@ -29,10 +33,3 @@ export default function Contact() {
         </div>
     </div>
 }
-
-export const getStaticProps: GetStaticProps = async () => {
-    hookVisit("Contact");
-    return {
-        props: {},
-    };
-};
