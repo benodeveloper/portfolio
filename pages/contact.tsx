@@ -1,3 +1,4 @@
+import { ContactForm } from "@/components/contactForm";
 import { SocialFollow } from "@/components/socialFollow";
 import { hookVisit } from "@/util/slackHooks";
 import { useEffect } from "react";
@@ -24,6 +25,7 @@ export default function Contact() {
                 <article className="xl:py-44 py-10">
                     <div className="relative font-light">
                         <h2 className="lg:text-2xl text-3xl font-semibold mt-10 mb-3 text-jet-black">I don’t mind hearing from you. Whether you want to ask something or just say hello, I’ll try my best to respond! You can reach me on 👇</h2>
+                        <ContactForm />
                         <div className="mb-4">
                             <SocialFollow />
                         </div>

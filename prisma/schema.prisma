@@ -20,3 +20,11 @@ model Session {
   createdAt DateTime @default(now())
   likes     Int      @default(0)
 }
+
+model ContactData {
+  id        String    @id
+  createdAt DateTime  @default(now())
+  email     String
+  subject   String
+  message   String    @db.Text
+}

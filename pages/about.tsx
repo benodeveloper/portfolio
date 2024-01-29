@@ -45,8 +45,7 @@ export default function About() {
                             <p className="text-base mb-3">
                                 However, since 2018, I have shifted my focus to Java Spring Boot and ReactJS/nextjs.
                                 I enjoy creating intuitive web applications that solve real-world problems and provide value to users.
-                                While I&lsquo;m not coding, I enjoy cooking and am a cat lover 🐱; I have a cat named Sakura 🐈.
-                                She is very cute 😍 and playful 😻.
+                                While I&lsquo;m not coding, I enjoy cooking and am a cat lover.
                             </p>
                             <p className="text-base mb-3">
                                 On this website, you will find my notes and tutorials on various topics related to web development. These are meant to help me remember what I learned and also to share my valuable insights with others who might be interested. I hope you find them useful and interesting.
