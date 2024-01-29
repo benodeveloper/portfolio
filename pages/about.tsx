@@ -25,7 +25,7 @@ export default function About() {
                         {/* <Image priority={true} className="z-50 w-full rounded-lg" title="Beno developer image" alt="hassan BENADARODOR"  src={image} /> */}
                         {/* <Link title="title" href="#"> */}
                         <h2 className="lg:text-5xl text-3xl font-bold mt-10 mb-3 text-jet-black">Hassan BENADARODOR</h2>
-                        <h3 className="text-jet-black font-medium mb-10">Software developer at Doctori</h3>
+                        <h3 className="text-jet-black font-medium mb-10">Software developer</h3>
                         {/* </Link> */}
                         <div className="mb-4">
                             <p className="text-base mb-3">

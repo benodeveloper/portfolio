@@ -47,7 +47,7 @@ const Home = ({ posts }: HomeProps): JSX.Element => {
       </div>
       <div className="xl:w-1/2 md:my-32">
         <h1 className="lg:text-[82px] md:text-6xl text-5xl lg:leading-[84px] font-bold">Hassan BENADARDOR</h1>
-        <h3 className="font-semibold lg:text-2xl text-xl  md:mt-0 mt-3">Software developer at Doctori</h3>
+        <h3 className="font-semibold lg:text-2xl text-xl  md:mt-0 mt-3">Software developer</h3>
       </div>
       <div className="xl:w-1/2 relative mt-10">
         <Image priority={true} className="z-50 mx-auto rounded-lg md:max-w-md" title="Beno developer image" alt="hassan BENADARODOR" src={me} />
