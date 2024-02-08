@@ -1,6 +1,6 @@
 
 export const SocialFollow = () => {
-    return <ul className="mt-16 flex gap-7">
+    return <ul className="mt-5 flex justify-center gap-7">
         <li>
             <a href="https://twitter.com/benodeveloper" title="twitter" rel="noreferrer noopener nofollow" target="_blank" className="flex text-neutral-500 dark:text-neutral-400 hover:text-[#2165f4] fill-neutral-500 hover:fill-[#2165f4]">
                 <svg width={18} height={19} className="mr-2" xmlns="http://www.w3.org/2000/svg" >

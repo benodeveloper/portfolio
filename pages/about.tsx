@@ -50,7 +50,9 @@ export default function About() {
                             <p className="text-base mb-3">
                                 On this website, you will find my notes and tutorials on various topics related to web development. These are meant to help me remember what I learned and also to share my valuable insights with others who might be interested. I hope you find them useful and interesting.
                             </p>
+                            <div className="mt-10">
                             <SocialFollow />
+                            </div>
                         </div>
                     </div>
                 </article>
