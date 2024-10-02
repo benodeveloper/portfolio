@@ -1,7 +1,7 @@
 const Nav = ()=> {
     return <div className="flex fixed justify-between py-5  px-9 bg-black/0 text-white  w-full z-50">
-        <div className="fixed font-normal text-2xl bg-[#1b42fe] h-24 w-24 shadow flex justify-center items-center top-12 z-50">
-            <div>Bend</div>
+        <div className="fixed font-medium text-2xl bg-[#1b42fe] h-24 w-24 shadow flex justify-center items-center top-12 z-50">
+            <div>bend</div>
         </div>
         <div/>
         <ul className="mx-3 flex gap-24 mt-8 me-52">

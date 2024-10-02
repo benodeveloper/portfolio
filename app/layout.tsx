@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./app.scss";
-import { Poppins } from 'next/font/google'
+import { Hanken_Grotesk } from 'next/font/google'
+import { cn } from "@/utils/helpers";
 
 // const geistSans = localFont({
 //   src: "./fonts/GeistVF.woff",
@@ -13,7 +14,7 @@ import { Poppins } from 'next/font/google'
 //   weight: "100 900",
 // });
 
-const poppins = Poppins({weight: ["100" , "200" , "300" , "400" , "500" , "600" , "700" , "800" , "900"], subsets:["latin"]})
+const font = Hanken_Grotesk({weight: [ "100" ,"200" ,"300" , "400" , "500" , "600" , "700","800" ,"900"], subsets:["latin"]})
 
 export const metadata: Metadata = {
   title: "Beno developer",
@@ -27,7 +28,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={poppins.className}>
+      <body className={cn(font.className, 'bg-black')}>
         {children}
       </body>
     </html>
