@@ -19,7 +19,8 @@ export default function VideoPlayer() {
         
         <div className="absolute left-0 top-0 right-0 bottom-0 bg-gradient-to-b from-[#6a7bd38f] to-[#081e8d63] flex items-center px-12">
             <h1 className="text-9xl font-medium text-white">We are a design and technology company.</h1>
-            <div className=" absolute h-20 w-20 right-4 bg-white flex justify-center items-center">
+            <div className="absolute right-36 translate-y-8 h-10 w-10 rounded-full bg-[#1b42fe]" />
+            <div className=" absolute h-20 w-20 right-32 backdrop-blur bg-white/5 rounded-full flex justify-center items-center">
                 <PlayIcon className="h-40 text-[#1b42fe]"/>
             </div>
         </div>
