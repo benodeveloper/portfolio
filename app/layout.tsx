@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./app.scss";
+import { Poppins } from 'next/font/google'
 
 // const geistSans = localFont({
 //   src: "./fonts/GeistVF.woff",
@@ -11,6 +12,8 @@ import "./app.scss";
 //   variable: "--font-geist-mono",
 //   weight: "100 900",
 // });
+
+const poppins = Poppins({weight: ["100" , "200" , "300" , "400" , "500" , "600" , "700" , "800" , "900"], subsets:["latin"]})
 
 export const metadata: Metadata = {
   title: "Beno developer",
@@ -24,7 +27,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body>
+      <body className={poppins.className}>
         {children}
       </body>
     </html>
