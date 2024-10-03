@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import "./app.scss";
-import { Hanken_Grotesk } from 'next/font/google'
+import { MuseoModerno as Font } from 'next/font/google'
 import { cn } from "@/utils/helpers";
 
 // const geistSans = localFont({
@@ -14,7 +14,7 @@ import { cn } from "@/utils/helpers";
 //   weight: "100 900",
 // });
 
-const font = Hanken_Grotesk({weight: [ "100" ,"200" ,"300" , "400" , "500" , "600" , "700","800" ,"900"], subsets:["latin"]})
+const font = Font({weight: [ "100" ,"200" ,"300" , "400" , "500" , "600" , "700","800" ,"900"], subsets:["latin"]})
 
 export const metadata: Metadata = {
   title: "Beno developer",
