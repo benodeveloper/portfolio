@@ -1,6 +1,6 @@
 import Nav from "@/components/nav";
 import VideoPlayer from "@/components/videoplayer";
-import { ArrowRightIcon, Headphones, Play } from "lucide-react";
+import { ArrowRightIcon, FastForward, Forward, Headphones, Play, Rewind } from "lucide-react";
 
 export default function Home() {
   return (
@@ -47,7 +47,7 @@ export default function Home() {
         </div>
       </div>
 
-      <div className="relative bg-white p-32">
+      <div className="relative bg-purple-700 p-32 text-white">
         <div className="grid grid-cols-3">
           <div className="col-span-2">
             <h2 className="text-5xl font-medium mb-6">
@@ -55,14 +55,16 @@ export default function Home() {
             </h2>
             <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Natus, neque. Quidem ad harum, dolorem hic, voluptate consequuntur laborum corrupti odit totam quis cupiditate cumque repellendus consectetur obcaecati praesentium quas quod?</p>
           </div>
-          <div className="col-span-1">
-            <div className="h-40 w-full bg-white rounded shadow-md border">
+          <div className="col-span-1 relative">
+            <div style={{backgroundImage: 'url(https://marketplace.canva.com/EAFy2GgsPAo/2/0/1600w/canva-red-minimalist-creative-man-without-head-album-cover-_bB_o4a7jdE.jpg)'}} className="absolute top-2 left-2 rounded-lg opacity-65 h-[calc(100%-1rem)] w-[calc(100%-1rem)] bg-cover bg-center" />
+            <div className="w-full  rounded-lg shadow-md  backdrop-blur bg-white/15 py-6">
               <div className="flex px-3 flex-col">
                 <div className="flex">
-                  <div className="h-16 w-16 bg-gray-400 rounded-lg my-3 shadow flex justify-center items-center text-white">
-                    <Headphones className="w-8 h-w-8" />
+                  <div className="h-16 w-16 bg-purple-400 rounded-lg my-1 shadow flex justify-center items-center bg-cover" style={{backgroundImage: 'url(https://marketplace.canva.com/EAFy2GgsPAo/2/0/1600w/canva-red-minimalist-creative-man-without-head-album-cover-_bB_o4a7jdE.jpg)'}}>
+                      <Headphones className="w-6 h-6" />
+                    
                   </div>
-                  <div className="px-4 my-4 w-[calc(100%-4rem)]">
+                  <div className="px-4 my-3 w-[calc(100%-4rem)]">
                     <div className="mb-2">
                       <div className="text-lg font-semibold">Lorem ipsum dolor</div>
                       <div className="text-sm">alias corrupti tenetur explicabo.</div>
@@ -74,12 +76,37 @@ export default function Home() {
                     <div>0:18</div>
                     <div>- 4:24</div>
                   </div>
-                  <div className="h-1 bg-gray-400 w-full rounded" />
+                  <div className="h-1 bg-purple-800/70 w-full rounded relative">
+                    <div className="bg-purple-600 h-[calc(100%+2px)] -translate-y-[1px] rounded w-[50%] relative " >
+                      <span className="h-2 w-2 bg-purple-500 absolute right-0 top-[calc(50%-0.25rem)] rounded-full"></span>
+                    </div>
+                  </div>
+                  <div className="flex mx-auto w-fit gap-2 mt-3">
+                    <span className="bg-purple-800/70 py-2 px-2 rounded-full text-white">
+                          <Rewind className="h-4 w-4"/>
+                    </span>
+                    <span className="bg-purple-800/70 py-2 px-2 rounded-full text-white">
+                          <Play className="h-4 w-4"/>
+                    </span>
+                    <span className="bg-purple-800/70 py-2 px-2 rounded-full text-white">
+                          <FastForward className="h-4 w-4"/>
+                    </span>
+                  </div>
                 </div>
               </div>
 
             </div>
           </div>
+        </div>
+      </div>
+      <div className="relative grid grid-cols-3 bg-black py-16">
+        <div>
+
+        </div>
+        <div className="col-span-2">
+        <div className="" >
+            <img src="https://cdn.prod.website-files.com/650311fc2ebc7fe34237a592/6517459d2eb76e5d3a3fc293_hero-3.jpg" alt="" />
+        </div>
         </div>
       </div>
       <div className="h-[1500px] bg-black relative"></div>
