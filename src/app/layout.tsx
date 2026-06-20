@@ -33,7 +33,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={cn(geistSans.variable, geistMono.variable, museoModerno.variable, "antialiased bg-[#1c1b22]")}
+      className={cn(geistSans.variable, geistMono.variable, museoModerno.variable, "antialiased bg-[#1c1b22] text-white")}
     >
       <body className="min-h-screen flex flex-col">
         <Header />
@@ -42,8 +42,8 @@ export default function RootLayout({
         </div>
 
         {/* Global Footer */}
-        <footer className="border-t border-slate-200 py-8 mt-12">
-          <div className="max-w-5xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between text-sm text-slate-500 gap-4">
+        <footer className="max-w-5xl mx-auto border-t border-white/20 py-8 mt-12">
+          <div className="max-w-5xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between text-sm text-white/80 gap-4">
             <p>© {new Date().getFullYear()} Hassan Benadardor. All rights reserved.</p>
           </div>
         </footer>

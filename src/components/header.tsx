@@ -2,7 +2,7 @@ import Link from "next/link";
 import Logo from "./logo";
 
 export default function Header() {
-  return <header className="sticky top-0 z-50 w-full border-b backdrop-blur-md">
+  return <header className="sticky top-0 z-50 w-full">
     <div className="max-w-5xl mx-auto px-6 h-16 flex items-center justify-between">
 
       <Link href="/">
@@ -11,10 +11,10 @@ export default function Header() {
 
       {/* Desktop Navigation Links */}
       <nav className="hidden md:flex items-center gap-8 text-sm font-medium text-white">
-        <Link href="/" className="hover:text-blue-600 transition-colors">About</Link>
-        <Link href="/projects" className="hover:text-blue-600 transition-colors">Projects</Link>
-        <Link href="/blog" className="hover:text-blue-600 transition-colors">Blog</Link>
-        <Link href="/resume" className="hover:text-blue-600 transition-colors">Resume</Link>
+        <Link href="/" className="hover:underline">About</Link>
+        <Link href="/projects" className="hover:underline">Projects</Link>
+        <Link href="/blog" className="hover:underline">Blog</Link>
+        <Link href="/resume" className="hover:underline">Resume</Link>
       </nav>
 
       <button className="md:hidden p-2 -mr-2 text-slate-600 hover:text-blue-600 transition-colors">
