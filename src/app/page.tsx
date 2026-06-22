@@ -46,7 +46,7 @@ export default function Home() {
         <p className="text-lg leading-relaxed text-slate-200">
           Before my current role at Doctori, I maintained and scaled
           various software projects at{" "}
-          <a href="https://www.Grafimage.ma" target="_blank" rel="noopener noreferrer" className="font-semibold underline decoration-blue-400/30 underline-offset-4 hover:decoration-blue-400 transition-all duration-200">Grafimage</a>.
+          <a href="https://www.grafimage.com" target="_blank" rel="noopener noreferrer" className="font-semibold underline decoration-blue-400/30 underline-offset-4 hover:decoration-blue-400 transition-all duration-200">Grafimage</a>.
           And before diving fully into programming, I laid my technical foundation working as a
           Network Manager at Souretel.
         </p>
@@ -59,7 +59,7 @@ export default function Home() {
         {/* Contact Links Added Here */}
         <p className="text-lg leading-relaxed text-slate-200 mt-6 pt-4">
           You can check out my code on{" "}
-          <a href="https://github.com/benodevelper" target="_blank" rel="noopener noreferrer" className="font-semibold underline decoration-blue-400/30 underline-offset-4 hover:decoration-blue-400 transition-all duration-200">
+          <a href="https://github.com/benodeveloper" target="_blank" rel="noopener noreferrer" className="font-semibold underline decoration-blue-400/30 underline-offset-4 hover:decoration-blue-400 transition-all duration-200">
             GitHub
           </a>
           , or get in touch with me via email at{" "}
