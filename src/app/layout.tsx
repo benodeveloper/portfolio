@@ -20,9 +20,42 @@ const museoModerno = MuseoModerno({
   variable: '--font-museo',
 });
 
+// Advanced SEO Metadata
 export const metadata: Metadata = {
-  title: "Hassan Benadardor | Software Developer",
-  description: "Portfolio, projects, and writings of Hassan Benadardor.",
+  title: "Hassan Benadardor | Full-Stack Software Developer",
+  description: "Portfolio of Hassan Benadardor, a Software Developer based in Morocco specializing in full-stack web and mobile applications.",
+  keywords: [
+    "Hassan Benadardor",
+    "Software Developer",
+    "Full-Stack Developer",
+    "Web Developer",
+    "Mobile Developer",
+    "Morocco"
+  ],
+  authors: [{ name: "Hassan Benadardor" }],
+  creator: "Hassan Benadardor",
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    url: "https://benodeveloper.com", // Update this to your actual domain
+    title: "Hassan Benadardor | Software Developer",
+    description: "Portfolio of Hassan Benadardor, a Software Developer specializing in full-stack web and mobile applications.",
+    siteName: "Hassan Benadardor",
+    images: [
+      {
+        url: "/me.png",
+        width: 800,
+        height: 800,
+        alt: "Hassan Benadardor",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Hassan Benadardor | Software Developer",
+    description: "Portfolio of Hassan Benadardor, a Software Developer specializing in full-stack web and mobile applications.",
+    images: ["/me.png"],
+  },
 };
 
 export default function RootLayout({
@@ -41,8 +74,7 @@ export default function RootLayout({
           {children}
         </div>
 
-        {/* Global Footer */}
-        <footer className="max-w-5xl mx-auto border-t border-white/20 py-8 mt-12">
+        <footer className="max-w-5xl mx-auto border-t border-white/20 py-8 mt-12 w-full">
           <div className="max-w-5xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between text-sm text-white/80 gap-4">
             <p>© {new Date().getFullYear()} Hassan Benadardor. All rights reserved.</p>
           </div>
