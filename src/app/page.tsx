@@ -35,8 +35,7 @@ export default function Home() {
           </p>
           <p>
             During my time as a developer at{" "}
-            <a href="https://www.dicton.ma" target="_blank" rel="noopener noreferrer" className="font-semibold underline decoration-blue-400/30 underline-offset-4 hover:decoration-blue-400 transition-all duration-200">Dicton</a>, I built the management
-            software for the Guelmim Moulay El Hassan Military Hospital.
+            <a href="https://www.dicton.ma" target="_blank" rel="noopener noreferrer" className="font-semibold underline decoration-blue-400/30 underline-offset-4 hover:decoration-blue-400 transition-all duration-200">Dicton</a>, I developed comprehensive management software for a large-scale military hospital.
           </p>
         </div>
 
