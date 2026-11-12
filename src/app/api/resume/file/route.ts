@@ -1,6 +1,5 @@
-import { readFile } from "node:fs/promises";
 import type { NextRequest } from "next/server";
-import { isValidResumeLink, RESUME_DOWNLOAD_NAME, RESUME_FILE } from "@/lib/resume-access";
+import { isValidResumeLink, loadResume, RESUME_DOWNLOAD_NAME } from "@/lib/resume-access";
 
 /** GET ?exp&sig[&download=1] -> streams the private PDF if the signed link is valid and not expired. */
 export async function GET(request: NextRequest) {
@@ -11,15 +10,11 @@ export async function GET(request: NextRequest) {
     return new Response("This link has expired. Please get a new one at /resume.", { status: 403, headers });
   }
 
-  let pdf: Buffer;
-  try {
-    pdf = await readFile(RESUME_FILE);
-  } catch {
-    return new Response("Résumé not available.", { status: 404, headers });
-  }
+  const pdf = await loadResume();
+  if (!pdf) return new Response("Résumé not available.", { status: 404, headers });
 
   const disposition = q.get("download") === "1" ? "attachment" : "inline";
-  return new Response(new Uint8Array(pdf), {
+  return new Response(pdf as BodyInit, {
     headers: {
       ...headers,
       "Content-Type": "application/pdf",

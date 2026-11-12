@@ -85,10 +85,17 @@ Copy `.env.example` to `.env.local` (never commit it) and set the same variables
 | `NEXT_PUBLIC_RECAPTCHA_SITE_KEY` | for the résumé | reCAPTCHA v2 site key (public, read at **build** time). |
 | `RECAPTCHA_SECRET_KEY`           | for the résumé | reCAPTCHA v2 secret key (server only, read at **request** time). |
 | `RESUME_LINK_SECRET`             | optional | Secret used to sign résumé download links. Defaults to `RECAPTCHA_SECRET_KEY`. Generate one with `openssl rand -base64 32`. |
+| `RESUME_GITHUB_REPO`             | in production | Private repo holding the résumé: `benodeveloper/portfolio-private`. |
+| `RESUME_GITHUB_TOKEN`            | in production | Fine-grained GitHub token with **Contents: Read-only** on that repo only. |
+| `RESUME_GITHUB_PATH`             | optional | Path of the PDF in that repo. Defaults to `el-hassan-benadardor-resume.pdf`. |
+| `RESUME_GITHUB_REF`              | optional | Branch, tag or commit to read. Defaults to `main`. |
 
 Create the reCAPTCHA keys at <https://www.google.com/recaptcha/admin>: choose **Challenge (v2) →
 "I'm not a robot" Checkbox** and add your domains (for example `benodeveloper.com` and `localhost`).
 Without the site key, the résumé page shows a friendly "not available" message instead of the captcha.
+
+**Use the secret key for `RECAPTCHA_SECRET_KEY`, not the site key.** They look alike; if they are the
+same, the server logs `RECAPTCHA_SECRET_KEY is set to the SITE key` and downloads are disabled.
 
 ## Project structure
 
@@ -149,15 +156,27 @@ The PDF is never exposed at a public URL. The flow:
                                       { url: /api/resume/file?exp=…&sig=… }   (valid 10 minutes)
                                         │
 GET /api/resume/file?exp&sig[&download=1]  ──▶ checks the HMAC signature and expiry,
-                                               streams private/el-hassan-benadardor-resume.pdf
+                                               loads the PDF (see below) and streams it
 ```
+
+**Where the PDF comes from**
+
+- **Production (Vercel):** from the private GitHub repository
+  [`benodeveloper/portfolio-private`](https://github.com/benodeveloper/portfolio-private), fetched
+  server-side through the GitHub API with `RESUME_GITHUB_TOKEN`. Its README explains how to create the
+  token and update the résumé. Updates are picked up within ~10 minutes without a redeploy.
+- **Local development:** when `RESUME_GITHUB_REPO` / `RESUME_GITHUB_TOKEN` are not set, from
+  `private/el-hassan-benadardor-resume.pdf`.
+
+If neither works, the download returns "Résumé not available." and the server logs why
+(for example `GitHub returned 401`, which means the token is wrong or expired).
 
 - Signatures are HMAC-SHA256 over the expiry time, compared in constant time; changing the expiry or
   the signature invalidates the link.
 - Responses are `Cache-Control: private, no-store` and `X-Robots-Tag: noindex`.
 - `/api/` and `/resume` are disallowed in `robots.txt`, and `/resume` is marked `noindex`.
-- To update the résumé, replace `private/el-hassan-benadardor-resume.pdf` (keep the file name or update
-  `RESUME_FILE` in `src/lib/resume-access.ts`).
+- To update the résumé, push a new PDF to `portfolio-private` (and copy it into `private/` for local
+  development).
 
 ## Private files
 
@@ -165,8 +184,8 @@ GET /api/resume/file?exp&sig[&download=1]  ──▶ checks the HMAC signature a
 
 - Next.js only serves `public/`, so nothing in `private/` has a URL.
 - `private/` is listed in `.gitignore`, so it is never committed or pushed.
-- Because it is not in git, **copy the résumé PDF to `private/` on the server yourself** when deploying
-  (see [Deployment](#deployment)).
+- Because it is not in git, production reads the résumé from the private `portfolio-private`
+  repository instead (see [The résumé download](#the-résumé-download)).
 
 > Files that were committed to `public/` before this change still exist in older git history.
 > Removing them from history requires rewriting it (for example with `git filter-repo`) and force-pushing.
@@ -206,9 +225,8 @@ Any Node.js host that runs `next build` + `next start` works (Vercel, a VPS, Doc
 
 1. Set the [environment variables](#environment-variables). `NEXT_PUBLIC_RECAPTCHA_SITE_KEY` must be
    present **at build time**.
-2. Put the résumé PDF at `private/el-hassan-benadardor-resume.pdf` on the server. It is not in git.
-   On platforms that only deploy what is in the repository (such as Vercel), the résumé download will
-   return "not available" until the file is provided by another means.
+2. Set `RESUME_GITHUB_REPO` and `RESUME_GITHUB_TOKEN` so the server can load the résumé from the
+   private repository. (On a VPS you can instead copy the PDF to `private/` on the server.)
 3. Build and start:
 
    ```bash
@@ -217,8 +235,8 @@ Any Node.js host that runs `next build` + `next start` works (Vercel, a VPS, Doc
    npm run start
    ```
 
-`next.config.ts` traces `private/*.pdf` into the `/api/resume/file` route, so standalone/serverless
-output includes the file when it is present at build time.
+`next.config.ts` traces `private/*.pdf` into the `/api/resume/file` route, so a build made where that
+file exists (for example on your own server) includes it.
 
 ## Testing on a phone
 
