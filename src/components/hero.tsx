@@ -33,10 +33,11 @@ export default function Hero() {
             </div>
 
             <p className="soak text-lg md:text-xl max-w-2xl leading-relaxed">
-              A <span className="highlight-ink font-bold">Software Developer</span> at Doctori, and a passionate
-              builder of full-stack web and mobile applications. I hold a Diploma in Software Development, as well as a
-              Diploma in IT Systems Maintenance and Network Support from{" "}
-              <span className="highlight-ink font-bold">Morocco</span>.
+              A <span className="highlight-ink font-bold">Lead Software Developer</span> at go-digital, based in{" "}
+              <span className="highlight-ink font-bold">Agadir, Morocco</span>. For almost seven years I have built and
+              led web platforms with Laravel, React and Next.js, from the data model to deployment on Docker, AWS and
+              CI/CD. Before that: Doctori, Grafimage, and a Linux and networking background that still shapes how I
+              tune performance.
             </p>
           </div>
 

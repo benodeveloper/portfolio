@@ -1,91 +1,61 @@
-import { ExternalLink, FolderGit2 } from 'lucide-react';
+import type { Metadata } from "next";
+import CtaBox from "@/components/cta-box";
+import Reveal from "@/components/reveal";
+import SectionHead from "@/components/section-head";
+import { projects, type Project } from "@/data/projects";
 
-// We map through an array so it is incredibly easy for you to add new projects later.
-const projects = [
-  {
-    title: 'Revoo',
-    description: 'A robust multi-store management application handling infrastructure, project billing cycles, and security monitoring. Deployed with continuous integration workflows.',
-    tech: ['Next.js', 'Supabase', 'Clerk', 'Netlify'],
-    github: '#',
-    live: 'https://revoo.cloud', // Replace with actual link if public
-  },
-  {
-    title: 'RoadRed',
-    description: 'A comprehensive logistics and fleet management platform. Features include driver registration workflows, real-time notification systems, and secure document verification.',
-    tech: ['Frontend', 'Backend Logic', 'CI/CD'],
-    github: '#',
-    live: '#',
-  },
-  {
-    title: 'Tadix',
-    description: 'A mobile game integrating a sleek, fintech-inspired user interface. Designed with complex login screens and dynamic dashboards that mimic modern crypto and trading applications.',
-    tech: ['Flutter', 'Mobile UI/UX', 'Dart'],
-    github: '#',
-    live: '#',
-  }
-];
+export const metadata: Metadata = {
+  title: "Projects | Hassan Benadardor",
+  description: "Platforms, products and open-source projects built by Hassan Benadardor.",
+};
 
-export default function Projects() {
-  return (
-    <main className="max-w-4xl mx-auto mt-16 px-6 md:px-0 mb-20">
-
-      {/* Page Header */}
-      <div className="mb-12">
-        <h1 className="text-3xl md:text-4xl font-bold tracking-tight mb-4">
-          Projects
-        </h1>
-        <p className="text-lg text-white/80 max-w-2xl leading-relaxed">
-          A selection of applications and platforms I have architected. From complex logistics management to multi-tenant architectures and mobile interfaces.
-        </p>
+function Card({ project }: { project: Project }) {
+  const body = (
+    <>
+      <div className="thumb" aria-hidden="true">
+        <span className="glyph">{project.glyph}</span>
+        {project.href && <span className="peek">View project</span>}
       </div>
+      <div className="p-6 space-y-4">
+        <div className="flex items-start justify-between gap-4">
+          <h2 className="font-display text-2xl uppercase">{project.title}</h2>
+          <span className="chip solid shrink-0">{project.context}</span>
+        </div>
+        <p className="text-sm leading-relaxed">{project.blurb}</p>
+        <ul className="flex flex-wrap gap-2">
+          {project.tags.map((t) => (
+            <li key={t} className="chip">{t}</li>
+          ))}
+        </ul>
+      </div>
+    </>
+  );
 
-      {/* Projects Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        {projects.map((project, index) => (
-          <div
-            key={index}
-            className="group relative flex flex-col border border-slate-200 rounded-2xl p-6 shadow-sm transition-all duration-300"
-          >
-            {/* Top Row: Folder Icon & Action Links */}
-            <div className="flex items-start justify-between mb-6">
-              <div className="w-10 h-10  rounded-lg flex items-center justify-center">
-                <FolderGit2 className="w-5 h-5" />
-              </div>
-              <div className="flex items-center gap-3">
-                <a href={project.github} className="transition-colors" aria-label="GitHub Repository">
-                  <span className="w-5 h-5" />
-                </a>
-                <a href={project.live} className="transition-colors" aria-label="Live Demo">
-                  <ExternalLink className="w-5 h-5" />
-                </a>
-              </div>
-            </div>
+  return project.href ? (
+    <a href={project.href} target="_blank" rel="noreferrer" className="card block h-full" aria-label={`Open ${project.title}`}>
+      {body}
+    </a>
+  ) : (
+    <div className="card h-full">{body}</div>
+  );
+}
 
-            {/* Content: Title & Description */}
-            <div className="grow mb-6">
-              <h2 className="text-xl font-bold mb-2 transition-colors">
-                {project.title}
-              </h2>
-              <p className="text-sm leading-relaxed">
-                {project.description}
-              </p>
-            </div>
-
-            {/* Bottom Row: Tech Stack Tags */}
-            <ul className="flex flex-wrap items-center gap-2 mt-auto">
-              {project.tech.map((tech, techIndex) => (
-                <li
-                  key={techIndex}
-                  className="px-2.5 py-1 border border-slate-200 rounded-md text-xs font-mono font-medium"
-                >
-                  {tech}
-                </li>
-              ))}
-            </ul>
-          </div>
+export default function ProjectsPage() {
+  return (
+    <section className="pt-24 pb-16">
+      <SectionHead
+        num="02"
+        title="Projects"
+        intro="Client platforms, products and side projects. Cards with a link open the live project or repository."
+      />
+      <div className="grid gap-8 md:grid-cols-2">
+        {projects.map((project, i) => (
+          <Reveal key={project.title} delay={(i % 2) * 0.1}>
+            <Card project={project} />
+          </Reveal>
         ))}
       </div>
-
-    </main>
+      <CtaBox title="Have something in mind?" body="I am always interested in thoughtful product work, especially projects that mix strong interfaces with solid engineering." />
+    </section>
   );
 }

@@ -58,6 +58,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
   return (
     <html lang="en" className={`${spaceMono.variable} ${specialElite.variable}`}>
       <body className="font-sans antialiased relative overflow-x-hidden min-h-screen">
+        <noscript><style>{".reveal{opacity:1;filter:none;transform:none}"}</style></noscript>
         <InkFilters />
         <InkBackground />
         <ClickSplat />
