@@ -10,7 +10,8 @@ export const site = {
   github: "https://github.com/benodeveloper",
   email: "listoun.developer@gmail.com",
   linkedin: "https://www.linkedin.com/in/benodeveloper/",
-  resume: "/el-hassan-benadardor-resume.pdf",
+  // the PDF itself lives in /private and is only served after a reCAPTCHA check on this page
+  resume: "/resume",
 } as const;
 
 export const navLinks = [

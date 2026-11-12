@@ -24,14 +24,13 @@ export default function InkButton({ variant = "light", className, onPointerEnter
   };
 
   const external = typeof href === "string" && /^(https?:|mailto:)/.test(href);
-  const isFile = typeof href === "string" && /\.(pdf|tex)$/.test(href);
 
   return (
     <Link
       href={href}
       className={cn(variants[variant], className)}
       onPointerEnter={handlePointerEnter}
-      {...(external || isFile ? { target: "_blank", rel: "noreferrer" } : {})}
+      {...(external ? { target: "_blank", rel: "noreferrer" } : {})}
       {...props}
     />
   );

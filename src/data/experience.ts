@@ -8,7 +8,7 @@ export type Experience = {
   points: string[];
 };
 
-/** Newest first, by start date. Source: public/el-hassan-benadardor-resume.tex */
+/** Newest first, by start date. Source: private/el-hassan-benadardor-resume.tex */
 export const experiences: Experience[] = [
   {
     period: "May 2026 — Sep 2026",

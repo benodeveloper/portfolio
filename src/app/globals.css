@@ -727,36 +727,6 @@ a.card:hover .thumb .peek { opacity: 1; transform: translateY(0); }
 .md th { background: var(--ink); color: var(--paper); font-family: var(--font-display); }
 .md img { max-width: 100%; border: 2.5px solid var(--ink); border-radius: var(--wobble-sm); }
 
-/* forms */
-.field label, legend { display: block; font-family: var(--font-display); font-weight: 700; font-size: 0.95rem; margin-bottom: 0.4rem; }
-.field input, .field textarea {
-  width: 100%;
-  background: var(--paper);
-  border: 2.5px solid var(--ink);
-  border-radius: var(--wobble-sm);
-  padding: 0.8rem 1rem;
-  font: inherit;
-  outline: none;
-  transition: box-shadow 0.25s, transform 0.25s;
-}
-.field input:focus, .field textarea:focus { box-shadow: var(--shadow-hard); transform: translate(-2px, -2px); }
-.radio-chip { position: relative; }
-.radio-chip input { position: absolute; opacity: 0; pointer-events: none; }
-.radio-chip span {
-  display: inline-block;
-  border: 2px solid var(--ink);
-  border-radius: var(--wobble);
-  padding: 0.35rem 0.95rem;
-  font-weight: 600;
-  font-size: 0.85rem;
-  cursor: pointer;
-  background: var(--paper);
-  transition: 0.25s var(--ease-bounce);
-}
-.radio-chip span:hover { transform: translate(-2px, -2px); box-shadow: 3px 3px 0 var(--ink); }
-.radio-chip input:checked + span { background: var(--ink); color: var(--paper); transform: scale(1.06); }
-.radio-chip input:focus-visible + span { outline: 2px dashed var(--ink); outline-offset: 3px; }
-
 /* scroll reveal (components/reveal.tsx) */
 .reveal {
   opacity: 0;

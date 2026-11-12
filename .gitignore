@@ -32,6 +32,7 @@ yarn-error.log*
 
 # env files (can opt-in for committing if needed)
 .env*
+!.env.example
 
 # vercel
 .vercel
@@ -39,3 +40,7 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# private documents (résumé, LaTeX source, personal photos): never served, never committed.
+# The résumé is delivered only through the reCAPTCHA-gated /resume page (src/app/api/resume).
+/private/

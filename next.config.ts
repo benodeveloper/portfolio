@@ -6,6 +6,10 @@ const nextConfig: NextConfig = {
   // against `next dev` via the machine's LAN IP. Without this the page renders but never
   // hydrates, so nothing interactive works. Dev-only: has no effect on production builds.
   allowedDevOrigins: ["192.168.*.*"],
+  // The résumé PDF is read from /private at request time; make sure it ships with the server build.
+  outputFileTracingIncludes: {
+    "/api/resume/file": ["./private/*.pdf"],
+  },
 };
 
 // MDX content lives in /content (blog posts and projects), not in /app, so no pageExtensions

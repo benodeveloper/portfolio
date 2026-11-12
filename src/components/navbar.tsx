@@ -117,9 +117,9 @@ export default function Navbar({ links }: { links: NavLink[] }) {
               </li>
             ))}
             <li>
-              <a href={site.resume} target="_blank" rel="noreferrer" className="nl">
+              <Link href={site.resume} className="nl" aria-current={isActive(site.resume) ? "page" : undefined}>
                 Résumé
-              </a>
+              </Link>
             </li>
           </ul>
 
@@ -173,8 +173,7 @@ export default function Navbar({ links }: { links: NavLink[] }) {
           <nav className="relative" aria-label="Mobile">
             <ul className="space-y-1">
               {[...links, { href: site.resume, label: "Résumé" }].map(({ href, label }, i) => {
-                const external = href === site.resume;
-                const active = !external && isActive(href);
+                const active = isActive(href);
                 return (
                   <li key={href} className="menu-item" style={{ "--i": i } as React.CSSProperties}>
                     <Link
@@ -182,7 +181,6 @@ export default function Navbar({ links }: { links: NavLink[] }) {
                       className="menu-link"
                       aria-current={active ? "page" : undefined}
                       onClick={() => closeMenu(false)}
-                      {...(external && { target: "_blank", rel: "noreferrer" })}
                     >
                       <span className="menu-num">{String(i + 1).padStart(2, "0")}</span>
                       <span className={active ? "highlight-ink" : undefined}>{label}</span>
