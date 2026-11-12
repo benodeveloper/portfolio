@@ -5,7 +5,7 @@ import CtaBox from "@/components/cta-box";
 import InkButton from "@/components/ink-button";
 import JsonLd from "@/components/json-ld";
 import { absoluteUrl, formatDate, getProject, getProjects } from "@/lib/content";
-import { site } from "@/lib/site";
+import { ogImage, site } from "@/lib/site";
 
 export const dynamicParams = false;
 
@@ -22,8 +22,8 @@ export async function generateMetadata({ params }: PageProps<"/projects/[slug]">
     description: project.description,
     keywords: project.tags,
     alternates: { canonical: url },
-    openGraph: { title: project.title, description: project.description, url },
-    twitter: { title: project.title, description: project.description },
+    openGraph: { images: [ogImage], title: project.title, description: project.description, url },
+    twitter: { card: "summary_large_image", images: [ogImage.url], title: project.title, description: project.description },
   };
 }
 

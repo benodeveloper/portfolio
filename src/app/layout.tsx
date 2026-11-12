@@ -57,13 +57,12 @@ export const metadata: Metadata = {
     title: site.title,
     description: site.description,
     siteName: site.name,
-    images: [{ url: "/me-character.png", width: 2048, height: 2048, alt: `Ink illustration of ${site.name}` }],
+    // image: src/app/opengraph-image.png (+ .alt.txt), applied to every page by the file convention
   },
   twitter: {
-    card: "summary",
+    card: "summary_large_image",
     title: site.title,
     description: site.description,
-    images: ["/me-character.png"],
   },
 };
 

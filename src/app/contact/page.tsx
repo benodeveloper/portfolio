@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import ContactForm from "@/components/contact-form";
 import Reveal from "@/components/reveal";
 import SectionHead from "@/components/section-head";
-import { site } from "@/lib/site";
+import { ogImage, site } from "@/lib/site";
 
 const description =
   "Get in touch with Hassan Benadardor about web platforms, architecture, technical leadership or mobile apps.";
@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   title: "Contact",
   description,
   alternates: { canonical: "/contact" },
-  openGraph: { title: "Contact", description, url: "/contact" },
+  openGraph: { images: [ogImage], title: "Contact", description, url: "/contact" },
 };
 
 

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { ogImage } from "@/lib/site";
 import CtaBox from "@/components/cta-box";
 import Reveal from "@/components/reveal";
 import SectionHead from "@/components/section-head";
@@ -11,7 +12,7 @@ export const metadata: Metadata = {
   title: "Experience",
   description,
   alternates: { canonical: "/experience" },
-  openGraph: { title: "Experience", description, url: "/experience" },
+  openGraph: { images: [ogImage], title: "Experience", description, url: "/experience" },
 };
 
 

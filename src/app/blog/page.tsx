@@ -5,7 +5,7 @@ import InkButton from "@/components/ink-button";
 import Reveal from "@/components/reveal";
 import SectionHead from "@/components/section-head";
 import { formatDate, getPosts } from "@/lib/content";
-import { site } from "@/lib/site";
+import { ogImage, site } from "@/lib/site";
 
 const description = "Notes on building web platforms, product engineering and the craft of shipping software.";
 
@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   title: "Blog",
   description,
   alternates: { canonical: "/blog" },
-  openGraph: { title: "Blog", description, url: "/blog" },
+  openGraph: { images: [ogImage], title: "Blog", description, url: "/blog" },
 };
 
 export default function BlogPage() {

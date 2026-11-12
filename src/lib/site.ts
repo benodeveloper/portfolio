@@ -20,3 +20,15 @@ export const navLinks = [
   { href: "/experience", label: "Experience" },
   { href: "/contact", label: "Contact" },
 ] as const;
+
+/**
+ * Social preview image (src/app/opengraph-image.png). Next applies it automatically only to pages
+ * that don't set their own `openGraph`/`twitter` metadata, because a page's object replaces the
+ * parent's instead of merging, so pages that customise them must pass it explicitly.
+ */
+export const ogImage = {
+  url: "/opengraph-image.png",
+  width: 1200,
+  height: 630,
+  alt: "Ink illustration of Hassan Benadardor at his desk, typing on a laptop",
+};

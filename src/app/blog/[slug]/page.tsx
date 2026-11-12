@@ -4,7 +4,7 @@ import { notFound } from "next/navigation";
 import CtaBox from "@/components/cta-box";
 import JsonLd from "@/components/json-ld";
 import { absoluteUrl, formatDate, getPost, getPosts } from "@/lib/content";
-import { site } from "@/lib/site";
+import { ogImage, site } from "@/lib/site";
 
 export const dynamicParams = false;
 
@@ -22,6 +22,7 @@ export async function generateMetadata({ params }: PageProps<"/blog/[slug]">): P
     keywords: post.tags,
     alternates: { canonical: url },
     openGraph: {
+      images: [ogImage],
       type: "article",
       title: post.title,
       description: post.description,
@@ -31,7 +32,7 @@ export async function generateMetadata({ params }: PageProps<"/blog/[slug]">): P
       authors: [site.name],
       tags: post.tags,
     },
-    twitter: { title: post.title, description: post.description },
+    twitter: { card: "summary_large_image", images: [ogImage.url], title: post.title, description: post.description },
   };
 }
 

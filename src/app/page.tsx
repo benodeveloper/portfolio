@@ -18,7 +18,7 @@ export default function Home() {
               worksFor: { "@type": "Organization", name: site.employer },
               address: { "@type": "PostalAddress", addressLocality: site.location.city, addressCountry: site.location.countryCode },
               url: site.url,
-              image: `${site.url}/me-character.png`,
+              image: `${site.url}/linkedin-profile-photo.png`,
               email: `mailto:${site.email}`,
               sameAs: [site.github, site.linkedin],
               knowsAbout: ["Laravel", "PHP", "React", "Next.js", "TypeScript", "Spring Boot", "Flutter", "Docker", "AWS"],

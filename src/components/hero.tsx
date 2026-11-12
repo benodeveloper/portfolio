@@ -56,7 +56,7 @@ export default function Hero() {
         </div>
 
         {/* Illustrated avatar on a halftone patch, surrounded by doodles */}
-        <div className="relative w-72 h-72 md:w-[26rem] md:h-[26rem] shrink-0">
+        <div className="group relative w-72 h-72 md:w-[26rem] md:h-[26rem] shrink-0">
           <div className="splat absolute inset-0">
             <div className="shade -right-[4%] -top-[2%] w-[48%] h-[42%]" aria-hidden="true" />
             <div className="shade -left-[6%] bottom-[2%] w-[52%] h-[46%]" style={{ animationDelay: "-4s" }} aria-hidden="true" />
@@ -70,18 +70,43 @@ export default function Hero() {
           <Motion className="w-10 top-1/2 -right-6" delay={0.9} />
           <Star className="w-4 bottom-1/4 -right-2" delay={1} wiggle={-18} />
 
-          <div className="polaroid relative w-full h-full mix-blend-multiply">
-            <div className="bob w-full h-full">
-              <Image
-                src="/me-character.png"
-                alt="Ink illustration of Hassan"
-                width={720}
-                height={720}
-                priority
-                className="w-full h-full object-contain transition-transform duration-500 hover:-rotate-3 hover:scale-[1.03]"
-              />
+          {/* On hover the ink character steps aside... */}
+          <div className="ink-face relative w-full h-full mix-blend-multiply">
+            <div className="polaroid w-full h-full">
+              <div className="bob w-full h-full">
+                <Image
+                  src="/me-character.png"
+                  alt="Ink illustration of Hassan"
+                  width={720}
+                  height={720}
+                  priority
+                  className="w-full h-full object-contain"
+                />
+              </div>
             </div>
           </div>
+
+          {/* ...and a framed photo springs up. Only the frame animates; the photo itself is untouched. */}
+          <figure className="photo-canvas" aria-hidden="true">
+            <div className="canvas-sway">
+              <div className="card canvas-frame">
+                <span className="canvas-tape -left-5 -top-2 -rotate-[32deg]" />
+                <span className="canvas-tape -right-5 -top-2 rotate-[28deg]" />
+                <Image
+                  src="/linkedin-profile-photo.png"
+                  alt=""
+                  width={600}
+                  height={750}
+                  sizes="(min-width: 768px) 320px, 224px"
+                  className="canvas-photo"
+                />
+                <figcaption className="canvas-caption">Hi, the real me!</figcaption>
+              </div>
+              <Sparkle className="canvas-pop -left-9 top-6 w-10" delay={-0.9} />
+              <Star className="canvas-pop -right-7 bottom-16 w-6" delay={-0.9} wiggle={18} />
+              <Star className="canvas-pop right-8 -top-8 w-4" delay={-0.9} wiggle={-18} />
+            </div>
+          </figure>
           <Ground className="-bottom-3 -left-[6%] w-[112%] h-6" delay={0.3} />
         </div>
       </div>

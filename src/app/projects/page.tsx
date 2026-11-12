@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { ogImage } from "@/lib/site";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import CtaBox from "@/components/cta-box";
@@ -12,7 +13,7 @@ export const metadata: Metadata = {
   title: "Projects",
   description,
   alternates: { canonical: "/projects" },
-  openGraph: { title: "Projects", description, url: "/projects" },
+  openGraph: { images: [ogImage], title: "Projects", description, url: "/projects" },
 };
 
 export default function ProjectsPage() {
