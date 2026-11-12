@@ -18,7 +18,7 @@ function Card({ project }: { project: Project }) {
       </div>
       <div className="p-6 space-y-4">
         <div className="flex items-start justify-between gap-4">
-          <h2 className="font-display text-2xl uppercase">{project.title}</h2>
+          <h2 className="font-display text-2xl font-bold">{project.title}</h2>
           <span className="chip solid shrink-0">{project.context}</span>
         </div>
         <p className="text-sm leading-relaxed">{project.blurb}</p>

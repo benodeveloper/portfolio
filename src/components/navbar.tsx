@@ -55,7 +55,7 @@ export default function Navbar() {
 
           <button
             type="button"
-            className="md:hidden grid place-items-center w-10 h-10 rounded-full bg-white text-black font-bold"
+            className="md:hidden grid place-items-center w-10 h-10 rounded-full border-2 border-ink bg-paper text-ink font-bold"
             aria-label="Open menu"
             aria-controls="overlay"
             aria-expanded={open}
@@ -72,7 +72,7 @@ export default function Navbar() {
             <span className="logo"><span className="blot"><Image src="/me-icon.png" alt="" width={40} height={40} className="w-full h-full object-cover" /></span></span>
             <button
               type="button"
-              className="w-10 h-10 rounded-full bg-white text-black font-bold"
+              className="w-10 h-10 rounded-full border-2 border-ink bg-paper text-ink font-bold"
               aria-label="Close menu"
               onClick={() => setOpen(false)}
             >
@@ -80,7 +80,7 @@ export default function Navbar() {
             </button>
           </div>
 
-          <nav className="space-y-4 font-display uppercase text-3xl" aria-label="Mobile">
+          <nav className="space-y-4 font-display text-3xl" aria-label="Mobile">
             {navLinks.map(({ href, label }) => (
               <Link
                 key={href}

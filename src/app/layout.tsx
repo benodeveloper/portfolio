@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Space_Mono, Special_Elite } from "next/font/google";
+import { Instrument_Sans, Shantell_Sans } from "next/font/google";
 import "./globals.css";
 import ClickSplat from "@/components/click-splat";
 import InkBackground from "@/components/ink-background";
@@ -7,20 +7,19 @@ import InkFilters from "@/components/ink-filters";
 import Navbar from "@/components/navbar";
 import { site } from "@/lib/site";
 
-const spaceMono = Space_Mono({
+const instrument = Instrument_Sans({
   subsets: ["latin"],
-  weight: ["400", "700"],
-  variable: "--font-space-mono",
+  variable: "--font-instrument",
 });
 
-const specialElite = Special_Elite({
+const shantell = Shantell_Sans({
   subsets: ["latin"],
-  weight: "400",
-  variable: "--font-special-elite",
+  weight: ["400", "600", "700", "800"],
+  variable: "--font-shantell",
 });
 
 export const viewport: Viewport = {
-  themeColor: "#f1e9d6",
+  themeColor: "#ffffff",
 };
 
 export const metadata: Metadata = {
@@ -56,7 +55,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className={`${spaceMono.variable} ${specialElite.variable}`}>
+    <html lang="en" className={`${instrument.variable} ${shantell.variable}`}>
       <body className="font-sans antialiased relative overflow-x-hidden min-h-screen">
         <noscript><style>{".reveal{opacity:1;filter:none;transform:none}"}</style></noscript>
         <InkFilters />

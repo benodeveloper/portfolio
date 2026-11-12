@@ -45,7 +45,7 @@ export default function ClickSplat() {
           viewBox="0 0 120 120"
           aria-hidden="true"
         >
-          <g fill="#0d0d0f" filter="url(#rough)">
+          <g fill="var(--ink)" filter="url(#rough)">
             <path d="M60 8c10 0 14 12 22 14 12 2 28-2 30 10 2 10-10 16-8 26 2 12 14 22 4 32-8 8-20 0-30 6-10 6-14 20-26 16-12-4-8-18-14-28-6-10-22-12-20-26 2-12 18-8 26-14 8-6 6-22 16-34z" />
             <circle cx="20" cy="30" r="3" />
             <circle cx="100" cy="90" r="4" />

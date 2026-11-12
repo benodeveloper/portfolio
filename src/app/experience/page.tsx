@@ -21,8 +21,8 @@ export default function ExperiencePage() {
             <div className="dot" aria-hidden="true" />
             <Reveal>
               <span className={`chip mb-2 ${exp.kind === "Education" ? "" : "solid"}`}>{exp.kind}</span>
-              <p className="font-display text-sm uppercase opacity-60">{exp.period}</p>
-              <h2 className="font-display text-2xl md:text-3xl uppercase mt-2">{exp.role}</h2>
+              <p className="font-display text-sm opacity-60">{exp.period}</p>
+              <h2 className="font-display text-2xl md:text-3xl font-bold mt-2">{exp.role}</h2>
               <p className="mt-2 font-bold">
                 {exp.href ? (
                   <a href={exp.href} target="_blank" rel="noreferrer" className="underline underline-offset-4">

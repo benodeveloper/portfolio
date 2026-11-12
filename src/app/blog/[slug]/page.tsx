@@ -32,7 +32,7 @@ export default async function PostPage({ params }: PageProps<"/blog/[slug]">) {
           <span className="chip solid">{post.tag}</span>
           <span className="chip">{formatDate(post.date)}</span>
         </div>
-        <h1 className="mt-5 font-display text-4xl md:text-6xl font-bold uppercase tracking-tighter">{post.title}</h1>
+        <h1 className="mt-5 font-display text-4xl md:text-6xl font-extrabold tracking-tight">{post.title}</h1>
         <p className="soak mt-4 text-lg leading-relaxed">{post.excerpt}</p>
       </header>
 

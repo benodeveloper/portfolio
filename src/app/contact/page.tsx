@@ -24,7 +24,7 @@ export default function ContactPage() {
         <aside className="space-y-6">
           <Reveal>
             <div className="card p-6">
-              <p className="font-display text-xl uppercase">Direct</p>
+              <p className="font-display text-xl font-bold">Direct</p>
               <a className="mt-3 block break-all underline" href={`mailto:${site.email}`}>{site.email}</a>
               <a className="mt-2 block underline" href={site.github} target="_blank" rel="noreferrer">github.com/benodeveloper</a>
               <a className="mt-2 block underline" href={site.linkedin} target="_blank" rel="noreferrer">linkedin.com/in/benodeveloper</a>
@@ -33,13 +33,13 @@ export default function ContactPage() {
           </Reveal>
           <Reveal delay={0.1}>
             <div className="card p-6">
-              <p className="font-display text-xl uppercase">Based in</p>
+              <p className="font-display text-xl font-bold">Based in</p>
               <p className="mt-3 text-sm leading-relaxed">Agadir, Morocco. Working with teams remotely.</p>
             </div>
           </Reveal>
           <Reveal delay={0.2}>
             <div className="card p-6">
-              <p className="font-display text-xl uppercase">Good fits</p>
+              <p className="font-display text-xl font-bold">Good fits</p>
               <ul className="mt-3 space-y-2 text-sm list-[square] pl-5">
                 <li>Laravel, React and Next.js platforms</li>
                 <li>Architecture and technical leadership</li>

@@ -27,7 +27,7 @@ export default function BlogPage() {
                 <span className="chip solid">{post.tag}</span>
                 <span className="chip">{formatDate(post.date)}</span>
               </div>
-              <h2 className="font-display text-2xl md:text-3xl uppercase">{post.title}</h2>
+              <h2 className="font-display text-2xl font-bold md:text-3xl">{post.title}</h2>
               <p className="max-w-2xl text-sm leading-relaxed">{post.excerpt}</p>
             </div>
             <span className="arrow text-3xl" aria-hidden="true">→</span>
@@ -38,7 +38,7 @@ export default function BlogPage() {
       <div className="mt-12 grid gap-6 md:grid-cols-2">
         <Reveal>
           <div className="card p-6 h-full">
-            <p className="font-display text-xl uppercase">Follow along</p>
+            <p className="font-display text-xl font-bold">Follow along</p>
             <p className="mt-3 text-sm leading-relaxed">
               New notes land on GitHub first. Follow the work there or reach out if you want to compare notes.
             </p>
@@ -47,7 +47,7 @@ export default function BlogPage() {
         </Reveal>
         <Reveal delay={0.1}>
           <div className="card p-6 h-full">
-            <p className="font-display text-xl uppercase">Have a topic in mind?</p>
+            <p className="font-display text-xl font-bold">Have a topic in mind?</p>
             <p className="mt-3 text-sm leading-relaxed">I am happy to write about a problem you are working through. Send it over.</p>
             <InkButton href="/contact" variant="dark" className="mt-6">Get in touch</InkButton>
           </div>
