@@ -4,10 +4,16 @@ import Reveal from "@/components/reveal";
 import SectionHead from "@/components/section-head";
 import { experiences } from "@/data/experience";
 
+const description =
+  "Where Hassan Benadardor has worked and studied, from IT support to leading development teams: go-digital, Doctori, Grafimage and more.";
+
 export const metadata: Metadata = {
-  title: "Experience | Hassan Benadardor",
-  description: "Where Hassan Benadardor has worked and studied: a timeline from 2015 to today.",
+  title: "Experience",
+  description,
+  alternates: { canonical: "/experience" },
+  openGraph: { title: "Experience", description, url: "/experience" },
 };
+
 
 export default function ExperiencePage() {
   return (

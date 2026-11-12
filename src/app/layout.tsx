@@ -5,6 +5,7 @@ import ClickSplat from "@/components/click-splat";
 import InkBackground from "@/components/ink-background";
 import InkFilters from "@/components/ink-filters";
 import Navbar from "@/components/navbar";
+import { getNavLinks } from "@/lib/content";
 import { site } from "@/lib/site";
 
 const instrument = Instrument_Sans({
@@ -24,11 +25,24 @@ export const viewport: Viewport = {
 
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
-  title: site.title,
+  title: { default: site.title, template: `%s | ${site.name}` },
   description: site.description,
-  keywords: ["Hassan Benadardor", "Software Developer", "Full-Stack Developer", "Web Developer", "Mobile Developer", "Morocco"],
-  authors: [{ name: site.name }],
+  applicationName: site.name,
+  keywords: [
+    "Hassan Benadardor",
+    "El-Hassan Benadardor",
+    "Lead Software Developer",
+    "Full-Stack Developer",
+    "Laravel Developer",
+    "React Developer",
+    "Next.js Developer",
+    "Agadir",
+    "Morocco",
+  ],
+  authors: [{ name: site.name, url: site.url }],
   creator: site.name,
+  alternates: { canonical: "/" },
+  robots: { index: true, follow: true, googleBot: { index: true, follow: true, "max-image-preview": "large" } },
   icons: {
     icon: [
       { url: "/favicon-16x16.png", sizes: "16x16", type: "image/png" },
@@ -39,11 +53,11 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: site.url,
+    url: "/",
     title: site.title,
     description: site.description,
     siteName: site.name,
-    images: [{ url: "/me-character.png", width: 2048, height: 2048, alt: site.name }],
+    images: [{ url: "/me-character.png", width: 2048, height: 2048, alt: `Ink illustration of ${site.name}` }],
   },
   twitter: {
     card: "summary",
@@ -53,6 +67,7 @@ export const metadata: Metadata = {
   },
 };
 
+
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en" className={`${instrument.variable} ${shantell.variable}`}>
@@ -61,7 +76,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         <InkFilters />
         <InkBackground />
         <ClickSplat />
-        <Navbar />
+        <Navbar links={getNavLinks()} />
         <main className="relative z-10 max-w-6xl mx-auto px-6 py-12 md:px-16">{children}</main>
       </body>
     </html>

@@ -283,7 +283,7 @@ body {
 .nl[aria-current="page"]::after { transform: scaleX(1); }
 
 .cta {
-  display: none;
+  display: inline-flex;
   align-items: center;
   position: relative;
   overflow: hidden;
@@ -299,7 +299,6 @@ body {
   background: var(--ink);
   transition: color 0.3s;
 }
-@media (min-width: 640px) { .cta { display: inline-flex; } }
 .cta::before {
   content: "";
   position: absolute;
@@ -316,17 +315,85 @@ body {
 .cta:hover { color: var(--ink); }
 .cta:hover::before { width: 300px; height: 300px; }
 
+/* ---------- mobile menu ---------- */
+
+.menu-btn {
+  display: grid;
+  place-items: center;
+  width: 2.6rem;
+  height: 2.6rem;
+  border: 2px solid var(--ink);
+  border-radius: 50% 45% 55% 48% / 52% 50% 48% 50%;
+  background: var(--paper);
+  color: var(--ink);
+  transition: transform 0.3s var(--ease-bounce), background-color 0.2s, color 0.2s;
+}
+.menu-btn:hover { transform: rotate(-8deg) scale(1.06); }
+.menu-btn:active { background: var(--ink); color: var(--paper); }
+.menu-btn:hover .burger path:nth-child(2) { transform: translateX(3px); }
+.burger path { transition: transform 0.3s var(--ease-bounce); }
+@media (min-width: 768px) { #nav .menu-btn { display: none; } } /* burger is mobile-only */
+
 #overlay {
   position: fixed;
   inset: 0;
   z-index: 90;
+  overflow-x: hidden;
+  overflow-y: auto;
+  overscroll-behavior: contain;
   background: var(--paper);
   color: var(--ink);
-  padding: 1.5rem;
+  padding: 1.25rem 1.5rem 2rem;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  gap: 2rem;
 }
+/* ink circle grows out of the burger button, and shrinks back into it */
+#overlay[data-state="open"] { animation: menu-in 0.55s var(--ease-ink) both; }
+#overlay[data-state="closing"] { animation: menu-out 0.32s cubic-bezier(0.6, 0, 0.8, 0.4) both; }
+@media (min-width: 768px) { #overlay { display: none; } }
+
+@keyframes menu-in {
+  from { clip-path: circle(0px at var(--ox) var(--oy)); }
+  to { clip-path: circle(150vmax at var(--ox) var(--oy)); }
+}
+@keyframes menu-out {
+  from { clip-path: circle(150vmax at var(--ox) var(--oy)); }
+  to { clip-path: circle(0px at var(--ox) var(--oy)); }
+}
+@keyframes menu-item {
+  from { opacity: 0; transform: translateY(28px) rotate(-3deg); filter: blur(4px); }
+  to { opacity: 1; transform: none; filter: none; }
+}
+
+.menu-item {
+  opacity: 0;
+  animation: menu-item 0.6s var(--ease-pop) both;
+  animation-delay: calc(0.15s + var(--i) * 55ms);
+}
+.menu-link {
+  display: flex;
+  align-items: baseline;
+  gap: 0.9rem;
+  padding: 0.3rem 0;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(2.2rem, 11vw, 3.2rem);
+  line-height: 1.15;
+  transition: transform 0.3s var(--ease-bounce);
+}
+.menu-link:hover, .menu-link:focus-visible { transform: translateX(8px) rotate(-1deg); }
+.menu-link[aria-current="page"] .highlight-ink { text-decoration-thickness: 2.5px; text-underline-offset: 10px; }
+.menu-num {
+  min-width: 1.8rem;
+  font-family: var(--font-sans);
+  font-size: 0.8rem;
+  font-weight: 600;
+  opacity: 0.55;
+}
+.menu-chip { padding: 0.35rem 0.9rem; font-size: 0.85rem; transition: transform 0.25s var(--ease-bounce), background-color 0.2s, color 0.2s; }
+.menu-chip:hover { transform: translate(-2px, -2px) rotate(-2deg); background: var(--ink); color: var(--paper); }
 
 /* ============================================
    HERO
@@ -480,6 +547,10 @@ body {
 ============================================ */
 
 .sec-head { display: flex; align-items: flex-end; gap: 1.25rem; margin-bottom: 3.5rem; }
+@media (max-width: 639px) {
+  /* the big number squeezes the title into a narrow column on phones: stack them instead */
+  .sec-head { flex-direction: column; align-items: flex-start; gap: 0.25rem; margin-bottom: 2.5rem; }
+}
 .section-num {
   font-family: var(--font-display);
   font-weight: 800;

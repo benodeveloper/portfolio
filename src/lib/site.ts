@@ -1,8 +1,11 @@
 export const site = {
   name: "Hassan Benadardor",
-  title: "Hassan Benadardor | Full-Stack Developer",
+  title: "Hassan Benadardor | Lead Software Developer",
+  jobTitle: "Lead Software Developer",
+  employer: "go-digital",
+  location: { city: "Agadir", country: "Morocco", countryCode: "MA" },
   description:
-    "Portfolio of Hassan Benadardor, a Software Developer based in Morocco specializing in full-stack web and mobile applications.",
+    "Hassan Benadardor is a Lead Software Developer in Agadir, Morocco, building and leading web platforms with Laravel, React and Next.js, from data model to deployment.",
   url: "https://benodeveloper.com",
   github: "https://github.com/benodeveloper",
   email: "listoun.developer@gmail.com",
