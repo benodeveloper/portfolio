@@ -1,0 +1,137 @@
+\documentclass[10pt,a4paper]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage[margin=1.6cm,top=1.3cm,bottom=1.3cm]{geometry}
+\usepackage{titlesec}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+
+\pagestyle{empty}
+\setlength{\parindent}{0pt}
+
+% Section style: bold title with a rule underneath
+\titleformat{\section}{\large\bfseries}{}{0pt}{}[\vspace{-0.6em}\rule{\linewidth}{0.4pt}]
+\titlespacing*{\section}{0pt}{0.9em}{0.5em}
+
+% Tight bullet lists
+\setlist[itemize]{leftmargin=1.2em,itemsep=1pt,topsep=2pt,parsep=0pt}
+
+% Job / education entry: title, dates, organization, location
+\newcommand{\entry}[4]{%
+  \textbf{#1} \hfill #2\\
+  \textit{#3} \hfill \textit{#4}\par\vspace{1pt}}
+\begin{document}
+
+% ---------------- Header ----------------
+\begin{center}
+  {\LARGE\bfseries El-Hassan Benadardor}\\[3pt]
+  Full-Stack Software Developer \textbar{} Laravel, PHP, React\\[2pt]
+  Agadir, Morocco \textbar{} +212 6 14 14 17 86 \textbar{}
+  \href{mailto:listoun.developer@gmail.com}{listoun.developer@gmail.com}\\
+  \href{https://www.linkedin.com/in/benodeveloper/}{linkedin.com/in/benodeveloper} \textbar{}
+  \href{https://benodeveloper.com}{benodeveloper.com} \textbar{}
+  \href{https://github.com/benodeveloper}{github.com/benodeveloper}
+\end{center}
+
+% ---------------- Summary ----------------
+\section{Summary}
+Full-stack developer with almost 7 years of experience building and leading web platforms with Laravel/PHP,
+React/Next.js and Spring Boot, plus Docker, AWS and CI/CD. Currently lead developer at go-digital, architecting
+client platforms from data model to deployment. Linux and networking background, strong in performance tuning
+and clean, maintainable code.
+
+% ---------------- Skills ----------------
+\section{Skills}
+\begin{itemize}
+  \item \textbf{Backend:} PHP, Laravel, Symfony, Java (Spring Boot), C\#, Python, REST APIs, microservices, webhooks
+  \item \textbf{Frontend and mobile:} React, Next.js, TypeScript, Inertia.js, Tailwind CSS, Flutter
+  \item \textbf{Data and DevOps:} MySQL, PostgreSQL, Redis, Docker, GitHub Actions CI/CD, Linux/VPS, Nginx, Apache, AWS (EC2, S3, RDS, IAM, CloudWatch), Git
+  \item \textbf{Practices:} Pest/JUnit testing, Domain-Driven Design, code reviews, team leadership, mentoring
+  \item \textbf{Soft skills:} Technical leadership, clear communication, problem solving, self-directed learning
+\end{itemize}
+
+% ---------------- Key Achievements ----------------
+\section{Key Achievements}
+\begin{itemize}
+  \item \textbf{Architecture and leadership:} Primary architect of the CRI Souss-Massa investor and project support
+        platform, including an advanced business plan generator, while directing a team of developers on four client platforms.
+  \item \textbf{Performance at scale:} Kept the all-souss-massa tourism platform (CRT Agadir) stable through peak traffic
+        above 80K visitors by tuning Apache, PHP-FPM sockets and database queries.
+  \item \textbf{Product creation:} Built custom client software at Cabinet Advice that was turned into Gestancia, a SaaS product.
+  \item \textbf{Legacy modernization:} Helped lead the migration of the doctori.ma backend monolith from Symfony to Laravel.
+  \item \textbf{Real-time systems:} Built video consultations with the Vonage Video API and a Flutter mobile app for a
+        platform serving 6.2K+ monthly visitors.
+\end{itemize}
+
+% ---------------- Experience ----------------
+\section{Work Experience}
+
+\entry{Lead Software Developer}{Oct 2024 -- Present}{go-digital}{Agadir, Morocco}
+\begin{itemize}
+  \item Directed a team of developers on web application delivery, code reviews and DevOps workflows across four client platforms.
+  \item Architected the CRI Souss-Massa support-request platform (Laravel 11, React, Inertia.js, Reverb, Redis, Docker):
+        project holders and investors submit support requests and get guided through the process, and build their business
+        plan on the platform with an advanced business plan generator producing investor business plan models with French and Arabic notices.
+  \item Built \href{https://www.abridsoussmassa.com/en}{ABRID Connect}, CRI Souss-Massa's public entrepreneurship ecosystem platform
+        connecting entrepreneurs, startups, freelancers and cooperatives with support organizations, programs, experts and financing.
+  \item Engineered cloud-native media storage and management infrastructure on AWS; run CI/CD with GitHub Actions to self-hosted VPS servers.
+\end{itemize}
+
+\entry{Full-Stack Software Developer}{Feb 2022 -- Oct 2024}{Doctori}{Agadir, Morocco}
+\begin{itemize}
+  \item Helped lead the refactor of the core backend monolith of \href{https://doctori.ma}{doctori.ma}, Morocco's online doctor
+        booking platform, from Symfony to Laravel.
+  \item Built real-time online video consultations with the Vonage Video API.
+  \item Developed the cross-platform mobile app in Flutter.
+  \item Worked in an 8-person team of three developers, two UI/UX designers, two videographers and one growth marketer.
+\end{itemize}
+
+\entry{Web Developer}{Nov 2019 -- Jan 2022}{Grafimage}{Agadir, Morocco}
+\begin{itemize}
+  \item Managed and scaled all-souss-massa, the CRT Agadir regional tourism platform (Laravel 6), sustaining peaks above
+        80K visitors through Apache, PHP-FPM and query tuning.
+  \item Rebuilt the company corporate website \href{https://grafimage.com}{grafimage.com} in Next.js.
+\end{itemize}
+
+\entry{Freelance Software Developer}{May 2026 -- Sep 2026}{RoadRed}{Remote}
+\begin{itemize}
+  \item Built a custom web-based management application for \href{https://roadred.fr}{RoadRed}, a digital freight-matching
+        platform, to manage the services the company offers to transport companies, truck owners and fleet managers.
+\end{itemize}
+
+\entry{Freelance Software Developer}{Jul 2023 -- Jun 2025}{Cabinet Advice}{Morocco}
+\begin{itemize}
+  \item Developed custom management software for the firm's clients, then helped turn it into
+        \href{https://gestancia.com}{Gestancia}, a SaaS platform for technical and medical assistance providers in Morocco
+        (towing, ambulance, medical transport) with mission management, fleet tracking, real-time invoicing and dashboards.
+\end{itemize}
+
+\entry{Freelance Web Developer}{May 2022 -- Nov 2023}{Capital Business City}{Morocco}
+\begin{itemize}
+  \item Built the company's websites, including the Capital Business City corporate site and the BusinessNow TV media website,
+        along with other client web projects.
+\end{itemize}
+
+\entry{Freelance Software Developer}{2017 -- 2019}{Independent}{Morocco}
+\begin{itemize}
+  \item Delivered custom management software for regional clients with Symfony 3/4, C\# and ADO.NET.
+  \item Built comprehensive management software for a large military hospital (2019) in C\# and ADO.NET.
+\end{itemize}
+
+% ---------------- Projects ----------------
+\section{Selected Projects}
+\begin{itemize}
+  \item \textbf{\href{https://github.com/benodeveloper/foklumi}{Foklumi}} (Python, PySide6): open-source (MIT) desktop focus timer
+        that turns breaks into short vocabulary lessons with text-to-speech; unit tests in GitHub Actions, PyInstaller builds.
+  \item \textbf{tracking-fleet} (Java, Spring Boot, PostgreSQL): real-time vehicle tracking REST API.
+  \item \textbf{spring-boot-media-library} (Java, Spring Boot): open-source image processing utility with no third-party SaaS.
+  \item \textbf{Dual-Subtitle Media Player} (Flutter, Riverpod): Android TV player with two simultaneous styled subtitle tracks.
+\end{itemize}
+
+% ---------------- Education ----------------
+\section{Education}
+\entry{Technicien Spécialisé en Techniques de Développement Informatique (TDI), Bac+2 equivalent}{2017 -- 2019}{OFPPT}{Guelmim, Morocco}
+\vspace{3pt}
+\entry{Technicien en Maintenance et Support Informatique et Réseaux (TMSIR)}{2015 -- 2017}{OFPPT -- graduated in the top 10 of the class}{Guelmim, Morocco}
+
+\end{document}

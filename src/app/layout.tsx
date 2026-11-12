@@ -1,85 +1,68 @@
-import type { Metadata } from "next";
-import { Geist, Geist_Mono, MuseoModerno } from "next/font/google";
+import type { Metadata, Viewport } from "next";
+import { Space_Mono, Special_Elite } from "next/font/google";
 import "./globals.css";
-import Header from "@/components/header";
-import { cn } from "@/lib/utils";
+import ClickSplat from "@/components/click-splat";
+import InkBackground from "@/components/ink-background";
+import InkFilters from "@/components/ink-filters";
+import Navbar from "@/components/navbar";
+import { site } from "@/lib/site";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const spaceMono = Space_Mono({
   subsets: ["latin"],
+  weight: ["400", "700"],
+  variable: "--font-space-mono",
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const specialElite = Special_Elite({
   subsets: ["latin"],
+  weight: "400",
+  variable: "--font-special-elite",
 });
 
-const museoModerno = MuseoModerno({
-  subsets: ['latin'],
-  weight: '700',
-  variable: '--font-museo',
-});
+export const viewport: Viewport = {
+  themeColor: "#f1e9d6",
+};
 
-// Advanced SEO Metadata
 export const metadata: Metadata = {
-  title: "Hassan Benadardor | Full-Stack Software Developer",
-  description: "Portfolio of Hassan Benadardor, a Software Developer based in Morocco specializing in full-stack web and mobile applications.",
-  keywords: [
-    "Hassan Benadardor",
-    "Software Developer",
-    "Full-Stack Developer",
-    "Web Developer",
-    "Mobile Developer",
-    "Morocco"
-  ],
-  authors: [{ name: "Hassan Benadardor" }],
-  creator: "Hassan Benadardor",
+  metadataBase: new URL(site.url),
+  title: site.title,
+  description: site.description,
+  keywords: ["Hassan Benadardor", "Software Developer", "Full-Stack Developer", "Web Developer", "Mobile Developer", "Morocco"],
+  authors: [{ name: site.name }],
+  creator: site.name,
+  icons: {
+    icon: [
+      { url: "/favicon-16x16.png", sizes: "16x16", type: "image/png" },
+      { url: "/favicon-32x32.png", sizes: "32x32", type: "image/png" },
+    ],
+    apple: "/apple-touch-icon.png",
+  },
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://benodeveloper.com", // Update this to your actual domain
-    title: "Hassan Benadardor | Software Developer",
-    description: "Portfolio of Hassan Benadardor, a Software Developer specializing in full-stack web and mobile applications.",
-    siteName: "Hassan Benadardor",
-    images: [
-      {
-        url: "/me.png",
-        width: 800,
-        height: 800,
-        alt: "Hassan Benadardor",
-      },
-    ],
+    url: site.url,
+    title: site.title,
+    description: site.description,
+    siteName: site.name,
+    images: [{ url: "/me-character.png", width: 2048, height: 2048, alt: site.name }],
   },
   twitter: {
-    card: "summary_large_image",
-    title: "Hassan Benadardor | Software Developer",
-    description: "Portfolio of Hassan Benadardor, a Software Developer specializing in full-stack web and mobile applications.",
-    images: ["/me.png"],
+    card: "summary",
+    title: site.title,
+    description: site.description,
+    images: ["/me-character.png"],
   },
 };
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html
-      lang="en"
-      className={cn(geistSans.variable, geistMono.variable, museoModerno.variable, "antialiased bg-[#1c1b22] text-white")}
-    >
-      <body className="min-h-screen flex flex-col">
-        <Header />
-        <div className="grow">
-          {children}
-        </div>
-
-        <footer className="max-w-5xl mx-auto border-t border-white/20 py-8 mt-12 w-full">
-          <div className="max-w-5xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between text-sm text-white/80 gap-4">
-            <p>© {new Date().getFullYear()} Hassan Benadardor. All rights reserved.</p>
-          </div>
-        </footer>
-
+    <html lang="en" className={`${spaceMono.variable} ${specialElite.variable}`}>
+      <body className="font-sans antialiased relative overflow-x-hidden min-h-screen">
+        <InkFilters />
+        <InkBackground />
+        <ClickSplat />
+        <Navbar />
+        <main className="relative z-10 max-w-6xl mx-auto px-6 py-12 md:px-16">{children}</main>
       </body>
     </html>
   );
