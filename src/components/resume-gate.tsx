@@ -35,7 +35,11 @@ export default function ResumeGate({ siteKey }: { siteKey: string }) {
       setState({ kind: "ready", url: data.url });
     } catch (e) {
       setState({ kind: "error", message: e instanceof Error ? e.message : "Something went wrong." });
-      if (widget.current !== null) window.grecaptcha?.reset(widget.current);
+      // let reCAPTCHA finish its checkmark animation before resetting, or its script
+      // touches elements that no longer exist ("can't access property style, d is null")
+      window.setTimeout(() => {
+        if (widget.current !== null) window.grecaptcha?.reset(widget.current);
+      }, 600);
     }
   }, []);
 
@@ -59,12 +63,12 @@ export default function ResumeGate({ siteKey }: { siteKey: string }) {
     <div className="space-y-6">
       <Script src="https://www.google.com/recaptcha/api.js?render=explicit" strategy="afterInteractive" onReady={renderWidget} />
 
-      {state.kind !== "ready" && (
-        <>
-          <p className="text-sm leading-relaxed">Tick the box below to prove you are human, and the résumé is yours.</p>
-          <div ref={box} className="min-h-[78px]" />
-        </>
-      )}
+      {/* The widget container stays mounted for the page's lifetime (only hidden): removing it
+          while reCAPTCHA's script is still running breaks the script. */}
+      <div hidden={state.kind === "ready"} className="space-y-6">
+        <p className="text-sm leading-relaxed">Tick the box below to prove you are human, and the résumé is yours.</p>
+        <div ref={box} className="min-h-[78px]" />
+      </div>
 
       {state.kind === "checking" && <p className="font-display font-bold">Checking...</p>}
       {state.kind === "error" && (

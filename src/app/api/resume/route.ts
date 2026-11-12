@@ -14,8 +14,15 @@ export async function POST(request: NextRequest) {
   }
 
   const ip = request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() || null;
-  if (!(await verifyCaptcha(token, ip))) {
-    return NextResponse.json({ error: "Captcha check failed. Please try again." }, { status: 403 });
+  const captcha = await verifyCaptcha(token, ip);
+  if (!captcha.ok) {
+    const [status, error] =
+      captcha.reason === "misconfigured"
+        ? [503, "Résumé downloads are temporarily unavailable. Please use the contact page."]
+        : captcha.reason === "unreachable"
+          ? [502, "Could not reach the captcha service. Please try again in a moment."]
+          : [403, "Captcha check failed. Please try again."];
+    return NextResponse.json({ error }, { status });
   }
 
   const url = createResumeLink();

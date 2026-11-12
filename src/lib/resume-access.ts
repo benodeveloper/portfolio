@@ -35,10 +35,21 @@ export function isValidResumeLink(expParam: string | null, sigParam: string | nu
   return expected.length === given.length && timingSafeEqual(expected, given);
 }
 
-/** Verify a reCAPTCHA v2 token with Google. */
-export async function verifyCaptcha(token: string, remoteIp?: string | null): Promise<boolean> {
+export type CaptchaResult = { ok: true } | { ok: false; reason: "misconfigured" | "rejected" | "unreachable" };
+
+/** Verify a reCAPTCHA v2 token with Google. Failures are logged server-side with Google's error codes. */
+export async function verifyCaptcha(token: string, remoteIp?: string | null): Promise<CaptchaResult> {
   const secretKey = process.env.RECAPTCHA_SECRET_KEY;
-  if (!secretKey) return false;
+  if (!secretKey) {
+    console.error("[resume] RECAPTCHA_SECRET_KEY is not set.");
+    return { ok: false, reason: "misconfigured" };
+  }
+  if (secretKey === process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY) {
+    // easy mistake: both keys look alike in the reCAPTCHA console
+    console.error("[resume] RECAPTCHA_SECRET_KEY is set to the SITE key. Use the SECRET key from the reCAPTCHA admin console.");
+    return { ok: false, reason: "misconfigured" };
+  }
+
   const body = new URLSearchParams({ secret: secretKey, response: token });
   if (remoteIp) body.set("remoteip", remoteIp);
   try {
@@ -48,9 +59,16 @@ export async function verifyCaptcha(token: string, remoteIp?: string | null): Pr
       cache: "no-store",
       signal: AbortSignal.timeout(8000),
     });
-    const data = (await res.json()) as { success?: boolean };
-    return data.success === true;
-  } catch {
-    return false;
+    const data = (await res.json()) as { success?: boolean; "error-codes"?: string[]; hostname?: string };
+    if (data.success === true) return { ok: true };
+
+    const codes = data["error-codes"] ?? [];
+    console.warn(`[resume] reCAPTCHA verification failed: ${codes.join(", ") || "no error code"}`);
+    // invalid/missing secret = our configuration, anything else = the visitor's token
+    const misconfigured = codes.some((c) => c === "invalid-input-secret" || c === "missing-input-secret");
+    return { ok: false, reason: misconfigured ? "misconfigured" : "rejected" };
+  } catch (e) {
+    console.error("[resume] Could not reach reCAPTCHA:", e);
+    return { ok: false, reason: "unreachable" };
   }
 }
