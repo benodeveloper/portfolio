@@ -8,19 +8,8 @@ export type Experience = {
   points: string[];
 };
 
-/** Newest first, by start date. Source: private/el-hassan-benadardor-resume.tex */
+/** Newest first, by end date (current roles first). Source: private/el-hassan-benadardor-resume.tex */
 export const experiences: Experience[] = [
-  {
-    period: "May 2026 — Sep 2026",
-    kind: "Freelance",
-    role: "Freelance Software Developer",
-    org: "RoadRed",
-    location: "Remote",
-    href: "https://roadred.fr",
-    points: [
-      "Built a custom web-based management application for a digital freight-matching platform, covering the services offered to transport companies, truck owners and fleet managers.",
-    ],
-  },
   {
     period: "Oct 2024 — Present",
     kind: "Work",
@@ -35,6 +24,17 @@ export const experiences: Experience[] = [
     ],
   },
   {
+    period: "May 2026 — Sep 2026",
+    kind: "Freelance",
+    role: "Freelance Software Developer",
+    org: "RoadRed",
+    location: "Remote",
+    href: "https://roadred.fr",
+    points: [
+      "Built a custom web-based management application for a digital freight-matching platform, covering the services offered to transport companies, truck owners and fleet managers.",
+    ],
+  },
+  {
     period: "Jul 2023 — Jun 2025",
     kind: "Freelance",
     role: "Freelance Software Developer",
@@ -43,16 +43,6 @@ export const experiences: Experience[] = [
     href: "https://gestancia.com",
     points: [
       "Developed custom management software for the firm's clients, then helped turn it into Gestancia, a SaaS for technical and medical assistance providers: mission management, fleet tracking, real-time invoicing and dashboards.",
-    ],
-  },
-  {
-    period: "May 2022 — Nov 2023",
-    kind: "Freelance",
-    role: "Freelance Web Developer",
-    org: "Capital Business City",
-    location: "Morocco",
-    points: [
-      "Built the company's websites, including the Capital Business City corporate site and the BusinessNow TV media website, along with other client web projects.",
     ],
   },
   {
@@ -67,6 +57,16 @@ export const experiences: Experience[] = [
       "Built real-time online video consultations with the Vonage Video API.",
       "Developed the cross-platform mobile app in Flutter.",
       "Worked in an 8-person team: three developers, two UI/UX designers, two videographers and one growth marketer.",
+    ],
+  },
+  {
+    period: "May 2022 — Nov 2023",
+    kind: "Freelance",
+    role: "Freelance Web Developer",
+    org: "Capital Business City",
+    location: "Morocco",
+    points: [
+      "Built the company's websites, including the Capital Business City corporate site and the BusinessNow TV media website, along with other client web projects.",
     ],
   },
   {
