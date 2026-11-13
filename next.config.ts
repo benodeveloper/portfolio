@@ -21,6 +21,11 @@ const withMDX = createMDX({
       "remark-mdx-frontmatter", // ...and expose it as `export const frontmatter`
       "remark-gfm", // tables, strikethrough, task lists, autolinks
     ],
+    rehypePlugins: [
+      // Syntax-highlight fenced code blocks with Shiki at build time (no client JS). The theme's
+      // background is dropped so blocks keep the site's ink background from globals.css.
+      ["rehype-pretty-code", { theme: "github-dark", keepBackground: false }],
+    ],
   },
 });
 

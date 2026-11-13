@@ -720,6 +720,8 @@ a.card:hover .thumb .peek { opacity: 1; transform: translateY(0); }
 .md code { font-size: 0.88em; background: rgba(17, 17, 17, 0.06); border: 1px solid rgba(17, 17, 17, 0.25); border-radius: 4px; padding: 0.1em 0.35em; }
 .md pre { margin-top: 1.5rem; overflow-x: auto; border: 2.5px solid var(--ink); border-radius: var(--wobble-sm); background: var(--ink); color: var(--paper); padding: 1rem 1.25rem; box-shadow: var(--shadow-hard); }
 .md pre code { background: transparent; border: 0; padding: 0; color: inherit; font-size: 0.85rem; }
+/* rehype-pretty-code wraps each block in a <figure>; token colors come inline from the Shiki theme. */
+.md figure[data-rehype-pretty-code-figure] { margin: 0; }
 .md hr { margin: 2.5rem 0; border: 0; border-top: 2px dashed var(--ink); }
 .md strong { font-weight: 700; }
 .md table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
