@@ -33,6 +33,12 @@ folder is empty (their pages return 404). They appear as soon as the first file 
 | `updated`     | no       | `2026-02-15`                     | Last meaningful edit; used for SEO freshness. |
 | `tags`        | no       | `[Laravel, Realtime]`            | Shown as chips and used as keywords. |
 | `draft`       | no       | `true`                           | Hidden from production builds. |
+| `image`       | no       | `/images/blog/my-post.jpg`       | Cover image under the title, also used for link previews. File goes in `public/images/blog/`. |
+| `imageWidth` / `imageHeight` | with `image` | `1600` / `1000` | Size in pixels. |
+| `imageAlt`    | with `image` | `"A padlock with keys"`      | Describes the image for screen readers and search engines. |
+| `imageCredit` | with `image` | `"Photo by Jane Doe, via Wikimedia Commons"` | The full credit line under the image. Always credit the owner; for AI images say so, e.g. `"Illustration generated with ChatGPT"`. |
+| `imageCreditUrl` | no    | `"https://commons.wikimedia.org/..."` | Links the credit to the image's source page. |
+| `imageLicense` / `imageLicenseUrl` | no | `"CC BY 4.0"` | Shown after the credit, linked to the license. Mention edits (e.g. "cropped") if the license asks for it. |
 
 ## Project fields
 

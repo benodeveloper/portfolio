@@ -24,6 +24,19 @@ export type Post = {
   updated?: string;
   tags: string[];
   readingMinutes: number;
+  image?: CoverImage;
+};
+
+/** Optional cover image for a post: a file in /public plus who made it and under which license. */
+export type CoverImage = {
+  src: string; // e.g. /images/blog/my-post.jpg
+  width: number;
+  height: number;
+  alt: string;
+  credit: string; // the full credit line shown under the image, e.g. "Photo by Jane Doe"
+  creditUrl?: string; // where the image comes from (its source page)
+  license?: string; // e.g. "CC BY 4.0"
+  licenseUrl?: string;
 };
 
 export type Project = {
@@ -96,6 +109,27 @@ function url(raw: Raw, key: string): string | undefined {
   return v;
 }
 
+function cover(raw: Raw): CoverImage | undefined {
+  const src = opt(raw, "image");
+  if (!src) return undefined;
+  if (!src.startsWith("/")) throw new Error(`${raw.file}: frontmatter "image" must be a path in /public, e.g. /images/blog/my-post.jpg.`);
+  const size = (key: string) => {
+    const v = raw.data[key];
+    if (typeof v !== "number" || v <= 0) throw new Error(`${raw.file}: frontmatter "${key}" is required with "image" (pixels).`);
+    return v;
+  };
+  return {
+    src,
+    width: size("imageWidth"),
+    height: size("imageHeight"),
+    alt: req(raw, "imageAlt"),
+    credit: req(raw, "imageCredit"),
+    creditUrl: url(raw, "imageCreditUrl"),
+    license: opt(raw, "imageLicense"),
+    licenseUrl: url(raw, "imageLicenseUrl"),
+  };
+}
+
 // --- collections ---
 
 export function getPosts(): Post[] {
@@ -108,6 +142,7 @@ export function getPosts(): Post[] {
       updated: date(raw, "updated"),
       tags: list(raw, "tags"),
       readingMinutes: Math.max(1, Math.round(raw.body.split(/\s+/).filter(Boolean).length / 220)),
+      image: cover(raw),
     }))
     .sort((a, b) => b.date.localeCompare(a.date));
 }
